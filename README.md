@@ -2,7 +2,7 @@
 
 Group members: Joshua Grant, Kyle de Silva, Brett Pasula 
 
-Potential names: GRDN, GRDR, Phyto 
+Potential names: GRDN, GRDNR, Phyto 
 
 ## Project description:  
 - who is it for? Gardeners, landscapers, plant enthusiasts, etc. 
