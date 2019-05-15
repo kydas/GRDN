@@ -4,7 +4,7 @@ Group members: Joshua Grant, Kyle de Silva, Brett Pasula
 
 Potential names: GRDN, GRDR, Phyto 
 
-##Project description:  
+## Project description:  
 - who is it for? Gardeners, landscapers, plant enthusiasts, etc. 
 - what will it do? Track plants, notify user when plant maintenance is required (i.e. watering), allow user to search for plants that will grow in their area. 
 - what type of data will it store? Data related to their plant "inventory", times since last maintenance (i.e. watering). 
