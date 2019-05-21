@@ -1,0 +1,17 @@
+body {
+  text-align: center;
+  background-color: #45B39D;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 5em;
+}
+
+.main-container {
+  max-width: 30em;
+  padding: 2em 3em 6em 3em;
+  border: 4px solid #fff;
+  background-color: #34C28C;
+}
