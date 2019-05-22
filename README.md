@@ -9,7 +9,7 @@ Potential names: GRDN, GRDNR, Phyto
 - what will it do? Track plants, notify user when plant maintenance is required (i.e. watering), allow user to search for plants that will grow in their area. 
 - what type of data will it store? Data related to their plant "inventory", times since last maintenance (i.e. watering). 
 - what will users be able to do with this data? Add plants to their inventory, search new plants to add, track maintenance. 
-- what is some additional functionality you can add/remove based on time constraints? 
+- what is some additional functionality you can add/remove based on time constraints? Spatial display, social media integration, photo imports from web (see "Stretch requirements" below).  
 
 ## Requirements: 
 
