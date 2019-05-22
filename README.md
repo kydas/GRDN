@@ -14,9 +14,22 @@ Potential names: GRDN, GRDNR, Phyto
 ## Requirements: 
 
 Minimal requirements (3-5) - will definitely complete: 
+- plant search, select and store. 
+- weather API integration. 
+- suggestions based on location, weather, etc. 
+- single garden management. 
+- functional UI. 
 
 Standard requirements (3-7) - will most likely complete: 
+- slick UI with animations, smooth transitions etc.  
+- multiple garden management. 
+- rich data display on plants, plant needs, etc.  
+- push notifications. 
+- plant tracking functionality - add notes, etc. 
 
 Stretch requirements (2-3) - hope to complete one: 
+- add a property display where people could place their plants relative to their home in space. 
+- social media integration - share your garden with your friends! 
+- import photos from Flickr, Instagram, Tumblr, etc. 
 
 ## Sketch prototypes: 
