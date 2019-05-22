@@ -26,6 +26,7 @@ Standard requirements (3-7) - will most likely complete:
 - rich data display on plants, plant needs, etc.  
 - push notifications. 
 - plant tracking functionality - add notes, etc. 
+- add custom photos. 
 
 Stretch requirements (2-3) - hope to complete one: 
 - add a property display where people could place their plants relative to their home in space. 
