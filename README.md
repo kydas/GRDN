@@ -33,4 +33,8 @@ Stretch requirements (2-3) - hope to complete one:
 - social media integration - share your garden with your friends! 
 - import photos from Flickr, Instagram, Tumblr, etc. 
 
-## Sketch prototypes: 
+## Sketch prototypes:  
+
+![Sketch of home window.](https://github.com/dasilvar93/GRDN/blob/master/home-sketch.JPG)
+
+![Sketch of garden and plant windows.](https://github.com/dasilvar93/GRDN/blob/master/garden-plant-sketch.JPG) 
