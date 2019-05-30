@@ -12,10 +12,12 @@ const history = createBrowserHistory();
 
 export const renderRoutes = () => (
   <Router history={history}>
-    <Switch>
-      <Route exact path="/" component={TestPage}/>
-      <Route exact path="/tp2" component={TestPage2}/>
-    </Switch>
+    <AppShell>
+      <Switch>
+        <Route exact path="/" component={TestPage}/>
+        <Route exact path="/tp2/:id" component={TestPage2}/>
+      </Switch>
+    </AppShell>
   </Router>
 );
 
