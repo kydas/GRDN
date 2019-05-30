@@ -8,13 +8,19 @@ class AppShell extends Component {
     return (
       <div>
         <nav>
+          //Temporary. Replace with a navbar component etc.
           I'm a navbar.
           <Link to='/'>Home </Link>
           <Link to='/tp2/123'>123 </Link>
           <hr/>
         </nav>
+        // Renders any children of this node.
         {this.props.children}
-        <footer><hr/>I'm the footer. Anything to be rendered after the page content goes here.</footer>
+        <footer>
+          //Temporary. Replace witj a footer component etc.
+          <hr/>
+          I'm the footer. Anything to be rendered after the page content goes here.
+        </footer>
       </div>
     );
   }
