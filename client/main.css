@@ -24,8 +24,8 @@ nav a {
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  border: 3px solid #fff;
-  background-color: #ddd;
+  border: 4px solid #fff;
+  background-color: transparent;
   color: #fff;
   display: block;
   margin: 12px auto;
@@ -37,9 +37,16 @@ nav hr {
   margin: 6px;
 }
 
+nav a .svg-inline--fa {
+  padding: 6px;
+  font-size: 46px;
+  text-align: center;
+}
+
 nav div.notifications-holder {
   position: absolute;
   bottom: 0;
+  left: 4px;
 }
 
 
