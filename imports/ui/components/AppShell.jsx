@@ -2,16 +2,13 @@
 
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import NavBar from './NavBar';
 
 class AppShell extends Component {
   render () {
     return (
       <div className="app-shell">
-        <nav>
-          <Link to='/'>Home </Link>
-          <Link to='/tp2/123'>123 </Link>
-          <hr/>
-        </nav>
+        <NavBar />
         <main>
           // Renders any children of this node.
           {this.props.children}

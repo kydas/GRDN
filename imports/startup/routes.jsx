@@ -6,8 +6,8 @@ import {createBrowserHistory} from 'history';
 import AppShell from "../ui/components/AppShell";
 
 //Routes
-import TestPage from '../ui/TestPage'; // Temporary. Delet this.
-import TestPage2 from '../ui/TestPage2'; // Temporary. Delete this.
+import TestPage from '../ui/pages/TestPage'; // Temporary. Delet this.
+import TestPage2 from '../ui/pages/TestPage2'; // Temporary. Delete this.
 
 const history = createBrowserHistory();
 

@@ -36,3 +36,24 @@ nav hr {
   border-bottom-width: 4px;
   margin: 6px;
 }
+
+nav div.notifications-holder {
+  position: absolute;
+  bottom: 0;
+}
+
+
+/*NOTIFICATIONS*/
+.notifications-holder .notifications-indicator{
+  background-color: #e11;
+  font-weight: bold;
+  display: block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  position: absolute;
+  padding: 4px;
+  top: 4px;
+  right: 0;
+  border-radius: 50%;
+}

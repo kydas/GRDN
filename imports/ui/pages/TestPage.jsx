@@ -1,5 +1,5 @@
 import React from 'react';
-import Hello from './Hello.jsx';
+import Hello from '../Hello.jsx';
 
 // A test component for simple routing tests.
 // Please delete when we replace this with real content.
