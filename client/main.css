@@ -1,4 +1,38 @@
 body {
-  padding: 10px;
+  margin: 0;
   font-family: sans-serif;
+}
+
+/*LAYOUT*/
+
+main {
+  margin-left: 72px;
+  padding: 24px;
+}
+
+/*NAV*/
+
+nav {
+  height: 100vh;
+  width: 72px;
+  position: absolute;
+  background-color: #444;
+  border-right: inset #666 2px;
+}
+
+nav a {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border: 3px solid #fff;
+  background-color: #ddd;
+  color: #fff;
+  display: block;
+  margin: 12px auto;
+}
+
+nav hr {
+  border: 0px dotted #ddd;
+  border-bottom-width: 4px;
+  margin: 6px;
 }
