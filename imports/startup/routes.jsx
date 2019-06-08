@@ -1,9 +1,12 @@
-// Manages routing for the app.
-
 import React from 'react';
 import { Router, Route, Switch} from "react-router";
 import {createBrowserHistory} from 'history';
 import AppShell from "../ui/components/AppShell";
+
+/*
+ Manages routing for the app. Add new pages in the indicated place below. Use
+ /:varname in routes to include url parameters.
+*/
 
 //Routes
 import UserPage from '../ui/pages/UserPage';
@@ -24,6 +27,5 @@ export const renderRoutes = () => (
     </AppShell>
   </Router>
 );
-
 
 export default renderRoutes;

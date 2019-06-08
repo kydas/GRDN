@@ -6,6 +6,9 @@ import { faSeedling, faSearch, faHiking, faBell } from '@fortawesome/free-solid-
 
 import HoverTip from './HoverTip.jsx';
 
+/*
+  Contains the app's main side navigation.
+*/
 
 export default class NavBar extends Component {
 
