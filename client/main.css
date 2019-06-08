@@ -22,8 +22,8 @@ nav {
 
 nav a {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   border: 4px solid #fff;
   background-color: transparent;
   color: #fff;
@@ -39,7 +39,7 @@ nav hr {
 
 nav a .svg-inline--fa {
   padding: 6px;
-  font-size: 46px;
+  font-size: 34px;
   text-align: center;
 }
 

@@ -15,12 +15,12 @@ export default class NavBar extends Component {
         <Link to='/search'>
           <FontAwesomeIcon icon={faSearch} />
         </Link>
-        <Link to='/tp2/123'>
+        <Link to='/profile'>
           <FontAwesomeIcon icon={faHiking} />
         </Link>
         <hr/>
         <div className="notifications-holder">
-          <Link to='/tp2/123'>
+          <Link to='/notifications'>
             <NotificationsIndicator count="2" />
             <FontAwesomeIcon icon={faBell} />
           </Link>
