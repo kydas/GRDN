@@ -49,6 +49,27 @@ nav div.notifications-holder {
   left: 4px;
 }
 
+/*HOVER TIPS*/
+a .hover-tip {
+  /*display: none;*/
+  position: absolute;
+  right: -102px;
+  background: #5E9;
+  color: #fff;
+  padding: 6px 8px;
+  border: 1px solid #fff;
+  opacity: 0;
+  transition: opacity 0.5s  ease-in-out, right 0.5s ease-in-out;
+  z-index: 6;
+}
+
+a:hover .hover-tip {
+  display: block;
+  right: -80px;
+  opacity: 1;
+
+}
+
 
 /*NOTIFICATIONS*/
 .notifications-holder .notifications-indicator{

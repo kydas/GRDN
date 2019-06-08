@@ -10,7 +10,6 @@ class AppShell extends Component {
       <div className="app-shell">
         <NavBar />
         <main>
-          // Renders any children of this node.
           {this.props.children}
         </main>
         <footer>
