@@ -15,9 +15,7 @@ class AppShell extends Component {
           {this.props.children}
         </main>
         <footer>
-          //Temporary. Replace witj a footer component etc.
           <hr/>
-          I'm the footer. Anything to be rendered after the page content goes here.
         </footer>
       </div>
     );
