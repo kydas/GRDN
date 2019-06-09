@@ -15,7 +15,6 @@ export default class LoginForm extends Component {
 
   handleLogin = (event) => {
     event.preventDefault();
-    console.log(Meteor.user());
     Meteor.loginWithPassword(this.state.username, this.state.password, () => {
       console.log(Meteor.user());
 
