@@ -3,6 +3,7 @@ Handles user methods.
 */
 
 import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 
 
 /*
@@ -29,6 +30,14 @@ Meteor.methods({
   },
   getUser: (id) => {
     return users.find((el) => el.username === id);
+  },
+  newUser: () => {
+    console.log(Meteor.users.findOne({username: "TriciaRuneberger"}));
+    Accounts.createUser({
+      username: "VictorHeck",
+      email: "vicheck@hotmail.com",
+      password: "turtlenecking"
+    });
   }
 
 });

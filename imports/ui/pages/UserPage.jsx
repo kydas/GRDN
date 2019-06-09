@@ -1,43 +1,27 @@
-import React, { Component } from 'react';
-import Methods from '../../api/userMethods';
+import React, { Component } from 'react'
+import Methods from '../../api/userMethods'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBirthdayCake, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faBirthdayCake, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import LoginForm from '../components/LoginForm'
 /*
 Displays a user's profile. If it's the current user, they can make changes.
 */
 
 export default class UserPage extends Component {
-  state = {
-    user: null
-  }
-
-  componentWillMount() {
-    var that = this;
-    Meteor.call('getUser', "VictorHeck", function (err, res) {
-      if (err) {
-        console.log(err.reason);
-      } else {
-        that.setState({user: res})
-      }
-    });
-  }
 
   render() {
-    if (this.state.user === null) {
-      return ("Loading");
+    let user = Meteor.user();
+    if (user === undefined) {
+      return <LoginForm />
     } else {
-      let user = this.state.user;
       let username = user.username;
-      let email = user.email;
-      let birthday = new Date();
-      birthday.setTime(user.birthday);
+      let email = user.emails[0].address;
 
       return (
           <div>
             <img src="/media/profile-picture-placeholder.jpg" />
             <h1>{username}</h1>
             <p><FontAwesomeIcon icon={faEnvelope} /> {email}</p>
-            <p><FontAwesomeIcon icon={faBirthdayCake} />{birthday.toLocaleDateString()}</p>
           </div>
       );
     }
