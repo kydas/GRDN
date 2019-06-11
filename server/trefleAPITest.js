@@ -1,6 +1,5 @@
 import Axios from "axios";
-
-const AUTH_TOKEN = "Y2tvRjZmd1E0SXVRNlNDN3MrQzFhZz09"
+import AUTH_TOKEN from './constants.js';
 
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN
 axios.defaults.baseURL = 'https://trefle.io/api'
