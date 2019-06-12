@@ -31,12 +31,12 @@ Meteor.methods({
   getUser: (id) => {
     return users.find((el) => el.username === id);
   },
-  newUser: () => {
-    console.log(Meteor.users.findOne({username: "TriciaRuneberger"}));
+  newUser: (username, email, password) => {
+    console.log("aaa");
     Accounts.createUser({
-      username: "VictorHeck",
-      email: "vicheck@hotmail.com",
-      password: "turtlenecking"
+      username: username,
+      email: email,
+      password: password
     });
   }
 
