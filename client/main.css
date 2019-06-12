@@ -85,3 +85,10 @@ a:hover .hover-tip {
   right: 0;
   border-radius: 50%;
 }
+
+/*LOGIN-LOGOUT*/
+.user-management form input {
+  display: block;
+  font-size: 16px;
+  margin: 16px 0;
+}

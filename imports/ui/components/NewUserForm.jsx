@@ -8,8 +8,11 @@ export default class NewUserForm extends Component {
       <div className="new-user-form">
         <h2>Create a new user</h2>
         <form onSubmit={this.handleSubmit}>
+          Username:
           <input type="text" name="username" onChange={this.handleUsernameChange} />
+          Email:
           <input type="text" name="email" onChange={this.handleEmailChange} />
+          Password:
           <input type="password" name="password" onChange={this.handlePasswordChange} />
           <input type="submit"/>
         </form>

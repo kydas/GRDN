@@ -5,10 +5,12 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="log-in-form">
         <h2>Log in to GRDN</h2>
         <form>
+          Username:
           <input type="text" name="username" autoComplete="username" onChange={this.handleUsernameChange} />
+          Password:
           <input type="password" name="password" autoComplete="current-password" onChange={this.handlePasswordChange}/>
           <input type="submit" onClick={this.handleLogin}/>
         </form>

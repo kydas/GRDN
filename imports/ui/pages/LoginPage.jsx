@@ -13,7 +13,7 @@ export default class LoginPage extends Component {
 
   render() {
       return (
-        <div>
+        <div className="user-management">
           <LoginForm />
           <NewUserForm />
         </div>
