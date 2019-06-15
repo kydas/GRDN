@@ -32,7 +32,6 @@ Meteor.methods({
     return users.find((el) => el.username === id);
   },
   newUser: (username, email, password) => {
-    console.log("aaa");
     Accounts.createUser({
       username: username,
       email: email,
