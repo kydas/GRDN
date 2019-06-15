@@ -1,5 +1,5 @@
 import React from 'react';
-import getPlant from '../server/trefleAPITest.js'
+import {getPlant} from '../server/trefleAPITest.js'
 
 // function testPlant() { Meteor.call("plants.getPlant", {
 //     plantId: '12345'                   //this doesn't mean anything right now
@@ -23,21 +23,18 @@ export default class TestAPI extends React.Component{
 
     componentWillMount() {
 
-        const plant = Promise.await(getPlant());
-        this.setState({
-            plant: plant
-        });
-        // Meteor.call("plants.getPlant", "12345", (error, result) => {
-        //     if (error){
-        //         alert(error);
-        //     } else {
-        //         //sucess
-        //         console.log(result);
-        //         this.setState({
-        //             plant: result
-        //         });
-        //     }
-        // })
+        
+        Meteor.call("plants.getPlant", "12345", (error, result) => {
+            if (error){
+                console.log(error);
+            } else {
+                //sucess
+                console.log(result);
+                this.setState({
+                    plant: result
+                });
+            }
+        })
     }
     render() {
         if (this.state.plant == null){

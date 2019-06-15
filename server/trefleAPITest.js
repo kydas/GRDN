@@ -34,7 +34,7 @@ import AUTH_TOKEN from './constants.js';
 //     }
 // }
 
-function getPlant(plantId){
+export function getPlant(plantId){
     router.get('/', function(req, res, next){
         axios.get("https://trefle.io/api/plants/163618?token=" + AUTH_TOKEN)
         .then(function(response) {
@@ -47,6 +47,3 @@ function getPlant(plantId){
 }
 
 
-
-
-export default getPlant; 
