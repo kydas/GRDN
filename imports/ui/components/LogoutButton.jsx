@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Meteor} from 'meteor/meteor';
+import { withRouter } from 'react-router-dom';
 
-export default class LogoutButton extends Component {
+class LogoutButton extends Component {
 
   render() {
     return (
@@ -10,11 +11,19 @@ export default class LogoutButton extends Component {
   }
 
   handleLogout = () => {
+    let history = this.props.history;
     Meteor.logout(function(err) {
       if (err) {
         console.log(err.reason);
+      } else {
+        //On logout success, we redirect them to the login page.
+        history.push({
+          pathname: '/login'
+        });
       }
     });
   }
 
 }
+
+export default withRouter(LogoutButton);

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Meteor} from 'meteor/meteor';
+import { withRouter } from 'react-router-dom';
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
 
   render() {
     return (
@@ -22,8 +23,12 @@ export default class LoginForm extends Component {
   handleLogin = (event) => {
     event.preventDefault();
     Meteor.loginWithPassword(this.state.username, this.state.password, () => {
-      console.log(Meteor.user());
-
+      if (Meteor.user() != null) {
+        //On user success, we redirect them to the index page.
+        this.props.history.push({
+          pathname: '/'
+        });
+      }
     })
   }
 
@@ -35,3 +40,5 @@ export default class LoginForm extends Component {
     this.setState({password: event.target.value});
   }
 }
+
+export default withRouter(LoginForm);

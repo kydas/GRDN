@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import NavBar from './NavBar';
 import {Meteor} from 'meteor/meteor';
+import {createContainer} from 'meteor/react-meteor-data';
 
 /*
   Composes cross-app compontents (e.g. a navbar) with an internal page.
 */
 
-class AppShell extends Component {
+class AppShellComponent extends Component {
   render () {
     return (
       <div className="app-shell">
@@ -22,5 +23,12 @@ class AppShell extends Component {
     );
   }
 }
+
+export const AppShell = createContainer(() => {
+  Meteor.subscribe('users');
+  return {
+      user: Meteor.user()
+  };
+}, AppShellComponent);
 
 export default AppShell;
