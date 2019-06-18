@@ -12,6 +12,9 @@ import AppShell from "../ui/components/AppShell";
 import UserPage from '../ui/pages/UserPage';
 import GardensPage from '../ui/pages/GardensPage';
 import SearchPage from '../ui/pages/SearchPage';
+import LoginPage from '../ui/pages/LoginPage';
+import LogoutPage from '../ui/pages/LogoutPage';
+
 
 const history = createBrowserHistory();
 
@@ -22,6 +25,8 @@ export const renderRoutes = () => (
         <Route exact path="/" component={GardensPage}/>
         <Route exact path="/profile" component={UserPage}/>
         <Route exact path="/search" component={SearchPage}/>
+        <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/logout" component={LogoutPage} />
         // Add more routes below
       </Switch>
     </AppShell>

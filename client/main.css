@@ -51,7 +51,6 @@ nav div.notifications-holder {
 
 /*HOVER TIPS*/
 a .hover-tip {
-  /*display: none;*/
   position: absolute;
   right: -102px;
   background: #5E9;
@@ -59,14 +58,15 @@ a .hover-tip {
   padding: 6px 8px;
   border: 1px solid #fff;
   opacity: 0;
-  transition: opacity 0.5s  ease-in-out, right 0.5s ease-in-out;
-  z-index: 6;
+  transition: z-index 0.6s, opacity 0.5s  ease-in-out, right 0.5s ease-in-out;
+  z-index: -1;
 }
 
 a:hover .hover-tip {
   display: block;
   right: -80px;
   opacity: 1;
+  z-index: 6;
 
 }
 
@@ -84,4 +84,18 @@ a:hover .hover-tip {
   top: 4px;
   right: 0;
   border-radius: 50%;
+}
+
+/*LOGIN-LOGOUT*/
+.user-management form input {
+  display: block;
+  font-size: 16px;
+  margin: 16px 0;
+}
+
+.user-management .error-message {
+  border: 1px solid #d99;
+  background-color: #ecc;
+  padding: 8px;
+  font-weight: bold;
 }
