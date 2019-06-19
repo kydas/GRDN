@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import Links from '/imports/api/links';
 import methodsTest from './methodsTest'
+import userMethods from '/imports/api/userMethods';
 
 function insertLink(title, url) {
   Links.insert({ title, url, createdAt: new Date() });
