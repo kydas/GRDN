@@ -12,7 +12,7 @@ export default class TestAPI extends React.Component{
 
     componentWillMount() {
 
-        
+
         Meteor.call("plants.getPlant", "12345", (error, result) => {
             if (error){
                 console.log(error);
@@ -36,4 +36,3 @@ export default class TestAPI extends React.Component{
         )
     }
 }
-

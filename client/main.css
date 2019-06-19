@@ -99,3 +99,17 @@ a:hover .hover-tip {
   padding: 8px;
   font-weight: bold;
 }
+
+/*SEARCH-FORM*/
+form.search-form {
+
+}
+form.search-form label {
+  font-weight: bold;
+  display: block;
+}
+
+form.search-form input {
+  padding: 12px;
+  margin: 12px;
+}
