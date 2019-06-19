@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default class ResultModule extends Component {
+class ResultModule extends Component {
 
   constructor(props) {
     super(props);
@@ -8,7 +9,8 @@ export default class ResultModule extends Component {
 
   render() {
     return (
-      <div onClick={this.toDetailPage}>
+      <div className="result-module" onClick={this.toDetailPage}>
+        <img src="/media/plant-placeholder-1.jpg" />
         <h2>{this.props.entry.common_name}</h2>
         <p className="scientific-name">{this.props.entry.scientific_name}</p>
         <p className="blurb">A {this.props.entry.main_species.duration} from the {this.props.entry.family_common_name}</p>
@@ -17,7 +19,11 @@ export default class ResultModule extends Component {
   }
 
   toDetailPage = () => {
-    console.log(this.props.entry.id);
-    
+    this.props.history.push({
+      pathname: '/plant/' + this.props.entry.id
+    });
+
   }
 }
+
+export default withRouter(ResultModule);

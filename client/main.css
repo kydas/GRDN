@@ -113,3 +113,27 @@ form.search-form input {
   padding: 12px;
   margin: 12px;
 }
+
+/*SEARCH-RESULTS*/
+.search-results ul {
+    padding-left: 0;
+}
+
+.result-module {
+  border: 1px solid #444;
+  padding: 12px;
+  width: 33%;
+  cursor: pointer;
+  color: #222;
+  background-color: #eee;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.result-module img {
+  max-width: 100%;
+}
+
+.result-module:hover {
+  color: #444;
+  background-color: #ddd;
+}

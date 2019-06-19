@@ -10,16 +10,15 @@ export default class SearchResults extends Component {
 
 
   render() {
-    console.log(this.props.results);
     if (!this.props.results || this.props.results.length <= 0) {
       return (
-        <div>
+        <div className="search-results">
           No results
         </div>
       )
     }
     return (
-      <div>
+      <div className="search-results">
         {this.props.results.length === 1 &&
           <p>Showing 1 result:</p>
         }
