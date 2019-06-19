@@ -1,12 +1,15 @@
 import axios from "axios";
 import AUTH_TOKEN from './constants.js';
 
-const important = "Kyle da best";
+
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.baseURL = "https://trefle.io/api/plants/";
 
 
-export function getPlant(plantId){
+export function getPlant(param){
 
-        return axios.get("https://trefle.io/api/plants/163618?token=" + AUTH_TOKEN)
+        return axios.get("?" + "&&q="+ param)
+
             .then(function(response) {
             console.log(response.data);
             return response.data;
