@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
-import TestAPI from './testAPI';
+import DataTable from './DataTable';
 
 export default class SearchModule extends Component {
 
@@ -18,19 +18,17 @@ export default class SearchModule extends Component {
       <div>
         <SearchForm onSearchSubmit={this.onSearchSubmit} />
         <SearchResults results={this.state.results} />
-        <TestAPI />
       </div>
     )
   }
 
   onSearchSubmit = (query) => {
     let that = this;
-    Meteor.call("plants.getPlant", query.common_name, (error, result) => {
+    Meteor.call("plants.getPlants", query.common_name, (error, result) => {
         if (error){
             console.log(error);
         } else {
-            //sucess
-            console.log(result);
+            //success
             that.setState({
               results: result
             });
