@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import DataTable from '../components/DataTable';
+import AddToGardenForm from '../components/AddToGardenForm';
 
 export default class DetailPage extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       entry: null
     }
@@ -16,7 +16,6 @@ export default class DetailPage extends Component {
         if (error){
             console.log(error);
         } else {
-            //sucess
             that.setState({
               entry: result
             });
@@ -26,11 +25,9 @@ export default class DetailPage extends Component {
 
   render() {
     if (this.state.entry === null) {
-      return (
-        <p>Loading...</p>
-      )
+      return (<p>Loading...</p>)
     }
-    console.log(this.state.entry);
+
     return (
       <div className="detail-page">
         <div className="row">
@@ -42,10 +39,12 @@ export default class DetailPage extends Component {
             <img src="/media/plant-placeholder-1.jpg" />
           </div>
         </div>
-        <p>
-        </p>
+        {Meteor.userId() &&
+          <div>
+            <AddToGardenForm />
+          </div>
+        }
       </div>
     )
   }
-
 }

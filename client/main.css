@@ -187,3 +187,22 @@ form.search-form input {
   font-weight: bold;
   max-width: 72px;
 }
+
+/*ADD-TO_GARDEN-FORM*/
+.add-to-garden-form {
+  padding: 12px;
+}
+
+.add-to-garden-form button {
+  padding: 4px;
+}
+
+.add-to-garden-form select {
+  padding: 4px;
+  margin-left: 4px;
+}
+
+.add-to-garden-form input {
+  padding: 4px;
+  width: 32px;
+}
