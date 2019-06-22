@@ -206,3 +206,30 @@ form.search-form input {
   padding: 4px;
   width: 32px;
 }
+
+/*LOADING-SPINNER*/
+.spinner-holder {
+    position: absolute;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+}
+
+
+.spinner-holder .spinner {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  animation: loading-spinner 2s ease-in-out 0s infinite;
+}
+
+@keyframes loading-spinner {
+  0% {
+    transform: rotate3d(1, 1, 1, 0deg);
+    color: #afd;
+  }
+
+  100% {
+    transform: rotate3d(1, 1, 1, 360deg);
+    color: #afe;
+  }
+}
