@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import DataTable from '../components/DataTable';
 
 export default class DetailPage extends Component {
   constructor(props) {
@@ -32,10 +32,17 @@ export default class DetailPage extends Component {
     }
     console.log(this.state.entry);
     return (
-      <div>
-        <h1>Details for plant</h1>
+      <div className="detail-page">
+        <div className="row">
+          <h1>{this.state.entry.common_name}</h1>
+          <div className="col half">
+            <DataTable entry={this.state.entry} />
+          </div>
+          <div className="col half">
+            <img src="/media/plant-placeholder-1.jpg" />
+          </div>
+        </div>
         <p>
-          {JSON.stringify(this.state.entry)}
         </p>
       </div>
     )

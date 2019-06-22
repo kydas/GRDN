@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
+import DataTable from './DataTable';
 
 export default class SearchModule extends Component {
 
@@ -27,7 +28,7 @@ export default class SearchModule extends Component {
         if (error){
             console.log(error);
         } else {
-            //sucess
+            //success
             that.setState({
               results: result
             });
