@@ -10,6 +10,24 @@ main {
   padding: 24px;
 }
 
+
+.col {
+    display: inline-block;
+    vertical-align: top;
+    padding: 12px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.col h1 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.half {
+  width: 50%;
+}
+
 /*NAV*/
 
 nav {
@@ -98,4 +116,93 @@ a:hover .hover-tip {
   background-color: #ecc;
   padding: 8px;
   font-weight: bold;
+}
+
+/*SEARCH-FORM*/
+form.search-form {
+
+}
+form.search-form label {
+  font-weight: bold;
+  display: block;
+}
+
+form.search-form input {
+  padding: 12px;
+  margin: 12px;
+}
+
+/*SEARCH-RESULTS*/
+.search-results ul {
+    padding-left: 0;
+}
+
+.result-module {
+  border: 1px solid #444;
+  padding: 12px;
+  width: 33%;
+  cursor: pointer;
+  color: #222;
+  background-color: #eee;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.result-module img {
+  max-width: 100%;
+}
+
+.result-module:hover {
+  color: #444;
+  background-color: #ddd;
+}
+
+/*DETAIL-PAGE*/
+.detail-page img {
+  max-width: 640px;
+  float:left;
+}
+
+/*DATA-TABLE*/
+.data-table td {
+  border:1px solid #CCC;
+  padding: 6px;
+  color: #444;
+
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.data-table td.icon-td {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.data-table td.label-td {
+  font-weight: bold;
+  max-width: 72px;
+}
+
+/*ADD-TO_GARDEN-FORM*/
+.add-to-garden-form {
+  padding: 12px;
+}
+
+.add-to-garden-form button {
+  padding: 4px;
+}
+
+.add-to-garden-form select {
+  padding: 4px;
+  margin-left: 4px;
+}
+
+.add-to-garden-form input {
+  padding: 4px;
+  width: 32px;
 }
