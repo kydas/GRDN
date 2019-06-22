@@ -1,27 +1,32 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import NavBar from './NavBar';
+import {Meteor} from 'meteor/meteor';
+import {withTracker} from 'meteor/react-meteor-data';
 
 /*
   Composes cross-app compontents (e.g. a navbar) with an internal page.
 */
 
-class AppShell extends Component {
+class AppShellComponent extends Component {
   render () {
     return (
       <div className="app-shell">
-        <NavBar />
+        <NavBar user={Meteor.userId()} />
         <main>
           {this.props.children}
         </main>
         <footer>
-          //Temporary. Replace witj a footer component etc.
           <hr/>
-          I'm the footer. Anything to be rendered after the page content goes here.
         </footer>
       </div>
     );
   }
 }
 
-export default AppShell;
+export default withTracker(() => {
+  Meteor.subscribe('users');
+  return {
+      user: Meteor.user()
+  };
+})(AppShellComponent);

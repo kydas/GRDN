@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import NotificationsIndicator from './NotificationsIndicator';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSeedling, faSearch, faHiking, faBell } from '@fortawesome/free-solid-svg-icons';
+import { faSeedling, faSearch, faHiking, faBell, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import HoverTip from './HoverTip.jsx';
 
@@ -12,21 +12,44 @@ import HoverTip from './HoverTip.jsx';
 
 export default class NavBar extends Component {
 
+
   render() {
+    let user = this.props.user;
     return (
       <nav>
-        <Link to='/'>
-          <HoverTip text="Your Gardens" />
-          <FontAwesomeIcon icon={faSeedling} />
-        </Link>
+        {user &&
+          <Link to='/'>
+            <HoverTip text="Your Gardens" />
+            <FontAwesomeIcon icon={faSeedling} />
+          </Link>
+        }
+
         <Link to='/search'>
           <HoverTip text="Search Plants" />
           <FontAwesomeIcon icon={faSearch} />
         </Link>
-        <Link to='/profile'>
-          <HoverTip text="Your Profile" />
-          <FontAwesomeIcon icon={faHiking} />
-        </Link>
+
+        {user &&
+              <Link to='/profile'>
+                <HoverTip text="Your Profile" />
+                <FontAwesomeIcon icon={faHiking} />
+              </Link>
+        }
+
+        {user &&
+              <Link to='/logout'>
+                <HoverTip text="Log Out" />
+                <FontAwesomeIcon icon={faSignInAlt} />
+              </Link>
+        }
+
+        {!user  &&
+            <Link to='/login'>
+              <HoverTip text="Log in" />
+              <FontAwesomeIcon icon={faSignOutAlt} />
+            </Link>
+        }
+
         <hr/>
         <div className="notifications-holder">
           <Link to='/notifications'>
