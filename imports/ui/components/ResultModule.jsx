@@ -13,7 +13,7 @@ class ResultModule extends Component {
         <img src="/media/plant-placeholder-1.jpg" />
         <h2>{this.props.entry.common_name}</h2>
         <p className="scientific-name">{this.props.entry.scientific_name}</p>
-        <p className="blurb">A {this.props.entry.main_species.duration} from the {this.props.entry.family_common_name}</p>
+
       </div>
     )
   }

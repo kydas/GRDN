@@ -16,13 +16,25 @@ export function getPlant(plantId){
 //TEMPORARY to test array returns
 export function getPlants(plantId){
 
-
+    return axios.get("https://trefle.io/api/plants/" + plantId + "?token=" + AUTH_TOKEN)
             .then(function(response) {
-            responseArray = [];
+            const responseArray = [];
             responseArray.push(response.data);
             return responseArray;
             })
             .catch(function(error){
+            console.log(error);
+            throw new Error("cannot return plant data right now")
+        })
+}
+
+export function getPlantsCommon(name){
+    return axios.get("https://trefle.io/api/plants?token=" + AUTH_TOKEN + "&&q=" + name + "&&complete_data=true")
+        .then(function(response) {
+
+            return response.data;
+        })
+        .catch(function(error){
             console.log(error);
             throw new Error("cannot return plant data right now")
         })
