@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DataTable from '../components/DataTable';
 import AddToGardenForm from '../components/AddToGardenForm';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default class DetailPage extends Component {
   constructor(props) {
@@ -25,10 +26,11 @@ export default class DetailPage extends Component {
 
   render() {
     if (this.state.entry === null) {
-      return (<p>Loading...</p>)
+      //return (<p>Loading...</p>)
+      return <LoadingSpinner />
     }
-
     return (
+
       <div className="detail-page">
         <div className="row">
           <h1>{this.state.entry.common_name}</h1>
