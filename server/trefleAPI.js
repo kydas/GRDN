@@ -16,7 +16,7 @@ export function getPlant(plantId){
 //TEMPORARY to test array returns
 export function getPlants(plantId){
 
-    return axios.get("https://trefle.io/api/plants/" + plantId + "?token=" + AUTH_TOKEN)
+  return axios.get("https://trefle.io/api/plants/" + plantId + "?token=" + AUTH_TOKEN)
             .then(function(response) {
             const responseArray = [];
             responseArray.push(response.data);
