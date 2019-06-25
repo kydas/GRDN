@@ -15,7 +15,7 @@ export function getPlant(plantId){
 
 //TEMPORARY to test array returns
 export function getPlants(plantId){
-
+/*
 
             .then(function(response) {
             responseArray = [];
@@ -25,5 +25,5 @@ export function getPlants(plantId){
             .catch(function(error){
             console.log(error);
             throw new Error("cannot return plant data right now")
-        })
+        })*/
 }
