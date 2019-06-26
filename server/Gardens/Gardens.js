@@ -1,13 +1,10 @@
 const Gardens = new Mongo.Collection('gardens');
 
 export function GetGardens(userId) {
-  Gardens.find({userId: userId}, function(err, res) {
-    if (err) {
-      console.log(err);
-    }
-    console.log(res);
-    return res;
-  })
+   return Gardens.find({userId: userId}).map(function (doc) {
+    return doc;
+  });
+
 }
 
 export function CreateGarden(userId, gardenName) {
