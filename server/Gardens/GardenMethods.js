@@ -3,7 +3,7 @@ import {GetGardens, CreateGarden} from './Gardens';
 
 Meteor.methods(
   {
-    'garden.getGardens'({userId}){
+    'garden.getUserGardens'({userId}){
       return GetGardens(userId);
     },
     'garden.createGarden'({userId}, {gardenName}){
