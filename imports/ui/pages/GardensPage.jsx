@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CreateGardenForm from '../components/CreateGardenForm';
 
 export default class GardensPage extends Component {
   constructor(props) {
@@ -21,9 +22,12 @@ export default class GardensPage extends Component {
   }
 
   render() {
-
     if (this.state.gardens.length == 0) {
-      return "nothing to see here, champ";
+      return (
+        <div>
+          <button onClick={this.testCreateGarden}> Create me </button>
+        </div>
+      )
     }
     return (
       <div>
@@ -31,6 +35,7 @@ export default class GardensPage extends Component {
         {this.state.gardens.map((el) =>
           <li key={el._id}>{el.name}</li>
         )}
+        <CreateGardenForm />
         <button onClick={this.testCreateGarden}> Create me </button>
       </div>
     )
