@@ -31,6 +31,7 @@ export default function rootReducer (state = baseState, action) {
       })
 
     case "ADD_GARDEN_SUCCESS":
+      console.log(action.payload);
       return Object.assign({}, state, {
           gardens: state.gardens.concat(action.payload)
       })

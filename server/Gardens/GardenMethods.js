@@ -1,5 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import {GetGardens, CreateGarden} from './Gardens';
+import {GetGardens, CreateGarden} from './GardenDAO';
 
 Meteor.methods(
   {
@@ -7,7 +7,7 @@ Meteor.methods(
       return GetGardens(userId);
     },
     'garden.createGarden'({userId}, {gardenName}){
-      console.log(userId + gardenName);
-      CreateGarden(userId, gardenName);
+      let garden = CreateGarden(userId, gardenName);
+      return garden;
     }
 })

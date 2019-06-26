@@ -2,18 +2,6 @@ import {
   fetchGardensBegin, fetchGardensError, fetchGardensSuccess, addGardenSuccess
 } from './index';
 
-/*export function fetchUserGardens({userId}) {
-  fetchGardensBegin();
-  Meteor.call('garden.getUserGardens', {userId: Meteor.userId()}, (err, res) => {
-    if (err) {
-      fetchGardensError(err.statusText);
-      return "Error";
-    }
-    return fetchGardensSuccess(res);
-
-  });
-}*/
-
 export function fetchUserGardens() {
   return dispatch => {
     dispatch(fetchGardensBegin());
@@ -25,5 +13,16 @@ export function fetchUserGardens() {
       return dispatch(fetchGardensSuccess(res));
 
     });
+  }
+
+  export function createGarden(userId, gardenName) {
+    return dispatch => {
+      Meteor.apply('garden.createGarden', [{userId: Meteor.userId()}, {gardenName: gardenName}], {wait: true}, function(err, res) {
+        if (err) {
+          console.log(err);
+        }
+        dispatch(addGardenSuccess(res))
+      });
+    }
   }
 }

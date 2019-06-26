@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
+import {createGarden} from '../actions/GardenActions';
+import {connect} from 'react-redux';
 
-export default class CreateGardenForm extends Component {
+function mapDispatchToProps(dispatch) {
+    return {
+      createGarden: (userId, gardenName) => dispatch(createGarden(userId, gardenName))
+    }
+}
+
+class ConnectableCreateGardenForm extends Component {
 
   constructor(props) {
     super(props);
@@ -28,12 +36,11 @@ export default class CreateGardenForm extends Component {
 
   handleCreate = (event) => {
     event.preventDefault();
-    Meteor.apply('garden.createGarden', [{userId: Meteor.userId()}, {gardenName: this.state.gardenName}], {wait: true}, function(err, result) {
-      if (err) {
-        console.log(err);
-      }
-    });
+    this.props.createGarden(Meteor.userId(), this.state.gardenName);
   }
 
 
 }
+
+const CreateGardenForm = connect(null, mapDispatchToProps)(ConnectableCreateGardenForm);
+export default CreateGardenForm;
