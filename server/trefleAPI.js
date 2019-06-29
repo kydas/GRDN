@@ -15,8 +15,8 @@ export function getPlant(plantId){
 
 //TEMPORARY to test array returns
 export function getPlants(plantId){
+/*
 
-  return axios.get("https://trefle.io/api/plants/" + plantId + "?token=" + AUTH_TOKEN)
             .then(function(response) {
             const responseArray = [];
             responseArray.push(response.data);
@@ -25,7 +25,7 @@ export function getPlants(plantId){
             .catch(function(error){
             console.log(error);
             throw new Error("cannot return plant data right now")
-        })
+        })*/
 }
 
 export function getPlantsCommon(name){
