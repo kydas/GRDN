@@ -2,8 +2,21 @@ import axios from "axios";
 import AUTH_TOKEN from './constants.js';
 
 
-export function getPlant(plantId){
-    return axios.get("https://trefle.io/api/plants/" + plantId + "?token=" + AUTH_TOKEN)
+export function getPlant(searchParams){
+    let reqURL = "https://trefle.io/api/plants?token=" + AUTH_TOKEN + "&&complete_data=true";
+    if(searchParams.common_name != ""){
+        reqURL += "&&q=" + searchParams.common_name;
+    }
+    if (searchParams.ph_min != ""){
+        reqURL += "&&ph_minimum=" + searchParams.ph_min;
+    }
+    if (searchParams.duration != ""){
+        reqURL += "&&duration=" + searchParams.duration;
+    }
+    if (searchParams.drought_tol != ""){
+        reqURL += "&&drought_tolerance=" + searchParams.duration;
+    }
+    return axios.get(reqURL)
       .then(function(response) {
         return response.data;
       })
