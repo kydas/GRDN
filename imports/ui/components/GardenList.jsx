@@ -32,7 +32,11 @@ class ConnectableGardenList extends Component {
     return (
       <ul>
         {this.props.gardens.map((el) =>
-          <li key={el._id}>{el.name}</li>
+          <li key={el._id}>
+            <a href={"/garden/" + el._id}>
+              {el.name}
+            </a>
+          </li>
         )}
       </ul>
     )

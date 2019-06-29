@@ -13,3 +13,15 @@ export function fetchGardensError(payload) {
 export function addGardenSuccess(payload) {
   return {type: "ADD_GARDEN_SUCCESS", payload}
 }
+
+export function fetchGardenBegin(payload) {
+  return {type: "FETCH_GARDEN_BEGIN", payload}
+}
+
+export function fetchGardenSuccess(payload) {
+  return {type: "FETCH_GARDEN_SUCCESS", payload}
+}
+
+export function fetchGardenError(payload) {
+  return {type: "FETCH_GARDEN_ERROR", payload}
+}

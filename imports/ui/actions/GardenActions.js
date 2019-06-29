@@ -14,6 +14,7 @@ export function fetchUserGardens() {
 
     });
   }
+}
 
   export function createGarden(userId, gardenName) {
     return dispatch => {
@@ -25,4 +26,16 @@ export function fetchUserGardens() {
       });
     }
   }
-}
+
+  export function fetchGardenById(gardenId) {
+    return dispatch => {
+      dispatch(fetchGardenBegin());
+      Meteor.call('garden.getGardenById', {id: gardenId}, (err, res) => {
+        if (err) {
+          dispatch(fetchGardenError(err.statusText));
+          return "Error";
+        }
+        return dispatch(fetchGardensSuccess(res));
+      });
+    }
+  }

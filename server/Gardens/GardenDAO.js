@@ -18,7 +18,13 @@ export function CreateGarden(userId, gardenName) {
       resolve(garden);
     });
   })
+}
 
-
-
+export function GetGarden(gardenId) {
+  let garden =  Gardens.findOne({_id: gardenId}, { limit: 1 }, (err, res) =>{
+    if (err) {
+      console.log(err);
+    }
+  });
+  return garden;
 }

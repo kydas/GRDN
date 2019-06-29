@@ -11,8 +11,7 @@ export default class GardensPage extends Component {
     return (
       <div>
         <h1>A List of Your Gardens Goes Below!</h1>
-        <GardenList />
-
+          <GardenList />
           <CreateGardenForm />
       </div>
     )

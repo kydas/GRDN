@@ -16,7 +16,6 @@ export default function rootReducer (state = baseState, action) {
       });
 
     case "FETCH_GARDENS_SUCCESS":
-      console.log(action.payload);
       return Object.assign({}, state, {
         gardens: action.payload,
         loading: false,
