@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import LoadingSpinner from '../components/LoadingSpinner';
 import fetchGardenById from '../actions/GardenActions';
 
 
@@ -21,7 +22,7 @@ export default class GardenPage extends Component{
   render() {
     if (this.state.entry == null) {
       return (
-        <p>Loading</p>
+        <LoadingSpinner />
       )
     }
     return (

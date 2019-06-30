@@ -20,7 +20,6 @@ class AppShellComponent extends Component {
             {this.props.children}
           </main>
           <footer>
-            <hr/>
           </footer>
         </div>
       </Provider>

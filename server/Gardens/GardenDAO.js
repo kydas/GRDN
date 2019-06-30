@@ -28,3 +28,21 @@ export function GetGarden(gardenId) {
   });
   return garden;
 }
+
+export function AddPlant(gardenId, plantId, qty) {
+  let garden = GetGarden(gardenId);
+  let plants = garden.plants;
+  if (typeof plants === "undefined") {
+    plants = [];
+  }
+
+  plants.push({
+    trefleId: plantId,
+    qty: qty
+  });
+
+  garden.plants = plants;
+
+  Gardens.update({_id: gardenId}, {plants: plants})
+  return garden;
+}
