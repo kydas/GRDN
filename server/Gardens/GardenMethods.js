@@ -14,7 +14,6 @@ Meteor.methods(
       return GetGarden(gardenId);
     },
     'garden.addPlant'({gardenId}, {plantId}, {qty}) {
-      console.log(qty);
       return AddPlant(gardenId, plantId, qty);
     }
 })
