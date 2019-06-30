@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import LoadingSpinner from '../components/LoadingSpinner';
+import PlantList from '../components/PlantList';
 import fetchGardenById from '../actions/GardenActions';
 
 
@@ -29,6 +30,7 @@ export default class GardenPage extends Component{
       <div>
         <h1>Garden: {this.state.entry.name}</h1>
         <p>User: {this.state.entry.userId}</p>
+        <PlantList plants={this.state.entry.plants} />
       </div>
     )
   }

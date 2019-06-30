@@ -1,4 +1,5 @@
 const Gardens = new Mongo.Collection('gardens');
+import {getPlant} from '../trefleAPI';
 
 export function GetGardens(userId) {
    return Gardens.find({userId: userId}).map(function (doc) {
@@ -9,7 +10,7 @@ export function GetGardens(userId) {
 
 export function CreateGarden(userId, gardenName) {
   return new Promise(function(resolve, reject) {
-    let garden = {name: gardenName, userId: userId};
+    let garden = {name: gardenName, userId: userId, plants: []};
     Gardens.insert(garden, function (err, res) {
       if (err) {
         reject(err);
@@ -31,18 +32,25 @@ export function GetGarden(gardenId) {
 
 export function AddPlant(gardenId, plantId, qty) {
   let garden = GetGarden(gardenId);
+  console.log(garden);
   let plants = garden.plants;
-  if (typeof plants === "undefined") {
-    plants = [];
-  }
+  let id = new Meteor.Collection.ObjectID();
 
-  plants.push({
-    trefleId: plantId,
-    qty: qty
-  });
 
-  garden.plants = plants;
 
-  Gardens.update({_id: gardenId}, {plants: plants})
-  return garden;
+  data = getPlant(plantId)
+  .then((res) => {
+    plants.push({
+      _id: id._str,
+      trefleId: plantId,
+      qty: qty,
+      cachedData: res,
+      cachedDataLastUpdate: new Date().getTime()
+    });
+
+    garden.plants = plants;
+
+    Gardens.update({_id: gardenId}, garden)
+    return garden;
+  })
 }
