@@ -43,3 +43,17 @@ Meteor.methods({
         return plant;
     }
 })
+
+Meteor.methods( {
+    'plants.search'(searchParams){
+        const plant = getPlants(searchParams)
+            .then(function(response){
+                console.log(response);
+                return response;
+            })
+            .catch(function(error){
+                console.log(error);
+            });
+        return plant;
+    }
+});
