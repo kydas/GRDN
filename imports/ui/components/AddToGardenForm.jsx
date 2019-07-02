@@ -23,15 +23,17 @@ class ConnectableAddToGardenForm extends Component {
 
     this.props.fetchUserGardens(Meteor.userId());
 
-    if (this.props.gardens && this.props.gardens.length > 0) {
+    if (this.props.gardens !== null && this.props.gardens.length > 0) {
+      console.log("1");
       this.state = {
         qty: 1,
-        gardenTarget: this.props.gardens[0]
+        targetGarden: this.props.gardens[0]
       }
     } else {
+      console.log("2");
       this.state = {
         qty: 1,
-        gardenTarget: null
+        targetGarden: null
       }
     }
 

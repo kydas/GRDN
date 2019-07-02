@@ -31,8 +31,9 @@ export function GetGarden(gardenId) {
 }
 
 export function AddPlant(gardenId, plantId, qty) {
+  console.log("id" + gardenId);
   let garden = GetGarden(gardenId);
-  console.log(garden);
+  console.log("garden " + garden);
   let plants = garden.plants;
   let id = new Meteor.Collection.ObjectID();
 
