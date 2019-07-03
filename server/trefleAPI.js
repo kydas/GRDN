@@ -1,5 +1,5 @@
 import axios from "axios";
-import AUTH_TOKEN from '../constants.js';
+import AUTH_TOKEN from './constants.js';
 
 
 export function getPlant(searchParams){
