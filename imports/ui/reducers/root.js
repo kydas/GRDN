@@ -31,14 +31,18 @@ export default function rootReducer (state = baseState, action) {
 
     case "ADD_GARDEN_SUCCESS":
       return Object.assign({}, state, {
-          gardens: state.gardens.concat(action.payload)
+          gardens: state.gardens.concat(action.payload),
       })
 
     case "ADD_PLANT_TO_GARDEN_SUCCESS":
-      return state;
-      /*return Object.assign({}, state, {
+      return Object.assign({}, state, {
+          addToGardenSuccess: true,
+      })
 
-      })*/
+    case "ADD_PLANT_TO_GARDEN_ERROR":
+      return Object.assign({}, state, {
+          addToGardenError: action.payload,
+      })
 
     default:
       return state;

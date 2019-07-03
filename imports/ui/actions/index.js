@@ -29,3 +29,7 @@ export function fetchGardenError(payload) {
 export function addPlantToGardenSuccess(payload) {
   return {type: "ADD_PLANT_TO_GARDEN_SUCCESS", payload}
 }
+
+export function addPlantToGardenError(payload) {
+  return {type: "ADD_PLANT_TO_GARDEN_ERROR", payload}
+}

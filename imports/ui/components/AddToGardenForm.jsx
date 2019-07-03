@@ -10,9 +10,11 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    gardens: state.gardens
+    gardens: state.gardens,
+    addToGardenSuccess: state.addToGardenSuccess,
+    addToGardenError: state.addToGardenError
   }
 }
 
@@ -23,24 +25,21 @@ class ConnectableAddToGardenForm extends Component {
 
     this.props.fetchUserGardens(Meteor.userId());
 
+  }
+
+  render() {
     if (this.props.gardens !== null && this.props.gardens.length > 0) {
-      console.log("1");
       this.state = {
         qty: 1,
-        targetGarden: this.props.gardens[0]
+        targetGarden: this.props.gardens[0]._id
       }
     } else {
-      console.log("2");
       this.state = {
         qty: 1,
         targetGarden: null
       }
     }
 
-
-  }
-
-  render() {
     if (this.props.gardens == null){
       return <LoadingSpinner />
     }
@@ -57,7 +56,13 @@ class ConnectableAddToGardenForm extends Component {
             </option>
           )}
         </select>
-        <label> Qty:</label> <input type="number" min="1" max="9999" default={this.state.qty} onChange={this.handleQtyChange}/>
+        <label> Qty:</label> <input type="number" min="1" max="9999" default="1" onChange={this.handleQtyChange}/>
+        {this.props.addToGardenSuccess &&
+          <span className="success-message">Success!</span>
+        }
+        {this.props.addToGardenError &&
+          <span className="error-message">{this.props.addToGardenError.reason}</span>
+        }
       </div>
     )
   }

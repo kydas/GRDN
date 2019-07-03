@@ -1,5 +1,6 @@
 import {
-  fetchGardensBegin, fetchGardensError, fetchGardensSuccess, addGardenSuccess, addPlantToGardenSuccess
+  fetchGardensBegin, fetchGardensError, fetchGardensSuccess, addGardenSuccess,
+  addPlantToGardenSuccess, addPlantToGardenError
 } from './index';
 
 export function fetchUserGardens() {
@@ -45,9 +46,7 @@ export function addPlantToGarden(gardenId, plantId, qty) {
     //dispatch addPlant begin
     Meteor.apply('garden.addPlant', [{gardenId: gardenId}, {plantId: plantId}, {qty: qty}], (err, res) => {
       if (err) {
-        //dispatch err
-        console.log(err);
-        return "Error";
+        return dispatch(addPlantToGardenError(err));
       }
       return dispatch(addPlantToGardenSuccess(res));
     });
