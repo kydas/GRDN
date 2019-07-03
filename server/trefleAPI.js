@@ -17,7 +17,7 @@ export function getPlant(searchParams){
         reqURL += "&&duration=" + searchParams.duration;
     }
     if (searchParams.drought_tol != ""){
-        reqURL += "&&drought_tolerance=" + searchParams.duration;
+        reqURL += "&&drought_tolerance=" + searchParams.drought_tol;
     }
     console.log(reqURL);
     return axios.get(reqURL)
