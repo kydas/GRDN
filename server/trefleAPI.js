@@ -3,8 +3,7 @@ import AUTH_TOKEN from './constants.js';
 
 
 export function getPlant(searchParams){
-    console.log(searchParams);
-    console.log(searchParams.common_name);
+
     let reqURL = "https://trefle.io/api/plants?token=" + AUTH_TOKEN + "&&complete_data=true";
 
     if(searchParams.common_name != ""){
@@ -19,7 +18,7 @@ export function getPlant(searchParams){
     if (searchParams.drought_tol != ""){
         reqURL += "&&drought_tolerance=" + searchParams.drought_tol;
     }
-    console.log(reqURL);
+
     return axios.get(reqURL)
       .then(function(response) {
         return response.data;
