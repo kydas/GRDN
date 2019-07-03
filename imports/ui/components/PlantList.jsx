@@ -21,8 +21,8 @@ export default class PlantList extends Component {
             })}
 
             {this.props.plants.map((el) =>
-                <li key={el._id}>{el.cachedData.common_name}</li>
-              
+                <li key={el._id}>{el.cachedData.common_name} x {el.qty}</li>
+
             )}
           </ul>
         </div>
