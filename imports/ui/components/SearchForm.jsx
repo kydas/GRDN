@@ -22,7 +22,12 @@ export default class SearchForm extends Component {
           <label>pH Minimum:</label>
           <input type="text" name="ph_min" value={this.state.ph_min} onChange={this.handleChange}/>
           <label>Duration:</label>
-          <input type="text" name="duration" value={this.state.duration} onChange={this.handleChange}/>
+          <select name="duration" onChange={this.handleChange}>
+            <option value=""> </option>
+            <option value="annual">Annual</option>
+            <option value="perennial">Perennial</option>
+          </select>
+          {/*<input type="text" name="duration" value={this.state.duration} onChange={this.handleChange}/>*/}
           <label>Drought Tolerance:</label>
           <input type="text" name="drought_tol" value={this.state.drought_tol} onChange={this.handleChange}/>
         </div>
@@ -32,6 +37,8 @@ export default class SearchForm extends Component {
   }
 
   handleChange = (event) => {
+    console.log(event.target.name);
+    console.log(event.target.value);
     this.setState(
       {[event.target.name]: event.target.value}
     );
