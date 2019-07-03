@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import Links from '/imports/api/links';
-import methodsTest from './apiMethods'
+import methodsTest from './Plants/apiMethods'
 import userMethods from '/imports/api/userMethods';
 import './Gardens/GardenMethods';
 
