@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {createGarden} from '../actions/GardenActions';
 import {connect} from 'react-redux';
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
     return {
       createGarden: (userId, gardenName) => dispatch(createGarden(userId, gardenName))
     }

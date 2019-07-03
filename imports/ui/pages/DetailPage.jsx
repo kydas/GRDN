@@ -9,9 +9,7 @@ export default class DetailPage extends Component {
     this.state = {
       entry: null
     }
-  }
 
-  componentWillMount() {
     let that = this;
     Meteor.call("plants.getPlant", {plantId: this.props.match.params.id}, (error, result) => {
         if (error){
@@ -23,6 +21,7 @@ export default class DetailPage extends Component {
         }
     })
   }
+
 
   render() {
     if (this.state.entry === null) {
@@ -43,7 +42,7 @@ export default class DetailPage extends Component {
         </div>
         {Meteor.userId() &&
           <div>
-            <AddToGardenForm />
+            <AddToGardenForm plantId={this.props.match.params.id} />
           </div>
         }
       </div>
