@@ -38,6 +38,7 @@ Meteor.methods({
                 console.log(error);
             })
             .then(function (response) {
+                console.log(response);
                 return response;
             });
 
