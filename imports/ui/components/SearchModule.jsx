@@ -25,7 +25,7 @@ export default class SearchModule extends Component {
   onSearchSubmit = (query) => {
     let that = this;
     console.log(query);
-    Meteor.call("plants.searchCommon", query.common_name, (error, result) => {
+    Meteor.call("plants.search", query, (error, result) => {
         if (error){
             console.log(error);
         } else {
