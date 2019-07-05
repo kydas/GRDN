@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import GardenPlantEntry from './GardenPlantEntry';
 
 export default class PlantList extends Component {
 
@@ -15,17 +16,17 @@ export default class PlantList extends Component {
     console.log(this.props.plants);
 
     return (
-        <div>
-          <ul>
+          <ul className="plant-list">
             {this.props.plants.map((el) => {
             })}
 
             {this.props.plants.map((el) =>
-                <li key={el._id}>{el.cachedData.common_name} x {el.qty}</li>
+                <li>
+                  <GardenPlantEntry plantEntry={el} />
+                </li>
 
             )}
           </ul>
-        </div>
       )
     }
 }
