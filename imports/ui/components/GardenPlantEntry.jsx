@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearchPlus, faBell, faTrash } from '@fortawesome/free-solid-svg-icons';
+import NotificationsIndicator from './NotificationsIndicator';
+import { withRouter } from 'react-router-dom';
 
-export default class GardenPlantEntry extends Component {
+class GardenPlantEntry extends Component {
 
   render(){
     if (!this.props.plantEntry) {
@@ -11,13 +13,23 @@ export default class GardenPlantEntry extends Component {
 
     return (
       <div className="plant-entry">
-        <h3>{this.props.plantEntry.cachedData.common_name} x {this.props.plantEntry.qty}</h3>
+        <h3>{this.props.plantEntry.qty} x {this.props.plantEntry.cachedData.common_name} </h3>
         <div className="plant-entry-controls">
-          <button><FontAwesomeIcon icon={faSearchPlus} /></button>
-          <button><FontAwesomeIcon icon={faBell} /></button>
+          <button><FontAwesomeIcon icon={faSearchPlus} onClick={this.handleDetailsClick} /></button>
+          <button><FontAwesomeIcon icon={faBell} />
+            <NotificationsIndicator count="2" />
+          </button>
           <button><FontAwesomeIcon icon={faTrash} /></button>
         </div>
       </div>
     )
   }
+
+  handleDetailsClick = () => {
+    this.props.history.push({
+      pathname: '/plant/' + this.props.plantEntry.trefleId 
+    });
+  }
 }
+
+export default withRouter(GardenPlantEntry);

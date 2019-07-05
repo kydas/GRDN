@@ -25,7 +25,6 @@ export default class DetailPage extends Component {
 
   render() {
     if (this.state.entry === null) {
-      //return (<p>Loading...</p>)
       return <LoadingSpinner />
     }
     return (

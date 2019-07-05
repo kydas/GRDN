@@ -1,9 +1,9 @@
 import { Meteor } from "meteor/meteor";
-import {getPlant, getPlants, getPlantsCommon} from "./trefleAPI";
+import {getPlant, getPlants, getPlantsCommon, getPlantById} from "./trefleAPI";
 import { Promise } from "meteor/promise";
 
 Meteor.methods({'plants.getPlant'({plantId}){
-    const plantResponse = getPlant(plantId)
+    const plantResponse = getPlantById(plantId)
       .then(function(response){
         return response;
       })

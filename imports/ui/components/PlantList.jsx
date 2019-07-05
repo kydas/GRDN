@@ -17,11 +17,9 @@ export default class PlantList extends Component {
 
     return (
           <ul className="plant-list">
-            {this.props.plants.map((el) => {
-            })}
 
             {this.props.plants.map((el) =>
-                <li>
+                <li key={el._id}>
                   <GardenPlantEntry plantEntry={el} />
                 </li>
 
