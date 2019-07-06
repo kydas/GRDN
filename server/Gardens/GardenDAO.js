@@ -1,5 +1,5 @@
 const Gardens = new Mongo.Collection('gardens');
-import {getPlant} from '../trefleAPI';
+import {getPlantById} from '../trefleAPI';
 
 export function GetGardens(userId) {
    return Gardens.find({userId: userId}).map(function (doc) {
@@ -39,7 +39,7 @@ export function AddPlant(gardenId, plantId, qty) {
 
 
 
-  data = getPlant(plantId)
+  data = getPlantById(plantId)
   .then((res) => {
     plants.push({
       _id: id._str,

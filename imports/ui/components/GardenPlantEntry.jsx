@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearchPlus, faBell, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faSearchPlus, faBell, faShower, faTrash } from '@fortawesome/free-solid-svg-icons';
 import NotificationsIndicator from './NotificationsIndicator';
 import { withRouter } from 'react-router-dom';
 
@@ -19,6 +19,7 @@ class GardenPlantEntry extends Component {
           <button><FontAwesomeIcon icon={faBell} />
             <NotificationsIndicator count="2" />
           </button>
+          <button><FontAwesomeIcon icon={faShower} /></button>
           <button><FontAwesomeIcon icon={faTrash} /></button>
         </div>
       </div>
@@ -27,7 +28,7 @@ class GardenPlantEntry extends Component {
 
   handleDetailsClick = () => {
     this.props.history.push({
-      pathname: '/plant/' + this.props.plantEntry.trefleId 
+      pathname: '/plant/' + this.props.plantEntry.trefleId
     });
   }
 }
