@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 const mapDispatchToProps = dispatch => {
     return {
-      createGarden: (userId, gardenName) => dispatch(createGarden(userId, gardenName))
+      createGarden: (userId, gardenName, location) => dispatch(createGarden(userId, gardenName, location))
     }
 }
 
@@ -14,7 +14,9 @@ class ConnectableCreateGardenForm extends Component {
     super(props);
 
     this.state = {
-      gardenName: ""
+      gardenName: "",
+      lat: 0,
+      lng: 0
     }
 
   }
@@ -22,7 +24,9 @@ class ConnectableCreateGardenForm extends Component {
   render() {
     return (
       <form className="gardenForm">
-        <input type="text" onChange={this.handleGardenNameChange} />
+        Name: <input type="text" onChange={this.handleGardenNameChange} />
+        Lat: <input type="text" onChange={this.handleLatChange} />
+        Lng: <input type="text" onChange={this.handleLngChange} />
         <button onClick={this.handleCreate}>Create!</button>
       </form>
     )
@@ -34,9 +38,26 @@ class ConnectableCreateGardenForm extends Component {
     })
   }
 
+  handleLatChange = (event) => {
+    this.setState({
+      lat: event.target.value
+    })
+  }
+
+  handleLngChange = (event) => {
+    this.setState({
+      lng: event.target.value
+    })
+  }
+
   handleCreate = (event) => {
     event.preventDefault();
-    this.props.createGarden(Meteor.userId(), this.state.gardenName);
+    console.log(this.state);
+    let location = {
+      lat: this.state.lat,
+      lng: this.state.lng
+    }
+    this.props.createGarden(Meteor.userId(), this.state.gardenName, location);
   }
 
 

@@ -8,13 +8,14 @@ export function GetGardens(userId) {
 
 }
 
-export function CreateGarden(userId, gardenName) {
+export function CreateGarden(userId, gardenName, location) {
   return new Promise(function(resolve, reject) {
-    let garden = {name: gardenName, userId: userId, plants: []};
+    let garden = {name: gardenName, userId: userId, location: location, plants: []};
     Gardens.insert(garden, function (err, res) {
       if (err) {
         reject(err);
       }
+      console.log(garden);
       garden._id = res;
       resolve(garden);
     });
@@ -50,7 +51,7 @@ export function AddPlant(gardenId, plantId, qty) {
 
     garden.plants = plants;
     console.log(garden);
-    
+
     Gardens.update({_id: gardenId}, garden)
     return garden;
   })
