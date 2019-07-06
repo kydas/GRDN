@@ -33,22 +33,22 @@ Meteor.methods({'plants.getPlants'({plantId}){
 Meteor.methods({
     'plants.searchCommon'(commonName) {
         const plant = getPlantsCommon(commonName)
+            .catch(function(error){
+                console.log(error);
+            })
             .then(function (response) {
                 console.log(response);
                 return response;
-            })
-            .catch(function(error){
-                console.log(error);
             });
+
         return plant;
     }
 })
 
 Meteor.methods( {
     'plants.search'(searchParams){
-        const plant = getPlants(searchParams)
+        const plant = getPlant(searchParams)
             .then(function(response){
-                console.log(response);
                 return response;
             })
             .catch(function(error){

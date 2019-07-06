@@ -22,9 +22,18 @@ export default class SearchForm extends Component {
           <label>pH Minimum:</label>
           <input type="text" name="ph_min" value={this.state.ph_min} onChange={this.handleChange}/>
           <label>Duration:</label>
-          <input type="text" name="duration" value={this.state.duration} onChange={this.handleChange}/>
+          <select name="duration" onChange={this.handleChange}>
+            <option value=""> </option>
+            <option value="Annual">Annual</option>
+            <option value="Perennial">Perennial</option>
+          </select>
           <label>Drought Tolerance:</label>
-          <input type="text" name="drought_tol" value={this.state.drought_tol} onChange={this.handleChange}/>
+          <select name="drought_tol" onChange={this.handleChange}>
+            <option value=""> </option>
+            <option value="Low">Low</option>
+            <option value="Medium"> Medium</option>
+            <option value="High"> High</option>
+          </select>
         </div>
         <input type="submit" onClick={this.handleSubmit}/>
       </form>
