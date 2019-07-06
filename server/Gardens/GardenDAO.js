@@ -1,5 +1,5 @@
 const Gardens = new Mongo.Collection('gardens');
-import {getPlantById} from '../trefleAPI';
+import {getPlantByID} from '../trefleAPI';
 
 export function GetGardens(userId) {
    return Gardens.find({userId: userId}).map(function (doc) {
@@ -37,10 +37,9 @@ export function AddPlant(gardenId, plantId, qty) {
   let plants = garden.plants;
   let id = new Meteor.Collection.ObjectID();
 
-
-
-  data = getPlantById(plantId)
+  data = getPlantByID(plantId)
   .then((res) => {
+    console.log(res);
     plants.push({
       _id: id._str,
       trefleId: plantId,
@@ -50,7 +49,8 @@ export function AddPlant(gardenId, plantId, qty) {
     });
 
     garden.plants = plants;
-
+    console.log(garden);
+    
     Gardens.update({_id: gardenId}, garden)
     return garden;
   })

@@ -30,19 +30,6 @@ export function getPlant(searchParams){
       })
 }
 
-export function getPlantById(plantId){
-    let reqURL = "https://trefle.io/api/plants/" + plantId + "/?token=" + AUTH_TOKEN + "&&complete_data=true";
-    return axios.get(reqURL)
-      .then(function(response) {
-        return response.data;
-      })
-      .catch(function(error){
-        console.log(error);
-        throw new Error("cannot return plant data right now")
-      })
-}
-
-//TEMPORARY to test array returns
 export function getPlantByID(plantId){
 
     return axios.get("https://trefle.io/api/plants/" + plantId + "?token=" + AUTH_TOKEN )
