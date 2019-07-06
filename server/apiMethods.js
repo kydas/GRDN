@@ -3,7 +3,6 @@ import {getPlant, getPlants, getPlantsCommon, getPlantByID} from "./trefleAPI";
 import { Promise } from "meteor/promise";
 
 Meteor.methods({'plants.getPlant'({plantId}){
-    console.log(plantId);
     const plantResponse = getPlantByID(plantId)
       .then(function(response){
         return response;
