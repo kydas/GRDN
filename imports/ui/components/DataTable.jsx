@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import DataTableRow from './DataTableRow';
-import { faSeedling, faFlask, faGlobeAsia, faHourglassHalf, faTemperatureLow, faTint, faTintSlash, faSnowflake, faEyeDropper, faUmbrellaBeach, faTh, faPoo } from '@fortawesome/free-solid-svg-icons';
+import {
+  faSeedling, faFlask, faGlobeAsia, faHourglassHalf, faTemperatureLow,
+  faTint, faTintSlash, faSnowflake, faEyeDropper, faUmbrellaBeach, faTh, faPoo 
+} from '@fortawesome/free-solid-svg-icons';
 
 
 export default class DataTable extends Component {

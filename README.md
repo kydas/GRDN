@@ -1,6 +1,6 @@
 # CPSC 436 Project 
 
-Group members: Joshua Grant, Kyle de Silva, Brett Pasula 
+Group members: Joshua Grant, Kyle de Silva, ~~Brett Pasula~~ 
 
 Potential names: GRDN, GRDNR, Phyto 
 

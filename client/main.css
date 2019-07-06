@@ -90,16 +90,18 @@ a:hover .hover-tip {
 
 
 /*NOTIFICATIONS*/
-.notifications-holder .notifications-indicator{
+.notifications-indicator{
   background-color: #e11;
   font-weight: bold;
   display: block;
   width: 16px;
   height: 16px;
   text-align: center;
+  color: #fff;
+  font-size: 16px;
   position: absolute;
   padding: 4px;
-  top: 4px;
+  top: 2px;
   right: 0;
   border-radius: 50%;
 }
@@ -205,4 +207,73 @@ form.search-form input {
 .add-to-garden-form input {
   padding: 4px;
   width: 32px;
+}
+
+/*PLANT-LIST*/
+ul.plant-list {
+  padding-left: 0;
+
+}
+
+ul.plant-list li {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+ul.plant-list li div.plant-entry {
+  border: 1px solid #444;
+  padding: 0 24px;
+  background-color: #ddd;
+}
+
+div.plant-entry h3 {
+  width: 50%;
+  display: inline-block;
+}
+
+div.plant-entry-controls {
+  width: auto;
+  display: inline-block;
+  text-align: right;
+  border-left: 1px solid #444;
+  padding: 6px 12px;
+  float: right;
+}
+
+div.plant-entry-controls button {
+  width: 48px;
+  height: 48px;
+  padding: 6px;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-right: 4px;
+  font-size: 20px;
+  position: relative;
+}
+
+/*LOADING-SPINNER*/
+.spinner-holder {
+    position: absolute;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+}
+
+
+.spinner-holder .spinner {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  animation: loading-spinner 2s ease-in-out 0s infinite;
+}
+
+@keyframes loading-spinner {
+  0% {
+    transform: rotate3d(1, 1, 1, 0deg);
+    color: #afd;
+  }
+
+  100% {
+    transform: rotate3d(1, 1, 1, 360deg);
+    color: #afe;
+  }
 }

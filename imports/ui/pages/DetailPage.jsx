@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DataTable from '../components/DataTable';
 import AddToGardenForm from '../components/AddToGardenForm';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default class DetailPage extends Component {
   constructor(props) {
@@ -8,9 +9,7 @@ export default class DetailPage extends Component {
     this.state = {
       entry: null
     }
-  }
 
-  componentWillMount() {
     let that = this;
     Meteor.call("plants.getPlant", {plantId: this.props.match.params.id}, (error, result) => {
         if (error){
@@ -23,12 +22,13 @@ export default class DetailPage extends Component {
     })
   }
 
+
   render() {
     if (this.state.entry === null) {
-      return (<p>Loading...</p>)
+      return <LoadingSpinner />
     }
-
     return (
+
       <div className="detail-page">
         <div className="row">
           <h1>{this.state.entry.common_name}</h1>
@@ -41,7 +41,7 @@ export default class DetailPage extends Component {
         </div>
         {Meteor.userId() &&
           <div>
-            <AddToGardenForm />
+            <AddToGardenForm plantId={this.props.match.params.id} />
           </div>
         }
       </div>
