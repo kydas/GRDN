@@ -8,7 +8,7 @@ export default class PlantList extends Component {
     if (!this.props.plants || this.props.plants.length <= 0) {
       return (
         <div>
-          No plants found. Add some.
+          No plants found. <a href="/search">Search</a> to add some.
         </div>
       )
     }

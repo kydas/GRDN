@@ -46,6 +46,14 @@ class ConnectableAddToGardenForm extends Component {
       return <LoadingSpinner />
     }
 
+    if (this.props.gardens.length == 0) {
+      return (
+        <div className="add-to-garden-form">
+          No gardens found. <a href="/">Create one</a> to get started!
+        </div>
+      )
+    }
+
     return(
       <div className="add-to-garden-form">
 
