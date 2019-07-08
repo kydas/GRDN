@@ -24,21 +24,23 @@ class ConnectableAddToGardenForm extends Component {
     super(props);
 
     this.props.fetchUserGardens(Meteor.userId());
+    this.state = {
+      qty: 1,
+      targetGarden: null
 
+    }
+  }
+
+  componentDidUpdate(){
+    if (this.props.gardens !== null && this.props.gardens.length > 0 && this.state.targetGarden === null) {
+      this.setState({
+        targetGarden: this.props.gardens[0]._id
+      })
+    }
   }
 
   render() {
-    if (this.props.gardens !== null && this.props.gardens.length > 0) {
-      this.state = {
-        qty: 1,
-        targetGarden: this.props.gardens[0]._id
-      }
-    } else {
-      this.state = {
-        qty: 1,
-        targetGarden: null
-      }
-    }
+
 
     if (this.props.gardens == null){
       return <LoadingSpinner />
@@ -56,7 +58,7 @@ class ConnectableAddToGardenForm extends Component {
             </option>
           )}
         </select>
-        <label> Qty:</label> <input type="number" min="1" max="9999" default="1" onChange={this.handleQtyChange}/>
+        <label> Qty:</label> <input type="number" default={this.state.qty} onChange={this.handleQtyChange} />
         {this.props.addToGardenSuccess &&
           <span className="success-message">Success!</span>
         }
@@ -72,9 +74,11 @@ class ConnectableAddToGardenForm extends Component {
   }
 
   handleQtyChange = (event) => {
+    console.log(event.target.value);
     this.setState({
       qty: event.target.value
     })
+    console.log(this.state.qty);
   }
 
   handleGardenChange = (event) => {

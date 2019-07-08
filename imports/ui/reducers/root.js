@@ -16,12 +16,12 @@ export default function rootReducer (state = baseState, action) {
       });
 
     case "FETCH_GARDENS_SUCCESS":
-      console.log(state);
       return Object.assign({}, state, {
         gardens: action.payload,
         loading: false,
         error: null
       });
+
 
     case "FETCH_GARDENS_ERROR":
       return Object.assign({}, state, {
@@ -31,7 +31,6 @@ export default function rootReducer (state = baseState, action) {
       })
 
     case "ADD_GARDEN_SUCCESS":
-      console.log(state);
       return Object.assign({}, state, {
           gardens: state.gardens.concat(action.payload),
       })
