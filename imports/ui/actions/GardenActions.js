@@ -1,6 +1,7 @@
 import {
   fetchGardensBegin, fetchGardensError, fetchGardensSuccess, addGardenSuccess,
-  addPlantToGardenSuccess, addPlantToGardenError
+  addPlantToGardenSuccess, addPlantToGardenError,
+  removePlantFromGardenSuccess, removePlantFromGarenError
 } from './index';
 
 export function fetchUserGardens() {
@@ -50,6 +51,17 @@ export function addPlantToGarden(gardenId, plantId, qty) {
         return dispatch(addPlantToGardenError(err));
       }
       return dispatch(addPlantToGardenSuccess(res));
+    });
+  }
+}
+
+export function removePlantFromGarden(gardenId, plantInstanceId) {
+  return dispatch => {
+    Meteor.apply('garden.removePlant',  [{gardenId: gardenId}, {plantInstanceId: plantInstanceId}], (err, res) => {
+      if (err) {
+        return dispatch(removePlantFromGardenError(err));
+      }
+      return dispatch(removePlantFromGardenSuccess(res));
     });
   }
 }

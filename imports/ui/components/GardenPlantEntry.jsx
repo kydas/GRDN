@@ -3,12 +3,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearchPlus, faBell, faShower, faTrash } from '@fortawesome/free-solid-svg-icons';
 import NotificationsIndicator from './NotificationsIndicator';
 import { withRouter } from 'react-router-dom';
+import { removePlantFromGarden } from '../actions/GardenActions';
+import {connect} from 'react-redux';
 
-class GardenPlantEntry extends Component {
+
+const mapDispatchToProps = dispatch => {
+    return {
+      removePlant: (gardenId, plantInstanceId) => dispatch(removePlantFromGarden(gardenId, plantInstanceId))
+    }
+}
+
+
+class ConnectableGardenPlantEntry extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
 
   render(){
     if (!this.props.plantEntry) {
-        return
+        return null;
+    }
+
+    if (this.state.removed) {
+      return null;
     }
 
     return (
@@ -20,7 +39,7 @@ class GardenPlantEntry extends Component {
             <NotificationsIndicator count="2" />
           </button>
           <button><FontAwesomeIcon icon={faShower} /></button>
-          <button><FontAwesomeIcon icon={faTrash} /></button>
+          <button><FontAwesomeIcon icon={faTrash} onClick={this.handleRemoveClick} /></button>
         </div>
       </div>
     )
@@ -31,6 +50,13 @@ class GardenPlantEntry extends Component {
       pathname: '/plant/' + this.props.plantEntry.trefleId
     });
   }
+
+  handleRemoveClick = () => {
+    this.props.removePlant(this.props.gardenId, this.props.plantEntry._id);
+    this.setState({removed: true})
+    this.forceUpdate();
+  }
 }
 
-export default withRouter(GardenPlantEntry);
+const GardenPlantEntry = connect(null, mapDispatchToProps)(withRouter(ConnectableGardenPlantEntry));
+export default GardenPlantEntry;

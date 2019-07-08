@@ -31,28 +31,33 @@ export function GetGarden(gardenId) {
   return garden;
 }
 
-export function AddPlant(gardenId, plantId, qty) {
-  console.log("id" + gardenId);
+export function AddPlant(gardenId, trefleId, qty) {
   let garden = GetGarden(gardenId);
-  console.log("garden " + garden);
   let plants = garden.plants;
   let id = new Meteor.Collection.ObjectID();
 
-  data = getPlantByID(plantId)
+  data = getPlantByID(trefleId)
   .then((res) => {
     console.log(res);
     plants.push({
       _id: id._str,
-      trefleId: plantId,
+      trefleId: trefleId,
       qty: qty,
       cachedData: res,
       cachedDataLastUpdate: new Date().getTime()
     });
 
     garden.plants = plants;
-    console.log(garden);
-
     Gardens.update({_id: gardenId}, garden)
     return garden;
   })
+}
+
+export function RemovePlant(gardenId, plantInstanceId) {
+  let garden = GetGarden(gardenId);
+  let plants = garden.plants;
+  plants = plants.filter(el => el._id != plantInstanceId);
+  garden.plants = plants;
+  Gardens.update({_id: gardenId}, garden)
+  return garden;
 }

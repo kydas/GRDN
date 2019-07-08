@@ -20,7 +20,7 @@ export default class PlantList extends Component {
 
             {this.props.plants.map((el) =>
                 <li key={el._id}>
-                  <GardenPlantEntry plantEntry={el} />
+                  <GardenPlantEntry gardenId={this.props.gardenId} plantEntry={el} />
                 </li>
 
             )}

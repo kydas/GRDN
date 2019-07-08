@@ -1,5 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import {GetGardens, CreateGarden, GetGarden, AddPlant} from './GardenDAO';
+import {GetGardens, CreateGarden, GetGarden, AddPlant, RemovePlant} from './GardenDAO';
 
 Meteor.methods(
   {
@@ -15,5 +15,8 @@ Meteor.methods(
     },
     'garden.addPlant'({gardenId}, {plantId}, {qty}) {
       return AddPlant(gardenId, plantId, qty);
+    },
+    'garden.removePlant'({gardenId}, {plantInstanceId}) {
+      return RemovePlant(gardenId, plantInstanceId);
     }
 })
