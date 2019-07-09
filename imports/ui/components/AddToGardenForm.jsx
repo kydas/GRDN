@@ -2,10 +2,13 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addPlantToGarden, fetchUserGardens} from '../actions/GardenActions';
 import LoadingSpinner from './LoadingSpinner';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
 
 const mapDispatchToProps = dispatch => {
   return {
-    addPlantToGarden: (gardenId, plantId, qty) => {dispatch(addPlantToGarden(gardenId, plantId, qty))},
+    addPlantToGarden: (gardenId, plantId, qty, plantDate) => {dispatch(addPlantToGarden(gardenId, plantId, qty, plantDate))},
     fetchUserGardens: (userId) => {dispatch(fetchUserGardens(userId))}
   }
 }
@@ -26,7 +29,8 @@ class ConnectableAddToGardenForm extends Component {
     this.props.fetchUserGardens(Meteor.userId());
     this.state = {
       qty: 1,
-      targetGarden: null
+      targetGarden: null,
+      plantDate: new Date()
 
     }
   }
@@ -67,6 +71,7 @@ class ConnectableAddToGardenForm extends Component {
           )}
         </select>
         <label> Qty:</label> <input type="number" default={this.state.qty} onChange={this.handleQtyChange} />
+        <label> Plant Date:</label> <DatePicker selected={this.state.plantDate} onChange={this.handleDateChange} />
         {this.props.addToGardenSuccess &&
           <span className="success-message">Success!</span>
         }
@@ -78,20 +83,25 @@ class ConnectableAddToGardenForm extends Component {
   }
 
   handleSubmit = () => {
-    this.props.addPlantToGarden(this.state.targetGarden, this.props.plantId, parseInt(this.state.qty));
+    console.log(this.state.plantDate);
+    this.props.addPlantToGarden(this.state.targetGarden, this.props.plantId, parseInt(this.state.qty), this.state.plantDate);
   }
 
   handleQtyChange = (event) => {
-    console.log(event.target.value);
     this.setState({
       qty: event.target.value
     })
-    console.log(this.state.qty);
   }
 
   handleGardenChange = (event) => {
     this.setState({
       targetGarden: event.target.value
+    })
+  }
+
+  handleDateChange = (date) => {
+    this.setState({
+      plantDate: date
     })
   }
 }

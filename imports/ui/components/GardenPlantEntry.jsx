@@ -33,6 +33,9 @@ class ConnectableGardenPlantEntry extends Component {
     return (
       <div className="plant-entry">
         <h3>{this.props.plantEntry.qty} x {this.props.plantEntry.cachedData.common_name} </h3>
+        {this.props.plantEntry.plantDate &&
+          <p>Planted on {this.props.plantEntry.plantDate.toString()}</p>
+        }
         <div className="plant-entry-controls">
           <button><FontAwesomeIcon icon={faSearchPlus} onClick={this.handleDetailsClick} /></button>
           <button><FontAwesomeIcon icon={faBell} />

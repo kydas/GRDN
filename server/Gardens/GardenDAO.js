@@ -40,7 +40,7 @@ export function DeleteGarden(gardenId) {
 }
 
 
-export function AddPlant(gardenId, trefleId, qty) {
+export function AddPlant(gardenId, trefleId, qty, plantDate) {
   let garden = GetGarden(gardenId);
   let plants = garden.plants;
   let id = new Meteor.Collection.ObjectID();
@@ -51,6 +51,7 @@ export function AddPlant(gardenId, trefleId, qty) {
       _id: id._str,
       trefleId: trefleId,
       qty: qty,
+      plantDate: plantDate,
       cachedData: res,
       cachedDataLastUpdate: new Date().getTime()
     });

@@ -16,8 +16,8 @@ Meteor.methods(
     'garden.deleteGarden'({gardenId}) {
       return DeleteGarden(gardenId);
     },
-    'garden.addPlant'({gardenId}, {plantId}, {qty}) {
-      return AddPlant(gardenId, plantId, qty);
+    'garden.addPlant'({gardenId}, {plantId}, {qty}, {plantDate}) {
+      return AddPlant(gardenId, plantId, qty, plantDate);
     },
     'garden.removePlant'({gardenId}, {plantInstanceId}) {
       return RemovePlant(gardenId, plantInstanceId);
