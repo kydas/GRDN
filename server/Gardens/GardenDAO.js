@@ -10,7 +10,7 @@ export function GetGardens(userId) {
 
 export function CreateGarden(userId, gardenName, location) {
   return new Promise(function(resolve, reject) {
-    let garden = {name: gardenName, userId: userId, location: location, plants: []};
+    let garden = {name: gardenName, userId: userId, location: location, plants: [], weather: []};
     Gardens.insert(garden, function (err, res) {
       if (err) {
         reject(err);
@@ -38,7 +38,7 @@ export function AddPlant(gardenId, plantId, qty) {
   let plants = garden.plants;
   let id = new Meteor.Collection.ObjectID();
 
-  data = getPlantByID(plantId)
+  let data = getPlantByID(plantId)    //??????
   .then((res) => {
     console.log(res);
     plants.push({
@@ -55,4 +55,18 @@ export function AddPlant(gardenId, plantId, qty) {
     Gardens.update({_id: gardenId}, garden)
     return garden;
   })
+}
+
+
+export function UpdateWeatherInGarden(gardenId, time){
+  const garden = GetGarden(gardenId);
+  const weathers = garden.weather;
+  const weather = Meteor.call('weather.getDay', [{time}, {location}], (err, res) => {   //???
+    if (err){
+      console.log(err)
+    }
+  })
+
+  weathers.push(weather) // need to break down into weather array components !!! TODO
+
 }

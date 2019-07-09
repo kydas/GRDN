@@ -1,7 +1,9 @@
 import { getWeatherTest } from "./weatherAPI";
 import {Meteor} from "meteor/meteor";
 
-Meteor.methods({'weather.test'(){
+Meteor.methods(
+    {
+        'weather.test'(){
     const weather = getWeatherTest()
         .then(function(response){
             return response;
@@ -10,4 +12,10 @@ Meteor.methods({'weather.test'(){
             console.log(error);
         });
         return weather;
-}});
+
+        },
+        'weather.getDay'(time, location){
+            // weatherAPI function !!! TODO
+        }
+    }
+);

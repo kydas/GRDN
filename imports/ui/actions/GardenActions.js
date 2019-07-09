@@ -53,3 +53,15 @@ export function addPlantToGarden(gardenId, plantId, qty) {
     });
   }
 }
+
+export function updateWeatherInGarden(gardenId, time){
+
+  time = new Date.now();
+  time = time.getTime();
+  Meteor.call('garden.UpdateWeather', [{gardenId}, {time}], (err, res) => {
+    if (err){
+      return // need to add failure success function TODO
+    } else
+      return // ditto above TODO
+  });
+}
