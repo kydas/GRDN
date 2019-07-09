@@ -15,7 +15,6 @@ export function CreateGarden(userId, gardenName, location) {
       if (err) {
         reject(err);
       }
-      console.log(garden);
       garden._id = res;
       resolve(garden);
     });
@@ -31,6 +30,16 @@ export function GetGarden(gardenId) {
   return garden;
 }
 
+export function DeleteGarden(gardenId) {
+  Gardens.remove({_id: gardenId}, (err) => {
+    if (err) {
+      console.log(err);
+    }
+    return gardenId;
+  });
+}
+
+
 export function AddPlant(gardenId, trefleId, qty) {
   let garden = GetGarden(gardenId);
   let plants = garden.plants;
@@ -38,7 +47,6 @@ export function AddPlant(gardenId, trefleId, qty) {
 
   data = getPlantByID(trefleId)
   .then((res) => {
-    console.log(res);
     plants.push({
       _id: id._str,
       trefleId: trefleId,

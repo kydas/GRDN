@@ -26,6 +26,14 @@ export function fetchGardenError(payload) {
   return {type: "FETCH_GARDEN_ERROR", payload}
 }
 
+export function deleteGardenSuccess(payload) {
+  return {type: "DELETE_GARDEN_SUCCESS", payload}
+}
+
+export function deleteGardenError(payload) {
+  return {type: "DELETE_GARDEN_ERROR", payload}
+}
+
 export function addPlantToGardenSuccess(payload) {
   return {type: "ADD_PLANT_TO_GARDEN_SUCCESS", payload}
 }
