@@ -26,7 +26,6 @@ export default class GardenPage extends Component{
         <LoadingSpinner />
       )
     }
-    console.log(this.state.entry);
     return (
       <div className="row">
         <h1>Garden: {this.state.entry.name}</h1>

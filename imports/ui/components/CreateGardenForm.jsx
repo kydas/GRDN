@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {createGarden} from '../actions/GardenActions';
 import {connect} from 'react-redux';
+import GoogleMapGeoPicker from 'react-geo-picker/lib/google-map';
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -15,18 +16,39 @@ class ConnectableCreateGardenForm extends Component {
 
     this.state = {
       gardenName: "",
-      lat: 0,
-      lng: 0
+      location: {
+        latitude: 49.2581322,
+        longitude: -123.2403414,
+      },
+      mapApiKey: null
     }
 
+    if (this.state.mapApiKey === null) {
+      let that = this;
+      Meteor.call('googleMap.getApiKey', (err, res) => {
+        that.setState({"mapApiKey": res});
+      });
+    }
   }
 
   render() {
     return (
       <form className="gardenForm">
         Name: <input type="text" onChange={this.handleGardenNameChange} />
-        Lat: <input type="text" onChange={this.handleLatChange} />
-        Lng: <input type="text" onChange={this.handleLngChange} />
+        {this.state.mapApiKey &&
+          <GoogleMapGeoPicker
+            apiKey={this.state.mapApiKey}
+            height={300}
+            width={400}
+            defaultValue={{
+              latitude: 49.2581322,
+              longitude: -123.2403414,
+            }}
+            value={this.state.location}
+            onChange={(location) => this.setState({ location })}
+          />
+        }
+
         <button onClick={this.handleCreate}>Create!</button>
       </form>
     )
@@ -38,24 +60,13 @@ class ConnectableCreateGardenForm extends Component {
     })
   }
 
-  handleLatChange = (event) => {
-    this.setState({
-      lat: event.target.value
-    })
-  }
-
-  handleLngChange = (event) => {
-    this.setState({
-      lng: event.target.value
-    })
-  }
 
   handleCreate = (event) => {
     event.preventDefault();
     console.log(this.state);
     let location = {
-      lat: this.state.lat,
-      lng: this.state.lng
+      lat: this.state.location.latitude,
+      lng: this.state.location.longitude
     }
     this.props.createGarden(Meteor.userId(), this.state.gardenName, location);
   }
