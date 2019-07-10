@@ -2,7 +2,8 @@ import {
   fetchGardensBegin, fetchGardensError, fetchGardensSuccess, addGardenSuccess,
   addPlantToGardenSuccess, addPlantToGardenError,
   removePlantFromGardenSuccess, removePlantFromGardenError,
-  deleteGardenSuccess, deleteGardenError
+  deleteGardenSuccess, deleteGardenError,
+  addNoteToPlantSuccess, addNoteToPlantError
 } from './index';
 
 export function fetchUserGardens() {
@@ -70,11 +71,32 @@ export function addPlantToGarden(gardenId, plantId, qty, plantDate) {
 
 export function removePlantFromGarden(gardenId, plantInstanceId) {
   return dispatch => {
-    Meteor.apply('garden.removePlant',  [{gardenId: gardenId}, {plantInstanceId: plantInstanceId}], (err, res) => {
+    Meteor.apply('garden.removePlant',  [
+      {gardenId: gardenId},
+      {plantInstanceId: plantInstanceId}
+    ], (err, res) => {
       if (err) {
         return dispatch(removePlantFromGardenError(err));
       }
       return dispatch(removePlantFromGardenSuccess(res));
     });
+  }
+}
+
+export function addNoteToPlant(gardenId, plantInstanceId, message) {
+  return dispatch => {
+    let time = new Date();
+    Meteor.apply('garden.addNoteToPlant', [
+      {gardenId: gardenId},
+      {plantInstanceId: plantInstanceId},
+      {time: time},
+      {message: message}
+    ], (err, res) => {
+      if (err) {
+        return dispatch(addNoteToPlantError(err));
+      }
+      return dispatch(addNoteToPlantSuccess(res));
+    })
+
   }
 }

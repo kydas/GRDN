@@ -13,8 +13,6 @@ export default class PlantList extends Component {
       )
     }
 
-    console.log(this.props.plants);
-
     return (
           <ul className="plant-list">
 

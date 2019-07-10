@@ -53,7 +53,8 @@ export function AddPlant(gardenId, trefleId, qty, plantDate) {
       qty: qty,
       plantDate: plantDate,
       cachedData: res,
-      cachedDataLastUpdate: new Date().getTime()
+      cachedDataLastUpdate: new Date().getTime(),
+      notes: []
     });
 
     garden.plants = plants;
@@ -67,6 +68,25 @@ export function RemovePlant(gardenId, plantInstanceId) {
   let plants = garden.plants;
   plants = plants.filter(el => el._id != plantInstanceId);
   garden.plants = plants;
+  Gardens.update({_id: gardenId}, garden)
+  return garden;
+}
+
+export function AddNote(gardenId, plantInstanceId, time, message) {
+  console.log(plantInstanceId);
+  let garden = GetGarden(gardenId);
+  console.log(JSON.stringify(garden.plants));
+  let plantIndex = garden.plants.findIndex(x => x._id == plantInstanceId);
+  console.log(plantIndex);
+
+  if (!garden.plants[plantIndex].notes) {
+      garden.plants[plantIndex].notes = [];
+  }
+
+  garden.plants[plantIndex].notes.push({
+    time,
+    message
+  })
   Gardens.update({_id: gardenId}, garden)
   return garden;
 }

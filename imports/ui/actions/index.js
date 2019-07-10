@@ -49,3 +49,11 @@ export function removePlantFromGardenSuccess(payload) {
 export function removePlantFromGardenError(payload) {
   return {type: "REMOVE_PLANT_FROM_GARDEN_ERROR", payload};
 }
+
+export function addNoteToPlantError(payload) {
+  return {type: "ADD_NOTE_TO_PLANT_ERROR", payload};
+}
+
+export function addNoteToPlantSuccess(payload) {
+  return {type: "ADD_NOTE_TO_PLANT_SUCCESS", payload};
+}
