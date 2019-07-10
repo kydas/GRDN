@@ -2,49 +2,71 @@ import React, { Component } from 'react';
 import DataTable from '../components/DataTable';
 import AddToGardenForm from '../components/AddToGardenForm';
 import LoadingSpinner from '../components/LoadingSpinner';
+import NotesFeed from '../components/NotesFeed';
 
 export default class GardenPlantDetailPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      entry: null
+      garden: null,
+      entry: null,
+      error: false
     }
 
+    const gardenId = this.props.match.params.id;
+    const plantInstanceId = this.props.match.params.plantId;
+
     let that = this;
-    /*
-    Meteor.call("plants.getPlant", {plantId: this.props.match.params.id}, (error, result) => {
+
+    Meteor.call("garden.getGardenById", {gardenId: gardenId}, (error, result) => {
         if (error){
             console.log(error);
-        } else {
             that.setState({
-              entry: result
+              garden: null,
+              entry: null,
+              error: true
+            })
+        } else {
+            let plant = result.plants.find(x => x._id == plantInstanceId);
+            if (plant == null) {
+              that.setState({
+                garden: result,
+                entry: null,
+                error: true
+              })
+            }
+            that.setState({
+              garden: result,
+              entry: plant,
+              error: false
             });
         }
-    })*/
+    })
   }
 
 
   render() {
-    if (this.state.entry === null) {
+    if (this.state.entry === null && this.state.error === false) {
       return <LoadingSpinner />
     }
+
+    if (this.state.entry === null && this.state.error === true) {
+        return "ERROR";
+    }
+
     return (
 
       <div className="detail-page">
         <div className="row">
-          <h1>{this.state.entry.common_name}</h1>
+          <h1>{this.state.entry.qty} x {this.state.entry.cachedData.common_name} in {this.state.garden.name}</h1>
           <div className="col half">
-            <DataTable entry={this.state.entry} />
+            <DataTable entry={this.state.entry.cachedData} />
+            <NotesFeed notes={this.state.entry.notes} />
           </div>
           <div className="col half">
             <img src="/media/plant-placeholder-1.jpg" />
           </div>
         </div>
-        {Meteor.userId() &&
-          <div>
-            <AddToGardenForm plantId={this.props.match.params.id} />
-          </div>
-        }
       </div>
     )
   }

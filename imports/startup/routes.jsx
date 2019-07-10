@@ -16,6 +16,7 @@ import LoginPage from '../ui/pages/LoginPage';
 import LogoutPage from '../ui/pages/LogoutPage';
 import DetailPage from '../ui/pages/DetailPage';
 import GardenPage from '../ui/pages/GardenPage';
+import GardenPlantDetailPage from '../ui/pages/GardenPlantDetailPage';
 
 const history = createBrowserHistory();
 
@@ -30,6 +31,7 @@ export const renderRoutes = () => (
         <Route exact path="/logout" component={LogoutPage} />
         <Route exact path="/plant/:id" component={DetailPage} />
         <Route exact path="/garden/:id" component={GardenPage} />
+        <Route exact path="/garden/:id/:plantId" component={GardenPlantDetailPage} />
         // Add more routes below
       </Switch>
     </AppShell>

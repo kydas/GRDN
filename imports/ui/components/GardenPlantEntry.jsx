@@ -58,7 +58,7 @@ class ConnectableGardenPlantEntry extends Component {
 
   handleDetailsClick = () => {
     this.props.history.push({
-      pathname: '/plant/' + this.props.plantEntry.trefleId
+      pathname: '/garden/' + this.props.gardenId + '/' + this.props.plantEntry._id
     });
   }
 

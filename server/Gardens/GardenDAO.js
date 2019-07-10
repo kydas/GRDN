@@ -73,17 +73,17 @@ export function RemovePlant(gardenId, plantInstanceId) {
 }
 
 export function AddNote(gardenId, plantInstanceId, time, message) {
-  console.log(plantInstanceId);
   let garden = GetGarden(gardenId);
-  console.log(JSON.stringify(garden.plants));
   let plantIndex = garden.plants.findIndex(x => x._id == plantInstanceId);
-  console.log(plantIndex);
+  let id = new Meteor.Collection.ObjectID();
+
 
   if (!garden.plants[plantIndex].notes) {
       garden.plants[plantIndex].notes = [];
   }
 
   garden.plants[plantIndex].notes.push({
+    _id: id,
     time,
     message
   })
