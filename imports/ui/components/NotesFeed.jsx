@@ -10,11 +10,14 @@ export default class NotesFeed extends Component {
       )
     }
     return (
-      <ul>
-        {this.props.notes.map((el) =>
-          <NoteEntry note={el} key={el._id} />
-        )}
-      </ul>
+      <div>
+        <h3>Notes feed:</h3>
+        <ul>
+          {this.props.notes.map((el) =>
+            <NoteEntry note={el} key={el._id} />
+          )}
+        </ul>
+      </div>
     )
   }
 }

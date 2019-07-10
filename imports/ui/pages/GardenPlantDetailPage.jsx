@@ -3,6 +3,7 @@ import DataTable from '../components/DataTable';
 import AddToGardenForm from '../components/AddToGardenForm';
 import LoadingSpinner from '../components/LoadingSpinner';
 import NotesFeed from '../components/NotesFeed';
+import AddNewNoteForm from '../components/AddNewNoteForm';
 
 export default class GardenPlantDetailPage extends Component {
   constructor(props) {
@@ -61,10 +62,11 @@ export default class GardenPlantDetailPage extends Component {
           <h1>{this.state.entry.qty} x {this.state.entry.cachedData.common_name} in {this.state.garden.name}</h1>
           <div className="col half">
             <DataTable entry={this.state.entry.cachedData} />
-            <NotesFeed notes={this.state.entry.notes} />
+
           </div>
           <div className="col half">
-            <img src="/media/plant-placeholder-1.jpg" />
+            <AddNewNoteForm plantId={this.state.entry._id} gardenId={this.state.garden._id}/>
+            <NotesFeed notes={this.state.entry.notes} />
           </div>
         </div>
       </div>
