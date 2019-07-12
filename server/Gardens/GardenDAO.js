@@ -62,9 +62,6 @@ export function UpdateWeatherInGarden(gardenId, time){
   const garden = GetGarden(gardenId);
   const weathers = garden.weather;
   const location = garden.location;
-  while (weathers.length > 7){
-      weathers.shift();
-  }
   let lastDay;
   if (weathers.length > 0) {
       lastDay = weathers[weathers.length - 1];
@@ -100,4 +97,8 @@ export function UpdateWeatherInGarden(gardenId, time){
               Gardens.update({_id: gardenId}, garden);
           });
       }
+
+    while (weathers.length > 7){
+        weathers.shift();
+    }
 }
