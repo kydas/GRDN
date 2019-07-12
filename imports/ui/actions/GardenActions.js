@@ -133,6 +133,7 @@ export function selectPlant(gardenId, plantId) {
       return dispatch(selectPlantSuccess(plant));
     });
   }
+}
 
 export function updateWeatherInGarden(gardenId){
 
