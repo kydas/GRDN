@@ -24,6 +24,7 @@ export function fetchUserGardens() {
         if (err) {
           console.log(err);
         }
+        updateWeatherInGarden(res._id);
         dispatch(addGardenSuccess(res))
       });
     }
