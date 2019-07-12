@@ -61,12 +61,20 @@ export function AddPlant(gardenId, plantId, qty) {
 export function UpdateWeatherInGarden(gardenId, time){
   const garden = GetGarden(gardenId);
   const weathers = garden.weather;
-  const weather = Meteor.call('weather.getDay', [{time}, {location}], (err, res) => {   //???
+  const location = garden.location;
+  console.log("time:" + time + "location" + location);
+  const weather = Meteor.call('weather.getDay', {time, location}, (err, res) => {   //???
     if (err){
       console.log(err)
     }
-  })
+    let wth = res;
+    weathers.push(wth);
 
-  weathers.push(weather) // need to break down into weather array components !!! TODO
+    garden.weather = weathers;
+
+    Gardens.update({_id: gardenId}, garden);
+  });
+
+
 
 }

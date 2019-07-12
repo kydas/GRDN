@@ -54,11 +54,14 @@ export function addPlantToGarden(gardenId, plantId, qty) {
   }
 }
 
-export function updateWeatherInGarden(gardenId, time){
+export function updateWeatherInGarden(gardenId){
 
-  time = new Date.now();
-  time = time.getTime();
-  Meteor.call('garden.UpdateWeather', [{gardenId}, {time}], (err, res) => {
+  let time = new Date;
+  let yesterday = time.getDate() - 1;
+  time.setDate(yesterday);
+  time = Math.floor((time.getTime() / 1000));
+  console.log("Garden Actions, time:" + time + " id:" + gardenId);
+  Meteor.call('garden.updateWeather', {gardenId, time}, (err, res) => {
     if (err){
       return // need to add failure success function TODO
     } else

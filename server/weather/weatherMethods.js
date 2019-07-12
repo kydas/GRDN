@@ -1,4 +1,4 @@
-import { getWeatherTest } from "./weatherAPI";
+import { getWeatherTest, getWeatherDay } from "./weatherAPI";
 import {Meteor} from "meteor/meteor";
 
 Meteor.methods(
@@ -14,8 +14,16 @@ Meteor.methods(
         return weather;
 
         },
-        'weather.getDay'(time, location){
-            // weatherAPI function !!! TODO
+        'weather.getDay'({time, location}){
+            const weather = getWeatherDay(time, location)
+                .then(function (response) {
+                    console.log(response);
+                    return response;
+                })
+                .catch(function(error){
+                    console.log(error)
+                });
+            return weather;
         }
     }
 );

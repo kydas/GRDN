@@ -14,15 +14,27 @@ export function getWeatherTest() {
 };
 
 export function getWeatherDay(time, location){
-
-    const reqURL = "https://api.darksky.net/forecast/" + WEATHER_KEY + "/" + location + time;
+    let locationReq = location.lat.toString()
+    locationReq = locationReq + "," + location.lng.toString()
+    console.log(locationReq);
+    console.log("axios call time:" + time)
+    const reqURL = "https://api.darksky.net/forecast/" + WEATHER_KEY + "/" + locationReq + "," + time + "?";
     return axios.get(reqURL, {
-        params: {units: si,
-                exclude: [currently, hourly, flags]}
+        params: {units: "si",
+                exclude: "currently,hourly,flags"}
 
     })
         .then(function(response){
-            return response.data;
+            const weather = response.data.daily.data[0];
+
+            return {
+                Time: weather.time,
+                Icon: weather.icon,
+                maxTemp: weather.temperatureMax,
+                minTemp: weather.temperatureMin,
+                Precipitation: weather.precipIntensity
+
+            };
         })
         .catch(function(error){
             console.log(error);

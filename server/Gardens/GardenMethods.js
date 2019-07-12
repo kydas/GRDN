@@ -17,7 +17,8 @@ Meteor.methods(
       return AddPlant(gardenId, plantId, qty);
     },
 
-    'garden.updateWeather'({gardenId}, {time}){
+    'garden.updateWeather'({gardenId, time}){
+        console.log("Garden methods:" + gardenId + " " + time );
         return UpdateWeatherInGarden(gardenId, time)
 
     }
