@@ -2,10 +2,13 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addPlantToGarden, fetchUserGardens} from '../actions/GardenActions';
 import LoadingSpinner from './LoadingSpinner';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
 
 const mapDispatchToProps = dispatch => {
   return {
-    addPlantToGarden: (gardenId, plantId, qty) => {dispatch(addPlantToGarden(gardenId, plantId, qty))},
+    addPlantToGarden: (gardenId, plantId, qty, plantDate) => {dispatch(addPlantToGarden(gardenId, plantId, qty, plantDate))},
     fetchUserGardens: (userId) => {dispatch(fetchUserGardens(userId))}
   }
 }
@@ -24,24 +27,35 @@ class ConnectableAddToGardenForm extends Component {
     super(props);
 
     this.props.fetchUserGardens(Meteor.userId());
+    this.state = {
+      qty: 1,
+      targetGarden: null,
+      plantDate: new Date()
 
+    }
+  }
+
+  componentDidUpdate(){
+    if (this.props.gardens !== null && this.props.gardens.length > 0 && this.state.targetGarden === null) {
+      this.setState({
+        targetGarden: this.props.gardens[0]._id
+      })
+    }
   }
 
   render() {
-    if (this.props.gardens !== null && this.props.gardens.length > 0) {
-      this.state = {
-        qty: 1,
-        targetGarden: this.props.gardens[0]._id
-      }
-    } else {
-      this.state = {
-        qty: 1,
-        targetGarden: null
-      }
-    }
+
 
     if (this.props.gardens == null){
       return <LoadingSpinner />
+    }
+
+    if (this.props.gardens.length == 0) {
+      return (
+        <div className="add-to-garden-form">
+          No gardens found. <a href="/">Create one</a> to get started!
+        </div>
+      )
     }
 
     return(
@@ -56,7 +70,8 @@ class ConnectableAddToGardenForm extends Component {
             </option>
           )}
         </select>
-        <label> Qty:</label> <input type="number" min="1" max="9999" default="1" onChange={this.handleQtyChange}/>
+        <label> Qty:</label> <input type="number" default={this.state.qty} onChange={this.handleQtyChange} />
+        <label> Plant Date:</label> <DatePicker selected={this.state.plantDate} onChange={this.handleDateChange} />
         {this.props.addToGardenSuccess &&
           <span className="success-message">Success!</span>
         }
@@ -68,7 +83,7 @@ class ConnectableAddToGardenForm extends Component {
   }
 
   handleSubmit = () => {
-    this.props.addPlantToGarden(this.state.targetGarden, this.props.plantId, parseInt(this.state.qty));
+    this.props.addPlantToGarden(this.state.targetGarden, this.props.plantId, parseInt(this.state.qty), this.state.plantDate);
   }
 
   handleQtyChange = (event) => {
@@ -80,6 +95,12 @@ class ConnectableAddToGardenForm extends Component {
   handleGardenChange = (event) => {
     this.setState({
       targetGarden: event.target.value
+    })
+  }
+
+  handleDateChange = (date) => {
+    this.setState({
+      plantDate: date
     })
   }
 }

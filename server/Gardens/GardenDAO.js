@@ -15,7 +15,6 @@ export function CreateGarden(userId, gardenName, location) {
       if (err) {
         reject(err);
       }
-      console.log(garden);
       garden._id = res;
       resolve(garden);
     });
@@ -31,32 +30,67 @@ export function GetGarden(gardenId) {
   return garden;
 }
 
-export function AddPlant(gardenId, plantId, qty) {
-  console.log("id" + gardenId);
+export function DeleteGarden(gardenId) {
+  Gardens.remove({_id: gardenId}, (err) => {
+    if (err) {
+      console.log(err);
+    }
+    return gardenId;
+  });
+}
+
+
+export function AddPlant(gardenId, trefleId, qty, plantDate) {
   let garden = GetGarden(gardenId);
-  console.log("garden " + garden);
   let plants = garden.plants;
   let id = new Meteor.Collection.ObjectID();
 
+
   let data = getPlantByID(plantId)    //??????
   .then((res) => {
-    console.log(res);
     plants.push({
       _id: id._str,
-      trefleId: plantId,
+      trefleId: trefleId,
       qty: qty,
+      plantDate: plantDate,
       cachedData: res,
-      cachedDataLastUpdate: new Date().getTime()
+      cachedDataLastUpdate: new Date().getTime(),
+      notes: []
     });
 
     garden.plants = plants;
-    console.log(garden);
-
     Gardens.update({_id: gardenId}, garden)
     return garden;
   })
 }
 
+export function RemovePlant(gardenId, plantInstanceId) {
+  let garden = GetGarden(gardenId);
+  let plants = garden.plants;
+  plants = plants.filter(el => el._id != plantInstanceId);
+  garden.plants = plants;
+  Gardens.update({_id: gardenId}, garden)
+  return garden;
+}
+
+export function AddNote(gardenId, plantInstanceId, time, message) {
+  let garden = GetGarden(gardenId);
+  let plantIndex = garden.plants.findIndex(x => x._id == plantInstanceId);
+  let id = new Meteor.Collection.ObjectID();
+
+
+  if (!garden.plants[plantIndex].notes) {
+      garden.plants[plantIndex].notes = [];
+  }
+
+  garden.plants[plantIndex].notes.push({
+    _id: id,
+    time,
+    message
+  })
+  Gardens.update({_id: gardenId}, garden)
+  return garden;
+}
 
 export function UpdateWeatherInGarden(gardenId, time){
   const garden = GetGarden(gardenId);
