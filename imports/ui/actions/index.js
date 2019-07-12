@@ -57,3 +57,23 @@ export function addNoteToPlantError(payload) {
 export function addNoteToPlantSuccess(payload) {
   return {type: "ADD_NOTE_TO_PLANT_SUCCESS", payload};
 }
+
+export function selectGardenBegin(payload) {
+  return {type: "SELECT_GARDEN_BEGIN", payload}
+}
+
+export function selectGardenSuccess(payload) {
+  return {type: "SELECT_GARDEN_SUCCESS", payload}
+}
+
+export function selectPlantBegin(payload) {
+  return {type: "SELECT_PLANT_BEGIN", payload}
+}
+
+export function selectPlantSuccess(payload) {
+  return {type: "SELECT_PLANT_SUCCESS", payload}
+}
+
+export function selectPlantError(payload) {
+  return {type: "SELECT_PLANT_ERROR", payload}
+}

@@ -83,7 +83,6 @@ class ConnectableAddToGardenForm extends Component {
   }
 
   handleSubmit = () => {
-    console.log(this.state.plantDate);
     this.props.addPlantToGarden(this.state.targetGarden, this.props.plantId, parseInt(this.state.qty), this.state.plantDate);
   }
 

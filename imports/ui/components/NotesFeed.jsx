@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
 import NoteEntry from './NoteEntry';
+import {connect} from 'react-redux';
 
-export default class NotesFeed extends Component {
+const mapStateToProps = state => {
+  return {
+    currentPlant: state.currentPlant
+  }
+}
+
+class ConnectableNotesFeed extends Component {
 
   constructor(props) {
     super(props);
@@ -18,7 +25,7 @@ export default class NotesFeed extends Component {
   }
 
   render() {
-    if (this.state.notes == null) {
+    if (this.state.notes.length === 0) {
       return (
         <p>No notes found. Add one?</p>
       )
@@ -38,12 +45,15 @@ export default class NotesFeed extends Component {
   }
 
   updateNotes(){
-    if (this.props.notes.length != this.state.notes.length) {
-      if (typeof(this.props.notes) !== "undefined" & this.props.notes !== null & this.props.notes.length !== 0) {
+    if (this.props.currentPlant != null && this.props.currentPlant.notes != null && this.props.currentPlant.notes.length > 0) {
+      if (this.props.currentPlant.notes.length != this.state.notes.length) {
         this.state = {
-          notes: this.props.notes.sort((x, y) => y.time - x.time)
+          notes: this.props.currentPlant.notes.sort((x, y) => y.time - x.time)
         }
       }
     }
   }
 }
+
+const NotesFeed = connect(mapStateToProps)(ConnectableNotesFeed);
+export default NotesFeed;

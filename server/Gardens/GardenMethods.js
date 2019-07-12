@@ -11,6 +11,7 @@ Meteor.methods(
       return garden;
     },
     'garden.getGardenById'({gardenId}){
+      
       return GetGarden(gardenId);
     },
     'garden.deleteGarden'({gardenId}) {

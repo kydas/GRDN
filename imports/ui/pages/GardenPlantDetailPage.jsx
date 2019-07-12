@@ -4,72 +4,61 @@ import AddToGardenForm from '../components/AddToGardenForm';
 import LoadingSpinner from '../components/LoadingSpinner';
 import NotesFeed from '../components/NotesFeed';
 import AddNewNoteForm from '../components/AddNewNoteForm';
+import {connect} from 'react-redux';
+import {selectGarden, selectPlant} from '../actions/GardenActions';
 
-export default class GardenPlantDetailPage extends Component {
+const mapDispatchToProps = dispatch => {
+    return {
+      selectGarden: (gardenId) => {dispatch(selectGarden(gardenId))},
+      selectPlant: (gardenId, plantId) => {dispatch(selectPlant(gardenId, plantId))}
+    };
+};
+
+const mapStateToProps = state => {
+  return {
+    currentGarden: state.currentGarden,
+    currentPlant: state.currentPlant
+  };
+};
+
+class ConnectableGardenPlantDetailPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      garden: null,
-      entry: null,
-      error: false
-    }
 
     const gardenId = this.props.match.params.id;
     const plantInstanceId = this.props.match.params.plantId;
 
-    let that = this;
+    this.props.selectGarden(gardenId);
+    this.props.selectPlant(gardenId, plantInstanceId);
 
-    Meteor.call("garden.getGardenById", {gardenId: gardenId}, (error, result) => {
-        if (error){
-            console.log(error);
-            that.setState({
-              garden: null,
-              entry: null,
-              error: true
-            })
-        } else {
-            let plant = result.plants.find(x => x._id == plantInstanceId);
-            if (plant == null) {
-              that.setState({
-                garden: result,
-                entry: null,
-                error: true
-              })
-            }
-            that.setState({
-              garden: result,
-              entry: plant,
-              error: false
-            });
-        }
-    })
+
+
   }
 
 
-  render() { 
-    if (this.state.entry === null && this.state.error === false) {
+  render() {
+    if (this.props.currentGarden === null || this.props.currentPlant === null) {
       return <LoadingSpinner />
-    }
-
-    if (this.state.entry === null && this.state.error === true) {
-        return "ERROR";
     }
 
     return (
 
       <div className="detail-page">
         <div className="row">
-          <h1>{this.state.entry.qty} x {this.state.entry.cachedData.common_name} in {this.state.garden.name}</h1>
+          <h1>{this.props.currentPlant.qty} x {this.props.currentPlant.cachedData.common_name} in {this.props.currentGarden.name}</h1>
           <div className="col half">
-            <DataTable entry={this.state.entry.cachedData} />
+            <DataTable entry={this.props.currentPlant.cachedData} />
 
           </div>
           <div className="col half">
-            <AddNewNoteForm plantId={this.state.entry._id} gardenId={this.state.garden._id}/>
-            <NotesFeed notes={this.state.entry.notes} />
+            <AddNewNoteForm plantId={this.props.currentPlant._id} gardenId={this.props.currentGarden._id}/>
+            <NotesFeed notes={this.props.currentPlant.notes} />
           </div>
         </div>
       </div>
     )
   }
 }
+
+const GardenPlantDetailPage = connect(mapStateToProps, mapDispatchToProps)(ConnectableGardenPlantDetailPage);
+export default GardenPlantDetailPage;

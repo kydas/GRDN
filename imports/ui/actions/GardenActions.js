@@ -3,7 +3,9 @@ import {
   addPlantToGardenSuccess, addPlantToGardenError,
   removePlantFromGardenSuccess, removePlantFromGardenError,
   deleteGardenSuccess, deleteGardenError,
-  addNoteToPlantSuccess, addNoteToPlantError
+  addNoteToPlantSuccess, addNoteToPlantError,
+  selectGardenBegin, selectGardenSuccess,
+  selectPlantBegin, selectPlantSuccess, selectPlantError
 } from './index';
 
 export function fetchUserGardens() {
@@ -98,5 +100,37 @@ export function addNoteToPlant(gardenId, plantInstanceId, message) {
       return dispatch(addNoteToPlantSuccess(res));
     })
 
+  }
+}
+
+export function selectGarden(gardenId) {
+  return dispatch => {
+    dispatch(selectGardenBegin());
+    Meteor.call('garden.getGardenById', {gardenId: gardenId}, (err, res) => {
+      if (err) {
+        dispatch(fetchGardenError(err.statusText));
+        return "Error";
+      }
+      return dispatch(selectGardenSuccess(res));
+    });
+  }
+
+}
+
+export function selectPlant(gardenId, plantId) {
+  return dispatch => {
+    dispatch(selectPlantBegin(null));
+    Meteor.call('garden.getGardenById', {gardenId: gardenId}, (err, res) => {
+      if (err) {
+        dispatch(fetchGardenError(err.statusText));
+        return "Error";
+      }
+
+      let plant = res.plants.find(x => x._id == plantId);
+      if (plant == null) {
+        dispatch(selectPlantError("Plant not found!"));
+      }
+      return dispatch(selectPlantSuccess(plant));
+    });
   }
 }

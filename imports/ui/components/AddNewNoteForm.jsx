@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {addNoteToPlant} from '../actions/GardenActions';
+import {addNoteToPlant, selectPlant} from '../actions/GardenActions';
+
 
 const mapDispatchToProps = dispatch => {
   return {
-    addNoteToPlant: (gardenId, plantInstanceId, message) => dispatch(addNoteToPlant(gardenId, plantInstanceId, message))
+    addNoteToPlant: (gardenId, plantInstanceId, message) => dispatch(addNoteToPlant(gardenId, plantInstanceId, message)),
+    selectPlant: (gardenId, plantId) => dispatch(selectPlant(gardenId, plantId))
   };
 };
 
@@ -34,7 +36,8 @@ class ConnectableAddNewNoteForm extends Component {
   }
 
   handleSubmit = (event) => {
-    this.props.addNoteToPlant(this.props.gardenId, this.props.plantId, this.state.message)
+    this.props.addNoteToPlant(this.props.gardenId, this.props.plantId, this.state.message);
+    this.props.selectPlant(this.props.gardenId, this.props.plantId);
   }
 }
 
