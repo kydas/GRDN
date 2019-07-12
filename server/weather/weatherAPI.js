@@ -28,11 +28,11 @@ export function getWeatherDay(time, location){
             const weather = response.data.daily.data[0];
 
             return {
-                Time: weather.time,
-                Icon: weather.icon,
+                time: weather.time,
+                icon: weather.icon,
                 maxTemp: weather.temperatureMax,
                 minTemp: weather.temperatureMin,
-                Precipitation: weather.precipIntensity
+                precipitation: weather.precipIntensity
 
             };
         })

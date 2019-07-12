@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca10a1c1-2cec-4a79-b7a9-98c95635f847" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/imports/startup/onLogin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imports/ui/actions/GardenActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/imports/ui/actions/GardenActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imports/ui/components/LoginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/imports/ui/components/LoginForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/Gardens/GardenDAO.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/Gardens/GardenDAO.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/Gardens/GardenMethods.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/Gardens/GardenMethods.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/weather/weatherAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/weather/weatherAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/weather/weatherMethods.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/weather/weatherMethods.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,8 +33,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imports/ui/actions/GardenActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
+            <state relative-caret-position="273">
+              <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
               <folding>
                 <element signature="e#0#154#0" expanded="true" />
               </folding>
@@ -51,8 +45,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/Gardens/GardenDAO.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="63" column="35" lean-forward="true" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+            <state relative-caret-position="-203">
+              <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -84,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/weather/weatherAPI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="32" column="48" lean-forward="true" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+            <state relative-caret-position="372">
+              <caret line="27" column="56" lean-forward="true" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -173,9 +167,9 @@
         <option value="$PROJECT_DIR$/imports/startup/onLogin.js" />
         <option value="$PROJECT_DIR$/server/main.js" />
         <option value="$PROJECT_DIR$/server/Gardens/GardenMethods.js" />
+        <option value="$PROJECT_DIR$/server/weather/weatherMethods.js" />
         <option value="$PROJECT_DIR$/imports/ui/actions/GardenActions.js" />
         <option value="$PROJECT_DIR$/server/weather/weatherAPI.js" />
-        <option value="$PROJECT_DIR$/server/weather/weatherMethods.js" />
         <option value="$PROJECT_DIR$/server/Gardens/GardenDAO.js" />
       </list>
     </option>
@@ -348,7 +342,7 @@
       <workItem from="1562189265410" duration="1198000" />
       <workItem from="1562424762232" duration="3827000" />
       <workItem from="1562684113019" duration="24983000" />
-      <workItem from="1562950504625" duration="764000" />
+      <workItem from="1562950504625" duration="3800000" />
     </task>
     <task id="LOCAL-00001" summary="Changed how I write the API call function, now getting HTTP errors, so I think the connections are working?">
       <created>1560639112083</created>
@@ -385,11 +379,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562711854659</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Basic weather API integration working. It currently just adds yesterdays weather to the array. Need to add limit to the array, and standardize date so if yesterdays weather data was already added, it doesn't get added again.">
+      <created>1562951471104</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1562951471104</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52367000" />
+    <option name="totallyTimeSpent" value="55403000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -433,7 +434,8 @@
     <MESSAGE value="commit for merge to develop" />
     <MESSAGE value="New Branch!" />
     <MESSAGE value="Made some new functions for weather, want to try some axios config on plant api" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made some new functions for weather, want to try some axios config on plant api" />
+    <MESSAGE value="Basic weather API integration working. It currently just adds yesterdays weather to the array. Need to add limit to the array, and standardize date so if yesterdays weather data was already added, it doesn't get added again." />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic weather API integration working. It currently just adds yesterdays weather to the array. Need to add limit to the array, and standardize date so if yesterdays weather data was already added, it doesn't get added again." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/server/constants.txt" />
@@ -590,16 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/actions/GardenActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#154#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/Gardens/GardenMethods.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -650,12 +642,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/weather/weatherAPI.js">
+    <entry file="file://$PROJECT_DIR$/imports/ui/actions/GardenActions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="32" column="48" lean-forward="true" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+        <state relative-caret-position="273">
+          <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#154#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -667,10 +659,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/weather/weatherAPI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="27" column="56" lean-forward="true" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/Gardens/GardenDAO.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="63" column="35" lean-forward="true" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+        <state relative-caret-position="-203">
+          <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
         </state>
       </provider>
     </entry>

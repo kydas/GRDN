@@ -62,19 +62,42 @@ export function UpdateWeatherInGarden(gardenId, time){
   const garden = GetGarden(gardenId);
   const weathers = garden.weather;
   const location = garden.location;
-  console.log("time:" + time + "location" + location);
-  const weather = Meteor.call('weather.getDay', {time, location}, (err, res) => {   //???
-    if (err){
-      console.log(err)
-    }
-    let wth = res;
-    weathers.push(wth);
+  while (weathers.length > 7){
+      weathers.shift();
+  }
+  let lastDay;
+  if (weathers.length > 0) {
+      lastDay = weathers[weathers.length - 1];
+      if (!lastDay.time == time) {
+          const weather = Meteor.call('weather.getDay', {time, location}, (err, res) => {
+              if (err) {
+                  console.log(err)
+              }
+              let wth = res;
 
-    garden.weather = weathers;
 
-    Gardens.update({_id: gardenId}, garden);
-  });
+              weathers.push(wth);
 
 
+              garden.weather = weathers;
 
+              Gardens.update({_id: gardenId}, garden);
+          });
+      }
+  }else {
+          const weather = Meteor.call('weather.getDay', {time, location}, (err, res) => {
+              if (err){
+                  console.log(err)
+              }
+              let wth = res;
+
+
+              weathers.push(wth);
+
+
+              garden.weather = weathers;
+
+              Gardens.update({_id: gardenId}, garden);
+          });
+      }
 }
