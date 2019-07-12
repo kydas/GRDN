@@ -11,6 +11,9 @@ const mapDispatchToProps = dispatch => {
 
 class ConnectableCreateGardenForm extends Component {
 
+//Guards against frontend warning about setting state in unmounted components when redirected to login page.
+  _mounted = false;
+
   constructor(props) {
     super(props);
 
@@ -23,12 +26,23 @@ class ConnectableCreateGardenForm extends Component {
       mapApiKey: null
     }
 
+
+  }
+
+  componentDidMount() {
+    this._mounted = true;
     if (this.state.mapApiKey === null) {
       let that = this;
       Meteor.call('googleMap.getApiKey', (err, res) => {
-        that.setState({"mapApiKey": res});
+        if (this._mounted) {
+          this.setApiKey(res);
+        }
       });
     }
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
   }
 
   render() {
@@ -63,7 +77,6 @@ class ConnectableCreateGardenForm extends Component {
 
   handleCreate = (event) => {
     event.preventDefault();
-    console.log(this.state);
     let location = {
       lat: this.state.location.latitude,
       lng: this.state.location.longitude
@@ -71,6 +84,10 @@ class ConnectableCreateGardenForm extends Component {
     this.props.createGarden(Meteor.userId(), this.state.gardenName, location);
   }
 
+
+  setApiKey = (key) => {
+    this.setState({mapApiKey: key});
+  }
 
 }
 

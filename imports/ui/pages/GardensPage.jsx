@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import CreateGardenForm from '../components/CreateGardenForm';
 import GardenList from '../components/GardenList';
+import { withRouter } from 'react-router-dom';
 
-export default class GardensPage extends Component {
+
+
+class GardensPage extends Component {
   constructor(props) {
     super(props);
+
+    if (!Meteor.userId()) {
+      this.props.history.push({
+        pathname: '/login'
+      });
+    }
   }
 
   render() {
@@ -18,3 +27,5 @@ export default class GardensPage extends Component {
   }
 
 }
+
+export default withRouter(GardensPage);
