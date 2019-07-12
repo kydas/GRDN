@@ -10,7 +10,7 @@ export function GetGardens(userId) {
 
 export function CreateGarden(userId, gardenName, location) {
   return new Promise(function(resolve, reject) {
-    let garden = {name: gardenName, userId: userId, location: location, plants: []};
+    let garden = {name: gardenName, userId: userId, location: location, plants: [], weather: []};
     Gardens.insert(garden, function (err, res) {
       if (err) {
         reject(err);
@@ -45,7 +45,8 @@ export function AddPlant(gardenId, trefleId, qty, plantDate) {
   let plants = garden.plants;
   let id = new Meteor.Collection.ObjectID();
 
-  data = getPlantByID(trefleId)
+
+  let data = getPlantByID(plantId)    //??????
   .then((res) => {
     plants.push({
       _id: id._str,
@@ -89,4 +90,49 @@ export function AddNote(gardenId, plantInstanceId, time, message) {
   })
   Gardens.update({_id: gardenId}, garden)
   return garden;
+}
+
+export function UpdateWeatherInGarden(gardenId, time){
+  const garden = GetGarden(gardenId);
+  const weathers = garden.weather;
+  const location = garden.location;
+  let lastDay;
+  if (weathers.length > 0) {
+      lastDay = weathers[weathers.length - 1];
+      if (!lastDay.time == time) {
+          const weather = Meteor.call('weather.getDay', {time, location}, (err, res) => {
+              if (err) {
+                  console.log(err)
+              }
+              let wth = res;
+
+
+              weathers.push(wth);
+
+
+              garden.weather = weathers;
+
+              Gardens.update({_id: gardenId}, garden);
+          });
+      }
+  }else {
+          const weather = Meteor.call('weather.getDay', {time, location}, (err, res) => {
+              if (err){
+                  console.log(err)
+              }
+              let wth = res;
+
+
+              weathers.push(wth);
+
+
+              garden.weather = weathers;
+
+              Gardens.update({_id: gardenId}, garden);
+          });
+      }
+
+    while (weathers.length > 7){
+        weathers.shift();
+    }
 }

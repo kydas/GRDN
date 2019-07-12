@@ -28,6 +28,7 @@ export function fetchUserGardens() {
         if (err) {
           console.log(err);
         }
+        updateWeatherInGarden(res._id);
         dispatch(addGardenSuccess(res))
       });
     }
@@ -132,4 +133,19 @@ export function selectPlant(gardenId, plantId) {
       return dispatch(selectPlantSuccess(plant));
     });
   }
+
+export function updateWeatherInGarden(gardenId){
+
+  let time = new Date;
+  let yesterday = time.getDate() - 1;
+  time.setDate(yesterday);
+  time.setHours(12, 0, 0, 0);
+  time = Math.floor((time.getTime() / 1000));
+  console.log("Garden Actions, time:" + time + " id:" + gardenId);
+  Meteor.call('garden.updateWeather', {gardenId, time}, (err, res) => {
+    if (err){
+      return // need to add failure success function TODO
+    } else
+      return // ditto above TODO
+  });
 }

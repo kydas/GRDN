@@ -4,3 +4,4 @@ import methodsTest from './apiMethods'
 import userMethods from '/imports/api/userMethods';
 import methods from './Utility/GoogleMapApiMethods';
 import './Gardens/GardenMethods';
+import './weather/weatherMethods';
