@@ -46,7 +46,7 @@ export default class GardenPlantDetailPage extends Component {
   }
 
 
-  render() {
+  render() { 
     if (this.state.entry === null && this.state.error === false) {
       return <LoadingSpinner />
     }
