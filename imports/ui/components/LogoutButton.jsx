@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
 import {Meteor} from 'meteor/meteor';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { dismissModal } from '../actions/UIActions'
 
-class LogoutButton extends Component {
+const mapDispatchToProps = dispatch => {
+  return {
+    dismissModal: () => {dispatch(dismissModal())}
+  }
+}
+
+class ConnectableLogoutButton extends Component {
 
   render() {
     return (
@@ -12,13 +20,15 @@ class LogoutButton extends Component {
 
   handleLogout = () => {
     let history = this.props.history;
+    let that = this;
     Meteor.logout(function(err) {
       if (err) {
         console.log(err.reason);
       } else {
         //On logout success, we redirect them to the login page.
+        that.props.dismissModal();
         history.push({
-          pathname: '/login'
+          pathname: '/search'
         });
       }
     });
@@ -26,4 +36,7 @@ class LogoutButton extends Component {
 
 }
 
-export default withRouter(LogoutButton);
+
+const LogoutButton = connect(null, mapDispatchToProps)(withRouter(ConnectableLogoutButton));
+
+export default LogoutButton;

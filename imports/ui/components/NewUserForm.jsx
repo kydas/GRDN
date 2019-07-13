@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { dismissModal } from '../actions/UIActions'
 
-class NewUserForm extends Component {
+const mapDispatchToProps = dispatch => {
+  return {
+    dismissModal: () => {dispatch(dismissModal())}
+  }
+}
+
+class ConnectableNewUserForm extends Component {
 
   constructor(props) {
       super(props);
@@ -52,6 +60,7 @@ class NewUserForm extends Component {
         } else {
             this.setState({errorMessage: null});
             Meteor.loginWithPassword(this.state.username, this.state.password);
+            this.props.dismissModal();
             this.props.history.push({
               pathname: '/'
             });
@@ -73,4 +82,5 @@ class NewUserForm extends Component {
   }
 }
 
-export default withRouter(NewUserForm);
+const NewUserForm = connect(null, mapDispatchToProps)(withRouter(ConnectableNewUserForm));
+export default NewUserForm;
