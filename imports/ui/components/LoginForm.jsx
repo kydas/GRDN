@@ -21,11 +21,15 @@ class LoginForm extends Component {
           <p className="error-message">Uh oh! {this.state.errorMessage}</p>
         }
         <form>
-          Username:
+          <label>Username:</label>
           <input type="text" name="username" autoComplete="username" onChange={this.handleUsernameChange} />
-          Password:
+          <label>Password:</label>
           <input type="password" name="password" autoComplete="current-password" onChange={this.handlePasswordChange}/>
-          <input type="submit" onClick={this.handleLogin}/>
+          <div className="action-buttons">
+            <button className="purple" onClick={this.props.toggle}> Register </button>
+            <button className="teal" onClick={this.handleLogin}> Login </button>
+
+          </div>
         </form>
       </div>
 

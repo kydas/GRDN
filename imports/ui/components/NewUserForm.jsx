@@ -21,13 +21,17 @@ class NewUserForm extends Component {
           <p className="error-message">Uh oh! {this.state.errorMessage}</p>
         }
         <form onSubmit={this.handleSubmit}>
-          Username:
+          <label>Username:</label>
           <input type="text" name="username" onChange={this.handleUsernameChange} />
-          Email:
+          <label>Email:</label>
           <input type="text" name="email" onChange={this.handleEmailChange} />
-          Password:
+          <label>Password:</label>
           <input type="password" name="password" onChange={this.handlePasswordChange} />
-          <input type="submit"/>
+          <div className="action-buttons">
+            <button className="purple" onClick={this.props.toggle}> Login </button>
+            <button className="teal" onClick={this.handleSubmit}> Register </button>
+
+          </div>
         </form>
       </div>
     )

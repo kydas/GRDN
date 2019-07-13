@@ -94,6 +94,12 @@ a:hover .hover-tip, button:hover .hover-tip {
 
 }
 
+/*ERROR MESSAGE*/
+p.error-message {
+  font-style: italic;
+  font-size: 14px;
+}
+
 /*MODAL*/
 .modal-holder {
   width: 100%;
@@ -113,15 +119,35 @@ a:hover .hover-tip, button:hover .hover-tip {
 }
 
 .modal-holder .modal {
-  width: 244px;
-  height: 244px;
+  width: 256px;
+  min-height: 128px;
   position: absolute;
-  top: calc(50% - 122px);
-  left: calc(50% - 122px);
+  top: calc(50% - 256px);
+  left: calc(50% - 128px);
   background-color: #fff;
-  border: 2px solid #444;
-  padding: 32px;
+  border: 2px solid #689689;
+  padding: 0;
   z-index: 2;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal .modal-header {
+  background-color: #689689;
+  padding: 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.modal .modal-body {
+  padding: 12px;
+}
+
+.modal .modal-header h3 {
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-weight: lighter;
 }
 
 /*NOTIFICATIONS*/
@@ -140,6 +166,61 @@ a:hover .hover-tip, button:hover .hover-tip {
   right: 0;
   border-radius: 50%;
 }
+
+/*FORMS*/
+form label {
+  display: block;
+  font-weight: lighter;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 0.75em;
+  margin-top: 12px;
+  color: #777;
+}
+
+form input[type="text"],
+form input[type="password"]  {
+  width: 100%;
+}
+
+.action-buttons {
+  text-align: right;
+  margin-top: 12px;
+}
+
+.action-buttons button {
+  padding: 6px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.5s, border 0.25s;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  margin-left: 6px;
+}
+
+
+button.teal {
+  background-color: #83e8ba;
+  border: 2px solid #73d8aa;
+}
+
+button.teal:hover {
+  background-color: #689689;
+  border: 2px solid #689689;
+}
+
+button.purple {
+  background-color: #593f62;
+  border: 2px solid #492f52;
+}
+
+button.purple:hover {
+  background-color: #4c3b4d;
+  border: 2px solid #4c3b4d;
+}
+
 
 /*LOGIN-LOGOUT*/
 .user-management form input {

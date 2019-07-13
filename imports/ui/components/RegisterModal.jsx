@@ -16,8 +16,7 @@ class ConnectableRegisterModal extends Component {
   render() {
     return (
       <ModalWrapper name="Register">
-        <NewUserForm />
-        Already have an account? <a onClick={this.toggleToLogin}>Login here</a>.
+        <NewUserForm toggle={this.toggleToLogin}/>
       </ModalWrapper>
     )
   }

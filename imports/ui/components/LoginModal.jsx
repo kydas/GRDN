@@ -14,9 +14,8 @@ class ConnectableLoginModal extends Component {
 
   render(){
     return (
-      <ModalWrapper name="Login">
-        <LoginForm />
-        No account yet? <a onClick={this.toggleToRegister}>Create a new account.</a>
+      <ModalWrapper name="Log in to GRDN">
+        <LoginForm toggle={this.toggleToRegister}/>
       </ModalWrapper>
     )
   }

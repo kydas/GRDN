@@ -13,7 +13,4 @@ Accounts.onLogin(function(user) {
       }
     );
 
-    
-
-
 });
