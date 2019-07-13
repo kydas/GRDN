@@ -3,14 +3,23 @@ import {Link} from 'react-router-dom';
 import NotificationsIndicator from './NotificationsIndicator';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSeedling, faSearch, faHiking, faBell, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-
+import {connect} from 'react-redux';
 import HoverTip from './HoverTip.jsx';
+import {summonModalById} from '../actions/UIActions';
 
 /*
   Contains the app's main side navigation.
 */
 
-export default class NavBar extends Component {
+const mapDispatchToProps = dispatch => {
+  return {
+    summonModalById: (id) => {
+      dispatch(summonModalById(id));
+    }
+  }
+}
+
+class ConnectableNavBar extends Component {
 
 
   render() {
@@ -44,10 +53,10 @@ export default class NavBar extends Component {
         }
 
         {!user  &&
-            <Link to='/login'>
+            <a onClick={()=>{this.props.summonModalById("LOGIN")}}>
               <HoverTip text="Log in" />
               <FontAwesomeIcon icon={faSignOutAlt} />
-            </Link>
+            </a>
         }
 
         <hr/>
@@ -62,3 +71,6 @@ export default class NavBar extends Component {
     )
   }
 }
+
+const NavBar = connect(null, mapDispatchToProps)(ConnectableNavBar);
+export default NavBar;

@@ -5,7 +5,7 @@ import {dismissModal} from '../actions/UIActions';
 
 const mapStateToProps = state => {
     return {
-      currentModal: "LOGIN"
+      currentModal: state.currentModal
     }
 }
 
@@ -18,20 +18,15 @@ const mapDispatchToProps = dispatch => {
 class ConnectableModalHolder extends Component {
 
   registeredModals = {
-    LOGIN: () => {return (<LoginModal />)}
+    LOGIN: () => {return (<LoginModal />)},
+    LOGOUT: () => {return (<LogoutModal />)}
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: true
-    }
-  }
 
   render() {
 
     return(
-      <aside className={"modal-holder " + (this.state.active? "active":"inactive")} onClick={this.dismiss}>
+      <aside className={"modal-holder " + (this.props.currentModal != null? "active":"inactive")} onClick={this.dismiss}>
         {this.props.currentModal != null &&
           this.registeredModals[this.props.currentModal]()
         }
@@ -41,7 +36,6 @@ class ConnectableModalHolder extends Component {
 
   dismiss = () => {
     this.props.dismissModal();
-    this.setState({active:false});
   }
 }
 

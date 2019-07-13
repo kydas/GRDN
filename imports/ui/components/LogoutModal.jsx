@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import LoginForm from './LoginForm';
+import LogoutButton from './LogoutButton';
 
-export default class LoginModal extends Component {
+export default class LogoutModal extends Component {
 
 
   render(){
     return (
       <div className="modal">
-          <LoginForm />
+          <LogoutButton />
       </div>
     )
   }

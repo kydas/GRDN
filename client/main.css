@@ -99,8 +99,19 @@ a:hover .hover-tip, button:hover .hover-tip {
 
 .modal-holder.active {
   z-index: 1;
+  background-color: rgba(0,0,0,0.5);
 }
 
+.modal-holder .modal {
+  width: 244px;
+  height: 244px;
+  position: absolute;
+  top: calc(50% - 122px);
+  left: calc(50% - 122px);
+  background-color: #fff;
+  border: 2px solid #444;
+  padding: 32px;
+}
 
 /*NOTIFICATIONS*/
 .notifications-indicator{

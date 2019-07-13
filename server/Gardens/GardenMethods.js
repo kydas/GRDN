@@ -11,7 +11,7 @@ Meteor.methods(
       return garden;
     },
     'garden.getGardenById'({gardenId}){
-      
+
       return GetGarden(gardenId);
     },
     'garden.deleteGarden'({gardenId}) {
@@ -31,7 +31,7 @@ Meteor.methods(
     },
 
     'garden.updateWeather'({gardenId, time}){
-        console.log("Garden methods:" + gardenId + " " + time );
+        //console.log("Garden methods:" + gardenId + " " + time );
         return UpdateWeatherInGarden(gardenId, time)
     }
 });
