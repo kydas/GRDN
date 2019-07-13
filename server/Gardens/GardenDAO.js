@@ -94,10 +94,13 @@ export function AddNote(gardenId, plantInstanceId, time, message) {
 
 export function UpdateWeatherInGarden(gardenId, time){
   const garden = GetGarden(gardenId);
-  const weathers = garden.weather;
+  console.log(JSON.stringify(garden));
+  const weathers = garden.weather.filter(x => x != null);
   const location = garden.location;
   let lastDay;
+  console.log(JSON.stringify(weathers));
   if (weathers.length > 0) {
+    console.log(weathers.length);
       lastDay = weathers[weathers.length - 1];
       if (!lastDay.time == time) {
           const weather = Meteor.call('weather.getDay', {time, location}, (err, res) => {

@@ -5,6 +5,7 @@ import {Meteor} from 'meteor/meteor';
 import {withTracker} from 'meteor/react-meteor-data';
 import store from '../store/index';
 import {Provider} from 'react-redux';
+import ModalHolder from './ModalHolder';
 
 /*
   Composes cross-app compontents (e.g. a navbar) with an internal page.
@@ -16,6 +17,7 @@ class AppShellComponent extends Component {
       <Provider store={store}>
         <div className="app-shell">
           <NavBar user={Meteor.userId()} />
+          <ModalHolder />
           <main>
             {this.props.children}
           </main>

@@ -77,3 +77,11 @@ export function selectPlantSuccess(payload) {
 export function selectPlantError(payload) {
   return {type: "SELECT_PLANT_ERROR", payload}
 }
+
+export function modalSummoned(payload) {
+  return {type: "SUMMON_MODAL", payload}
+}
+
+export function modalDismissed(payload) {
+  return {type: "DISMISS_MODAL", payload}
+}

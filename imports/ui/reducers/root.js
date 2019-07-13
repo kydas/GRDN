@@ -3,7 +3,8 @@ const baseState = {
   loading: false,
   error: null,
   currentGarden: null,
-  currentPlant: null
+  currentPlant: null,
+  currentModal: null
 };
 
 export default function rootReducer (state = baseState, action) {
@@ -71,6 +72,20 @@ export default function rootReducer (state = baseState, action) {
     case "SELECT_PLANT_SUCCESS":
       return Object.assign({}, state, {
         currentPlant: action.payload
+      })
+
+
+
+
+    //UI actions
+    case "DISMISS_MODAL":
+    return Object.assign({}, state, {
+      currentModal: null
+    })
+
+    case "SUMMON_MODAL":
+      return Object.assign({}, state, {
+        currentModal: action.payload
       })
 
     default:
