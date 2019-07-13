@@ -17,7 +17,6 @@ class LoginForm extends Component {
   render() {
     return (
       <div className="log-in-form">
-        <h2>Log in to GRDN</h2>
         { this.state.errorMessage != null &&
           <p className="error-message">Uh oh! {this.state.errorMessage}</p>
         }

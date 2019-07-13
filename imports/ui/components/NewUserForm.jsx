@@ -17,7 +17,6 @@ class NewUserForm extends Component {
   render() {
     return (
       <div className="new-user-form">
-        <h2>Create a new user</h2>
         { this.state.errorMessage != null &&
           <p className="error-message">Uh oh! {this.state.errorMessage}</p>
         }

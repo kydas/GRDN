@@ -3,6 +3,11 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  cursor: pointer;
+  font-weight: bold;
+}
+
 /*LAYOUT*/
 
 main {
@@ -94,11 +99,16 @@ a:hover .hover-tip, button:hover .hover-tip {
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: -1;
+  z-index: -5;
 }
 
 .modal-holder.active {
   z-index: 1;
+}
+
+.modal-holder.active .modal-background {
+  width: 100%;
+  height: 100%;
   background-color: rgba(0,0,0,0.5);
 }
 
@@ -111,6 +121,7 @@ a:hover .hover-tip, button:hover .hover-tip {
   background-color: #fff;
   border: 2px solid #444;
   padding: 32px;
+  z-index: 2;
 }
 
 /*NOTIFICATIONS*/

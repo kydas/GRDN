@@ -46,10 +46,10 @@ class ConnectableNavBar extends Component {
         }
 
         {user &&
-              <Link to='/logout'>
+              <a onClick={()=>{this.props.summonModalById("LOGOUT")}}>
                 <HoverTip text="Log Out" />
                 <FontAwesomeIcon icon={faSignInAlt} />
-              </Link>
+              </a>
         }
 
         {!user  &&

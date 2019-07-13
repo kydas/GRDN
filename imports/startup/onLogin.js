@@ -4,15 +4,16 @@ import {updateWeatherInGarden, fetchUserGardens} from "../ui/actions/GardenActio
 
 Accounts.onLogin(function(user) {
 
-    console.log("on login is connected!");
     const gardens = Meteor.call("garden.getUserGardens",{userId: Meteor.userId()}, (err,res) =>{
         const gardens1 = res
         console.log(gardens1);
         for (i = 0; i < gardens1.length; i++){
             updateWeatherInGarden(gardens1[i]._id)
         }
-        }
+      }
     );
+
+    
 
 
 });
