@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchUserGardens, deleteGardenById} from '../actions/GardenActions';
 import GardenListEntry from './GardenListEntry';
+import LoadingSpinner from './LoadingSpinner';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -34,15 +35,24 @@ class ConnectableGardenList extends Component {
     }
 
     if (this.props.loading === true || this.props.gardens === null) {
-      return "Loading";
+      return <LoadingSpinner />
+    }
+
+    if (this.props.gardens.length === 0) {
+      return (
+        <p>Looks like you don't have any gardens yet! Click on the button below to create one.</p>
+      )
     }
 
     return (
-      <ul>
-        {this.props.gardens.map((el) =>
-          <GardenListEntry garden={el} remove={this.handleRemove} key={el._id}/>
-        )}
-      </ul>
+      <div>
+        <ul>
+          {this.props.gardens.map((el) =>
+            <GardenListEntry garden={el} remove={this.handleRemove} key={el._id}/>
+          )}
+        </ul>
+
+      </div>
     )
 
   }

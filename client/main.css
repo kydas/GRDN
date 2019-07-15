@@ -378,8 +378,8 @@ form.search-form input {
 .search-results ul {
     padding-left: 0;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-column-gap: 10px;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-column-gap: 12px;
     grid-row-gap: 15px;
 
 }
@@ -396,7 +396,7 @@ form.search-form input {
   padding: 12px;
   cursor: pointer;
   color: #1e2109;
-  background-color: #e9f6f6;
+  background-color: #eee9f2;
   transition: all 0.35s;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
@@ -459,6 +459,10 @@ form.search-form input {
 .add-to-garden-form input {
   padding: 4px;
   width: 32px;
+}
+
+.gardenForm .Container {
+  margin: 12px 0;
 }
 
 /*PLANT-LIST*/
