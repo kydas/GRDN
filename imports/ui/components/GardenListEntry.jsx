@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import connect from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash, faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default class GardenListEntry extends Component{
 
@@ -12,10 +14,15 @@ export default class GardenListEntry extends Component{
 
       return (
         <li key={this.props.garden._id} >
-          <a href={"/garden/" + this.props.garden._id}>
+          <a className="garden-list-entry" href={"/garden/" + this.props.garden._id}>
             {this.props.garden.name}
+            <button onClick={this.handleRemove}>
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
+            <button onClick={this.handleRemove}>
+              <FontAwesomeIcon icon={faSearchPlus} />
+            </button>
           </a>
-          <button onClick={this.handleRemove}>x</button>
         </li>
       )
   }

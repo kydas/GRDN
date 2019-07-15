@@ -45,7 +45,7 @@ class ConnectableGardenList extends Component {
     }
 
     return (
-      <div>
+      <div className="garden-list">
         <ul>
           {this.props.gardens.map((el) =>
             <GardenListEntry garden={el} remove={this.handleRemove} key={el._id}/>

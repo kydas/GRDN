@@ -296,12 +296,15 @@ select  {
 }
 
 .action-buttons {
-  text-align: right;
   margin-top: 12px;
 }
 
 .action-buttons.centered{
   text-align: center;
+}
+
+.action-buttons.right{
+  text-align: right;
 }
 
 select {
@@ -463,6 +466,49 @@ form.search-form input {
 
 .gardenForm .Container {
   margin: 12px 0;
+}
+
+/*GARDEN-LIST*/
+.garden-list ul {
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-column-gap: 16px;
+    grid-row-gap: 15px;
+
+}
+
+.garden-list ul li {
+  grid-column-start: auto;
+  grid-column-end: auto;
+  grid-row-start: auto;
+  grid-row-end: auto;
+  display: block;
+}
+
+.garden-list ul li .garden-list-entry {
+  padding: 12px;
+  cursor: pointer;
+  color: #1e2109;
+  background-color: #eee9f2;
+  transition: all 0.35s;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  display:block;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.garden-list ul li .garden-list-entry button {
+  float: right;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  transition: all 0.35s;
+}
+
+.garden-list ul li .garden-list-entry button:hover {
+  color: #83e8ba;
 }
 
 /*PLANT-LIST*/

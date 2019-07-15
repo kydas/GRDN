@@ -30,7 +30,7 @@ class ConnectableGardensPage extends Component {
         <main className="gardens-page">
           <h1>Your Gardens:</h1>
           <GardenList />
-          <div className="action-buttons centered">
+          <div className="action-buttons">
             <button onClick={this.summonCreateGardenModal} className="teal">New Garden</button>
           </div>
         </main>
