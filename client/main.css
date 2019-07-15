@@ -46,6 +46,10 @@ main {
   width: 50%;
 }
 
+.quarter {
+  width: 25%;
+}
+
 
 
 /*NAV*/
@@ -245,6 +249,7 @@ p.error-message {
   top: 0;
   max-height: 480px;
   overflow:hidden;
+  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .background-image-header img {
@@ -252,7 +257,6 @@ p.error-message {
 }
 
 .search-form-container {
-  margin-top: -64px;
   background-color: #fff;
   max-width: 1024px;
   box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.5);
@@ -277,12 +281,23 @@ form label {
 }
 
 form input[type="text"],
-form input[type="password"]  {
+form input[type="password"],
+select  {
   width: 100%;
 }
 
 .action-buttons {
   text-align: right;
+  margin-top: 12px;
+}
+
+.action-buttons.centered{
+  text-align: center;
+}
+
+select {
+  height: 44px;
+  padding: 6px;
   margin-top: 12px;
 }
 
@@ -344,8 +359,10 @@ form.search-form label {
 }
 
 form.search-form input {
-  padding: 12px;
-  margin: 12px;
+  box-sizing: border-box;
+  padding: 12px 0 12px 12px;
+  margin: 12px 0 12px 0;
+
 }
 
 /*SEARCH-RESULTS*/

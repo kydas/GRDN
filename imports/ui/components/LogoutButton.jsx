@@ -14,7 +14,7 @@ class ConnectableLogoutButton extends Component {
 
   render() {
     return (
-      <button onClick={this.handleLogout}>Logout</button>
+      <button className="purple" onClick={this.handleLogout}>Logout</button>
     )
   }
 

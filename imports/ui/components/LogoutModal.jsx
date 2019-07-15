@@ -15,7 +15,10 @@ class ConnectableLogoutModal extends Component {
   render(){
     return (
       <ModalWrapper name="Logout">
-        <LogoutButton />
+        Logging out? Click on the button below.
+        <div className="action-buttons centered">
+          <LogoutButton />
+        </div>
       </ModalWrapper>
     )
   }

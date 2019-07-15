@@ -18,35 +18,57 @@ export default class SearchForm extends Component {
       <div className="search-form-container">
         <h4>Search GRDN</h4>
         <form className="search-form">
-          <div>
-            <label>Common Name:</label>
-            <input type="text" name="common_name" value={this.state.common_name} onChange={this.handleChange}/>
-            <label>pH Minimum:</label>
-            <input type="text" name="ph_min" value={this.state.ph_min} onChange={this.handleChange}/>
-            <label>Duration:</label>
-            <select name="duration" onChange={this.handleChange}>
-              <option value=""> </option>
-              <option value="Annual">Annual</option>
-              <option value="Perennial">Perennial</option>
-            </select>
-            <label>Drought Tolerance:</label>
-            <select name="drought_tol" onChange={this.handleChange}>
-              <option value=""> </option>
-              <option value="Low">Low</option>
-              <option value="Medium"> Medium</option>
-              <option value="High"> High</option>
-            </select>
+          <div className="row">
+            <div className="col quarter">
+              <label>Common Name:</label>
+              <input type="text" name="common_name" value={this.state.common_name} onChange={this.handleChange}/>
+            </div>
+            <div className="col quarter">
+              <label>pH Minimum:</label>
+              <input type="text" name="ph_min" value={this.state.ph_min} onChange={this.handleChange}/>
+            </div>
+            <div className="col quarter">
+              <label>Duration:</label>
+              <select name="duration" value={this.state.duration} onChange={this.handleChange}>
+                <option value=""> </option>
+                <option value="Annual">Annual</option>
+                <option value="Perennial">Perennial</option>
+              </select>
+            </div>
+            <div className="col quarter">
+              <label>Drought Tolerance:</label>
+              <select name="drought_tol" value={this.state.drought_tol} onChange={this.handleChange}>
+                <option value=""> </option>
+                <option value="Low">Low</option>
+                <option value="Medium"> Medium</option>
+                <option value="High"> High</option>
+              </select>
+            </div>
           </div>
-          <input type="submit" onClick={this.handleSubmit}/>
+          <div className="action-buttons centered">
+            <button onClick={this.handleSubmit} className="teal">Search</button>
+            <button onClick={this.handleClear} className="purple">Clear</button>
+          </div>
         </form>
       </div>
     )
   }
 
   handleChange = (event) => {
+    event.preventDefault();
     this.setState(
       {[event.target.name]: event.target.value}
     );
+  }
+
+  handleClear = (event) => {
+    event.preventDefault();
+    this.setState({
+      common_name: "",
+      ph_min: "",
+      duration: "",
+      drought_tol: ""
+    })
   }
 
   handleSubmit = (event) => {
