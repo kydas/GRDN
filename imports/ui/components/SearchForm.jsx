@@ -15,28 +15,31 @@ export default class SearchForm extends Component {
 
   render() {
     return (
-      <form className="search-form">
-        <div>
-          <label>Common Name:</label>
-          <input type="text" name="common_name" value={this.state.common_name} onChange={this.handleChange}/>
-          <label>pH Minimum:</label>
-          <input type="text" name="ph_min" value={this.state.ph_min} onChange={this.handleChange}/>
-          <label>Duration:</label>
-          <select name="duration" onChange={this.handleChange}>
-            <option value=""> </option>
-            <option value="Annual">Annual</option>
-            <option value="Perennial">Perennial</option>
-          </select>
-          <label>Drought Tolerance:</label>
-          <select name="drought_tol" onChange={this.handleChange}>
-            <option value=""> </option>
-            <option value="Low">Low</option>
-            <option value="Medium"> Medium</option>
-            <option value="High"> High</option>
-          </select>
-        </div>
-        <input type="submit" onClick={this.handleSubmit}/>
-      </form>
+      <div className="search-form-container">
+        <h4>Search GRDN</h4>
+        <form className="search-form">
+          <div>
+            <label>Common Name:</label>
+            <input type="text" name="common_name" value={this.state.common_name} onChange={this.handleChange}/>
+            <label>pH Minimum:</label>
+            <input type="text" name="ph_min" value={this.state.ph_min} onChange={this.handleChange}/>
+            <label>Duration:</label>
+            <select name="duration" onChange={this.handleChange}>
+              <option value=""> </option>
+              <option value="Annual">Annual</option>
+              <option value="Perennial">Perennial</option>
+            </select>
+            <label>Drought Tolerance:</label>
+            <select name="drought_tol" onChange={this.handleChange}>
+              <option value=""> </option>
+              <option value="Low">Low</option>
+              <option value="Medium"> Medium</option>
+              <option value="High"> High</option>
+            </select>
+          </div>
+          <input type="submit" onClick={this.handleSubmit}/>
+        </form>
+      </div>
     )
   }
 

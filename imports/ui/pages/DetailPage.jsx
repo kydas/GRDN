@@ -29,22 +29,26 @@ export default class DetailPage extends Component {
     }
     return (
 
-      <div className="detail-page">
-        <div className="row">
-          <h1>{this.state.entry.common_name}</h1>
-          <div className="col half">
-            <DataTable entry={this.state.entry} />
-          </div>
-          <div className="col half">
-            <img src="/media/plant-placeholder-1.jpg" />
-          </div>
+        <div className="container">
+          <main className="detail-page">
+            <div className="row">
+              <h1>{this.state.entry.common_name}</h1>
+              <div className="col half">
+                <DataTable entry={this.state.entry} />
+              </div>
+              <div className="col half">
+                <img src="/media/plant-placeholder-1.jpg" />
+              </div>
+            </div>
+            {Meteor.userId() &&
+              <div>
+                <AddToGardenForm plantId={this.props.match.params.id} />
+              </div>
+            }
+          </main>
         </div>
-        {Meteor.userId() &&
-          <div>
-            <AddToGardenForm plantId={this.props.match.params.id} />
-          </div>
-        }
-      </div>
+
+
     )
   }
 }

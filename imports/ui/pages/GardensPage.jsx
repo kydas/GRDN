@@ -18,10 +18,12 @@ class GardensPage extends Component {
 
   render() {
     return (
-      <div>
-        <h1>A List of Your Gardens Goes Below!</h1>
+      <div className="container">
+        <main className="gardens-page">
+          <h1>A List of Your Gardens Goes Below!</h1>
           <GardenList />
           <CreateGardenForm />
+        </main>
       </div>
     )
   }
