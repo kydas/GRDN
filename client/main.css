@@ -9,10 +9,13 @@ a {
 }
 
 /*LAYOUT*/
+.container {
+  max-width: 1024px;
+  margin: auto;
+  position: relative;
+}
 
 main {
-  margin-left: 72px;
-  padding: 24px;
 }
 
 
@@ -36,23 +39,82 @@ main {
 /*NAV*/
 
 nav {
-  height: 100vh;
-  width: 72px;
-  position: absolute;
-  background-color: #444;
-  border-right: inset #666 2px;
+  display: block;
+  width: 100%;
+  background-color: #1e2019 ;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 nav a {
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  border: 4px solid #fff;
-  background-color: transparent;
   color: #fff;
-  display: block;
-  margin: 12px auto;
+  padding: 4px;
+  position: relative;
+
 }
+
+nav a .svg-inline--fa {
+  padding: 4px;
+  font-size: 24px;
+  text-align: center;
+}
+
+nav div.notifications-holder {
+  display: inline-block;
+  float: right;
+}
+
+nav label {
+  cursor: pointer;
+  height: 20px;
+  display: inline-block;
+  vertical-align: super;
+}
+
+nav a .hover-tip.hide-desktop {
+  display: none;
+}
+
+@media screen and (max-width: 640px){
+  nav {
+    height: 100vh;
+    width: 72px;
+    position: absolute;
+    border-right: inset #666 2px;
+  }
+
+
+  nav a label {
+      display: none;
+  }
+
+  nav a {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    border: 4px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    display: block;
+    margin: 12px auto;
+  }
+
+  nav div.notifications-holder {
+    position: absolute;
+    bottom: 0;
+    left: 4px;
+  }
+
+  nav a .svg-inline--fa {
+    padding: 6px;
+    font-size: 34px;
+    text-align: center;
+  }
+
+  nav a .hover-tip.hide-desktop {
+    display: block;
+  }
+}
+
 
 nav hr {
   border: 0px dotted #ddd;
@@ -60,17 +122,8 @@ nav hr {
   margin: 6px;
 }
 
-nav a .svg-inline--fa {
-  padding: 6px;
-  font-size: 34px;
-  text-align: center;
-}
 
-nav div.notifications-holder {
-  position: absolute;
-  bottom: 0;
-  left: 4px;
-}
+
 
 /*HOVER TIPS*/
 a .hover-tip, button .hover-tip {

@@ -26,46 +26,51 @@ class ConnectableNavBar extends Component {
     let user = this.props.user;
     return (
       <nav>
-        {user &&
-          <Link to='/'>
-            <HoverTip text="Your Gardens" />
-            <FontAwesomeIcon icon={faSeedling} />
+        <div className="container">
+          {user &&
+            <Link to='/'>
+              <HoverTip text="Your Gardens" hideDesktop="true"/>
+              <FontAwesomeIcon icon={faSeedling} />
+              <label>Gardens</label>
+            </Link>
+          }
+
+          <Link to='/search'>
+            <HoverTip text="Search Plants" hideDesktop="true" />
+            <FontAwesomeIcon icon={faSearch} />
+            <label>Search</label>
           </Link>
-        }
 
-        <Link to='/search'>
-          <HoverTip text="Search Plants" />
-          <FontAwesomeIcon icon={faSearch} />
-        </Link>
 
-        {user &&
-              <Link to='/profile'>
-                <HoverTip text="Your Profile" />
-                <FontAwesomeIcon icon={faHiking} />
-              </Link>
-        }
 
-        {user &&
-              <a onClick={()=>{this.props.summonModalById("LOGOUT")}}>
-                <HoverTip text="Log Out" />
-                <FontAwesomeIcon icon={faSignInAlt} />
-              </a>
-        }
 
-        {!user  &&
-            <a onClick={()=>{this.props.summonModalById("LOGIN")}}>
-              <HoverTip text="Log in" />
-              <FontAwesomeIcon icon={faSignOutAlt} />
-            </a>
-        }
 
-        <hr/>
-        <div className="notifications-holder">
-          <Link to='/notifications'>
-            <HoverTip text="Notifications" />
-            <NotificationsIndicator count="2" />
-            <FontAwesomeIcon icon={faBell} />
-          </Link>
+          <div className="notifications-holder">
+            {user &&
+                  <Link to='/profile'>
+                    <HoverTip text="Your Profile" />
+                    <FontAwesomeIcon icon={faHiking} />
+                  </Link>
+            }
+            {user &&
+                  <a onClick={()=>{this.props.summonModalById("LOGOUT")}}>
+                    <HoverTip text="Log Out" />
+                    <FontAwesomeIcon icon={faSignInAlt} />
+                  </a>
+            }
+
+            {!user  &&
+                <a onClick={()=>{this.props.summonModalById("LOGIN")}}>
+                  <HoverTip text="Log in" />
+                  <FontAwesomeIcon icon={faSignOutAlt} />
+                </a>
+            }
+            <Link to='/notifications'>
+              <HoverTip text="Notifications" />
+              <NotificationsIndicator count="2" />
+              <FontAwesomeIcon icon={faBell} />
+            </Link>
+          </div>
         </div>
       </nav>
     )

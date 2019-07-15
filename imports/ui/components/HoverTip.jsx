@@ -7,7 +7,7 @@ export default class HoverTip extends Component {
 
   render() {
     return (
-      <div className="hover-tip">
+      <div className={"hover-tip " + (this.props.hideDesktop ? "hide-desktop":"")} >
         {this.props.text}
       </div>
     );
