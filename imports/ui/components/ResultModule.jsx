@@ -9,12 +9,12 @@ class ResultModule extends Component {
 
   render() {
     return (
-      <div className="result-module" onClick={this.toDetailPage}>
+      <li className="result-module" onClick={this.toDetailPage}>
         <img src="/media/plant-placeholder-1.jpg" />
         <h2>{this.props.entry.common_name}</h2>
         <p className="scientific-name">{this.props.entry.scientific_name}</p>
 
-      </div>
+      </li>
     )
   }
 
