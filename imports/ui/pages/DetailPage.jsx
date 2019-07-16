@@ -33,7 +33,7 @@ export default class DetailPage extends Component {
           <main className="detail-page">
             <div className="row">
               <h1>{this.state.entry.common_name}</h1>
-              <div className="col half">
+              <div className="col half left">
                 <DataTable entry={this.state.entry} />
               </div>
               <div className="col half">

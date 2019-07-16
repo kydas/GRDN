@@ -26,6 +26,11 @@ a {
 }
 
 main {
+  margin-top: 48px;
+}
+
+main h1 {
+  margin-bottom: 6px;
 }
 
 
@@ -48,6 +53,10 @@ main {
 
 .quarter {
   width: 25%;
+}
+
+.left {
+  padding-left: 0;
 }
 
 
@@ -287,12 +296,15 @@ select  {
 }
 
 .action-buttons {
-  text-align: right;
   margin-top: 12px;
 }
 
 .action-buttons.centered{
   text-align: center;
+}
+
+.action-buttons.right{
+  text-align: right;
 }
 
 select {
@@ -368,16 +380,28 @@ form.search-form input {
 /*SEARCH-RESULTS*/
 .search-results ul {
     padding-left: 0;
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-column-gap: 12px;
+    grid-row-gap: 15px;
+
+}
+
+.search-results ul li {
+  grid-column-start: auto;
+  grid-column-end: auto;
+  grid-row-start: auto;
+  grid-row-end: auto;
+  display: block;
 }
 
 .result-module {
-  border: 1px solid #444;
   padding: 12px;
-  width: 33%;
   cursor: pointer;
-  color: #222;
-  background-color: #eee;
-  transition: color 0.2s, background-color 0.2s;
+  color: #1e2109;
+  background-color: #eee9f2;
+  transition: all 0.35s;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .result-module img {
@@ -385,8 +409,8 @@ form.search-form input {
 }
 
 .result-module:hover {
-  color: #444;
-  background-color: #ddd;
+  color: #000;
+  background-color: #83e8ba;
 }
 
 /*DETAIL-PAGE*/
@@ -438,6 +462,53 @@ form.search-form input {
 .add-to-garden-form input {
   padding: 4px;
   width: 32px;
+}
+
+.gardenForm .Container {
+  margin: 12px 0;
+}
+
+/*GARDEN-LIST*/
+.garden-list ul {
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-column-gap: 16px;
+    grid-row-gap: 15px;
+
+}
+
+.garden-list ul li {
+  grid-column-start: auto;
+  grid-column-end: auto;
+  grid-row-start: auto;
+  grid-row-end: auto;
+  display: block;
+}
+
+.garden-list ul li .garden-list-entry {
+  padding: 12px;
+  cursor: pointer;
+  color: #1e2109;
+  background-color: #eee9f2;
+  transition: all 0.35s;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  display:block;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.garden-list ul li .garden-list-entry button {
+  float: right;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  transition: all 0.35s;
+}
+
+.garden-list ul li .garden-list-entry button:hover {
+  color: #83e8ba;
 }
 
 /*PLANT-LIST*/
