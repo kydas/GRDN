@@ -62,6 +62,7 @@ export function fetchUserGardens() {
 export function addPlantToGarden(gardenId, plantId, qty, plantDate) {
   return dispatch => {
     //dispatch addPlant begin
+    console.log(plantDate);
     Meteor.apply('garden.addPlant', [{gardenId: gardenId}, {plantId: plantId}, {qty: qty}, {plantDate: plantDate}], (err, res) => {
       if (err) {
         return dispatch(addPlantToGardenError(err));

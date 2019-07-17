@@ -34,8 +34,7 @@ class ConnectableNotesFeed extends Component {
 
     return (
       <div>
-        <h3>Notes feed:</h3>
-        <ul>
+        <ul className="notes-feed">
           {this.state.notes.map((el) =>
             <NoteEntry note={el} key={el._id} />
           )}

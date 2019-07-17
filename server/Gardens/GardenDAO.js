@@ -45,8 +45,9 @@ export function AddPlant(gardenId, trefleId, qty, plantDate) {
   let plants = garden.plants;
   let id = new Meteor.Collection.ObjectID();
 
-
-  let data = getPlantByID(plantId)    //??????
+  console.log(plantDate);
+  
+  let data = getPlantByID(trefleId)
   .then((res) => {
     plants.push({
       _id: id._str,

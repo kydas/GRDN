@@ -419,6 +419,15 @@ form.search-form input {
   float:left;
 }
 
+.link-back {
+  display: block;
+  float: right;
+}
+
+.half-title{
+  width: 50%;
+  display: inline-block;
+}
 /*DATA-TABLE*/
 .data-table td {
   border:1px solid #CCC;
@@ -468,6 +477,23 @@ form.search-form input {
   margin: 12px 0;
 }
 
+/*PLANT NOTES*/
+.new-note-form {
+  width: 100%;
+  resize: none;
+}
+
+ul.notes-feed li {
+    border-bottom: 1px solid #eee;
+    list-style-type: none;
+}
+
+ul.notes-feed li .date {
+  text-align: right;
+  font-size: 14px;
+  font-style: italic;
+}
+
 /*GARDEN-LIST*/
 .garden-list ul {
     padding-left: 0;
@@ -488,7 +514,6 @@ form.search-form input {
 
 .garden-list ul li .garden-list-entry {
   padding: 12px;
-  cursor: pointer;
   color: #1e2109;
   background-color: #eee9f2;
   transition: all 0.35s;
@@ -499,15 +524,19 @@ form.search-form input {
   text-decoration: none;
 }
 
-.garden-list ul li .garden-list-entry button {
+.garden-list ul li .garden-list-entry button,
+.garden-list ul li .garden-list-entry a,
+.garden-list ul li .garden-list-entry a:visited {
   float: right;
   background-color: transparent;
   cursor: pointer;
   border: none;
   transition: all 0.35s;
+  color: #1e2019;
 }
 
-.garden-list ul li .garden-list-entry button:hover {
+.garden-list ul li .garden-list-entry button:hover,
+.garden-list ul li .garden-list-entry a:hover {
   color: #83e8ba;
 }
 
@@ -523,9 +552,10 @@ ul.plant-list li {
 }
 
 ul.plant-list li div.plant-entry {
-  border: 1px solid #444;
   padding: 0 24px;
-  background-color: #ddd;
+  background-color: #fff;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 12px;
 }
 
 div.plant-entry h3 {
@@ -535,21 +565,19 @@ div.plant-entry h3 {
 
 div.plant-entry-controls {
   width: auto;
-  display: inline-block;
+  display: block;
   text-align: right;
-  border-left: 1px solid #444;
   padding: 6px 12px;
-  float: right;
 }
 
 div.plant-entry-controls button {
-  width: 48px;
-  height: 48px;
-  padding: 6px;
-  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
   background-color: #fff;
   margin-right: 4px;
-  font-size: 20px;
+  border-width: 0;
+  font-size: 18px;
   position: relative;
 }
 

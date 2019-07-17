@@ -34,6 +34,7 @@ class ConnectableGardenPlantEntry extends Component {
 
     return (
       <div className="plant-entry">
+
         <h3>{this.props.plantEntry.qty} x {this.props.plantEntry.cachedData.common_name} </h3>
         {this.props.plantEntry.plantDate &&
           <p>Planted on {this.props.plantEntry.plantDate.toLocaleDateString("en-US")}</p>
@@ -52,6 +53,7 @@ class ConnectableGardenPlantEntry extends Component {
           <button><FontAwesomeIcon icon={faPenNib} onClick={this.handleAddNoteClick} /></button>
           <button><FontAwesomeIcon icon={faTrash} onClick={this.handleRemoveClick} /></button>
         </div>
+
       </div>
     )
   }
