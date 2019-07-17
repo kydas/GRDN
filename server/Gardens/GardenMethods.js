@@ -1,5 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import {GetGardens, CreateGarden, GetGarden, DeleteGarden, AddPlant, RemovePlant, AddNote, UpdateWeatherInGarden} from './GardenDAO';
+import {checkPlantNotification} from "../Plants/PlantDAO";
 
 Meteor.methods(
   {
@@ -26,12 +27,10 @@ Meteor.methods(
     'garden.addNoteToPlant'({gardenId}, {plantInstanceId}, {time}, {message}){
       return AddNote(gardenId, plantInstanceId, time, message);
     },
-    'garden.addPlant'({gardenId}, {plantId}, {qty}) {
-      return AddPlant(gardenId, plantId, qty);
-    },
-
     'garden.updateWeather'({gardenId, time}){
-        //console.log("Garden methods:" + gardenId + " " + time );
         return UpdateWeatherInGarden(gardenId, time)
+    },
+    'plant.checkNotifications'({gardenId, userId}){
+        return checkPlantNotification(gardenId, userId)
     }
 });

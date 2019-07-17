@@ -11,11 +11,11 @@ export function getWeatherTest() {
             console.log(error);
             throw new Error("Cannot return weather data right now!")
         });
-};
+}
 
 export function getWeatherDay(time, location){
-    let locationReq = location.lat.toString()
-    locationReq = locationReq + "," + location.lng.toString()
+    let locationReq = location.lat.toString();
+    locationReq = locationReq + "," + location.lng.toString();
     const reqURL = "https://api.darksky.net/forecast/" + WEATHER_KEY + "/" + locationReq + "," + time + "?";
     return axios.get(reqURL, {
         params: {units: "si",
@@ -35,5 +35,30 @@ export function getWeatherDay(time, location){
         .catch(function(error){
             console.log(error);
             throw new Error("Cannot return weather data right now")
+        })
+}
+
+export function getForecast(location){
+    let locationReq = location.lat.toString();
+    locationReq = locationReq + "," + location.lng.toString();
+    const reqURL = "https://api.darksky.net/forecast/" + WEATHER_KEY + "/" + locationReq + "?";
+    return axios.get(reqURL, {
+        params: {units: "si",
+                exclude: "minutely,currently, hourly, flags"}
+    })
+        .then(function(response) {
+            const forecast = response.data.daily.data[0];
+            return {
+                time: forecast.time,
+                icon: forecast.icon,
+                maxTemp: forecast.temperatureMax,
+                minTemp: forecast.temperatureMin,
+                precipitation: forecast.precipIntensity
+
+            };
+        })
+        .catch(function (error) {
+            console.log(error);
+            throw new Error("cannot return forecast right now");
         })
 }

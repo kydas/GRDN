@@ -135,6 +135,17 @@ export function selectPlant(gardenId, plantId) {
   }
 }
 
+export function plantNotifications(gardenId, userId){
+  // TODO redux stuff?
+  Meteor.call('plant.checkNotifications', {gardenId, userId}, (err, res) => {
+    if (err) {
+      // do something
+    } else {
+      // do something
+    }
+  })
+}
+
 export function updateWeatherInGarden(gardenId){
 
   let time = getYesterdayDate();

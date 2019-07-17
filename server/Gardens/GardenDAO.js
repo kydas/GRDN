@@ -46,7 +46,7 @@ export function AddPlant(gardenId, trefleId, qty, plantDate) {
   let id = new Meteor.Collection.ObjectID();
 
 
-  let data = getPlantByID(plantId)    //??????
+  let data = getPlantByID(trefleId)
   .then((res) => {
     plants.push({
       _id: id._str,
@@ -91,6 +91,8 @@ export function AddNote(gardenId, plantInstanceId, time, message) {
   Gardens.update({_id: gardenId}, garden)
   return garden;
 }
+
+
 
 export function UpdateWeatherInGarden(gardenId, time){
   const garden = GetGarden(gardenId);
