@@ -18,9 +18,8 @@ class AppShellComponent extends Component {
         <div className="app-shell">
           <NavBar user={Meteor.userId()} />
           <ModalHolder />
-          <main>
-            {this.props.children}
-          </main>
+          {this.props.children}
+
           <footer>
           </footer>
         </div>

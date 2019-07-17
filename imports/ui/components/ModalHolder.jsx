@@ -4,6 +4,7 @@ import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 import LogoutModal from './LogoutModal';
 import {dismissModal} from '../actions/UIActions';
+import CreateModal from './CreateModal';
 
 const mapStateToProps = state => {
     return {
@@ -22,7 +23,8 @@ class ConnectableModalHolder extends Component {
   registeredModals = {
     LOGIN: () => {return (<LoginModal />)},
     LOGOUT: () => {return (<LogoutModal />)},
-    REGISTER: () => {return (<RegisterModal />)}
+    REGISTER: () => {return (<RegisterModal />)},
+    CREATE: () => {return (<CreateModal />)}
   }
 
 

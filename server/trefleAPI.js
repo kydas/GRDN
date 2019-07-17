@@ -38,9 +38,11 @@ export function getPlant(searchParams){
 
 export function getPlantByID(plantId){
 
+
     return axios.get("https://trefle.io/api/plants/" + plantId + "?token=" + AUTH_TOKEN, {
         httpsAgent: agent
     } )
+
             .then(function(response) {
             return response.data;
             })
@@ -51,9 +53,11 @@ export function getPlantByID(plantId){
 }
 
 export function getPlantsCommon(name){
+
     return axios.get("https://trefle.io/api/plants?token=" + AUTH_TOKEN + "&&q=" + name + "&&complete_data=true", {
         httpsAgent: agent
     })
+
         .then(function(response) {
 
             return response.data;

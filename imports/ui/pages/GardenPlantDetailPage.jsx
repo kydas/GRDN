@@ -42,19 +42,20 @@ class ConnectableGardenPlantDetailPage extends Component {
     }
 
     return (
+      <div className="container">
+        <main className="detail-page">
+          <div className="row">
+            <h1>{this.props.currentPlant.qty} x {this.props.currentPlant.cachedData.common_name} in {this.props.currentGarden.name}</h1>
+            <div className="col half">
+              <DataTable entry={this.props.currentPlant.cachedData} />
 
-      <div className="detail-page">
-        <div className="row">
-          <h1>{this.props.currentPlant.qty} x {this.props.currentPlant.cachedData.common_name} in {this.props.currentGarden.name}</h1>
-          <div className="col half">
-            <DataTable entry={this.props.currentPlant.cachedData} />
-
+            </div>
+            <div className="col half">
+              <AddNewNoteForm plantId={this.props.currentPlant._id} gardenId={this.props.currentGarden._id}/>
+              <NotesFeed notes={this.props.currentPlant.notes} />
+            </div>
           </div>
-          <div className="col half">
-            <AddNewNoteForm plantId={this.props.currentPlant._id} gardenId={this.props.currentGarden._id}/>
-            <NotesFeed notes={this.props.currentPlant.notes} />
-          </div>
-        </div>
+        </main>
       </div>
     )
   }

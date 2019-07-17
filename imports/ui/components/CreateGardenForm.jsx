@@ -48,12 +48,15 @@ class ConnectableCreateGardenForm extends Component {
   render() {
     return (
       <form className="gardenForm">
-        Name: <input type="text" onChange={this.handleGardenNameChange} />
+        <label>Garden Name:</label>
+        <input type="text" onChange={this.handleGardenNameChange} />
+
+        <label>Location:</label>
         {this.state.mapApiKey &&
           <GoogleMapGeoPicker
             apiKey={this.state.mapApiKey}
             height={300}
-            width={400}
+            width={236}
             defaultValue={{
               latitude: 49.2581322,
               longitude: -123.2403414,
@@ -62,8 +65,9 @@ class ConnectableCreateGardenForm extends Component {
             onChange={(location) => this.setState({ location })}
           />
         }
-
-        <button onClick={this.handleCreate}>Create!</button>
+        <div className="action-buttons">
+          <button onClick={this.handleCreate} className="teal">Create!</button>
+        </div>
       </form>
     )
   }
