@@ -26,10 +26,62 @@ export function fetchGardenError(payload) {
   return {type: "FETCH_GARDEN_ERROR", payload}
 }
 
+export function deleteGardenSuccess(payload) {
+  return {type: "DELETE_GARDEN_SUCCESS", payload}
+}
+
+export function deleteGardenError(payload) {
+  return {type: "DELETE_GARDEN_ERROR", payload}
+}
+
 export function addPlantToGardenSuccess(payload) {
   return {type: "ADD_PLANT_TO_GARDEN_SUCCESS", payload}
 }
 
 export function addPlantToGardenError(payload) {
   return {type: "ADD_PLANT_TO_GARDEN_ERROR", payload}
+}
+
+export function removePlantFromGardenSuccess(payload) {
+  return {type: "REMOVE_PLANT_FROM_GARDEN_SUCCESS", payload}
+}
+
+export function removePlantFromGardenError(payload) {
+  return {type: "REMOVE_PLANT_FROM_GARDEN_ERROR", payload};
+}
+
+export function addNoteToPlantError(payload) {
+  return {type: "ADD_NOTE_TO_PLANT_ERROR", payload};
+}
+
+export function addNoteToPlantSuccess(payload) {
+  return {type: "ADD_NOTE_TO_PLANT_SUCCESS", payload};
+}
+
+export function selectGardenBegin(payload) {
+  return {type: "SELECT_GARDEN_BEGIN", payload}
+}
+
+export function selectGardenSuccess(payload) {
+  return {type: "SELECT_GARDEN_SUCCESS", payload}
+}
+
+export function selectPlantBegin(payload) {
+  return {type: "SELECT_PLANT_BEGIN", payload}
+}
+
+export function selectPlantSuccess(payload) {
+  return {type: "SELECT_PLANT_SUCCESS", payload}
+}
+
+export function selectPlantError(payload) {
+  return {type: "SELECT_PLANT_ERROR", payload}
+}
+
+export function modalSummoned(payload) {
+  return {type: "SUMMON_MODAL", payload}
+}
+
+export function modalDismissed(payload) {
+  return {type: "DISMISS_MODAL", payload}
 }

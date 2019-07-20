@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { dismissModal } from '../actions/UIActions'
 
-class NewUserForm extends Component {
+const mapDispatchToProps = dispatch => {
+  return {
+    dismissModal: () => {dispatch(dismissModal())}
+  }
+}
+
+class ConnectableNewUserForm extends Component {
 
   constructor(props) {
       super(props);
@@ -17,18 +25,21 @@ class NewUserForm extends Component {
   render() {
     return (
       <div className="new-user-form">
-        <h2>Create a new user</h2>
         { this.state.errorMessage != null &&
           <p className="error-message">Uh oh! {this.state.errorMessage}</p>
         }
         <form onSubmit={this.handleSubmit}>
-          Username:
+          <label>Username:</label>
           <input type="text" name="username" onChange={this.handleUsernameChange} />
-          Email:
+          <label>Email:</label>
           <input type="text" name="email" onChange={this.handleEmailChange} />
-          Password:
+          <label>Password:</label>
           <input type="password" name="password" onChange={this.handlePasswordChange} />
-          <input type="submit"/>
+          <div className="action-buttons">
+            <button className="purple" onClick={this.props.toggle}> Login </button>
+            <button className="teal" onClick={this.handleSubmit}> Register </button>
+
+          </div>
         </form>
       </div>
     )
@@ -49,6 +60,7 @@ class NewUserForm extends Component {
         } else {
             this.setState({errorMessage: null});
             Meteor.loginWithPassword(this.state.username, this.state.password);
+            this.props.dismissModal();
             this.props.history.push({
               pathname: '/'
             });
@@ -70,4 +82,5 @@ class NewUserForm extends Component {
   }
 }
 
-export default withRouter(NewUserForm);
+const NewUserForm = connect(null, mapDispatchToProps)(withRouter(ConnectableNewUserForm));
+export default NewUserForm;

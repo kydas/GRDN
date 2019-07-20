@@ -3,11 +3,34 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  cursor: pointer;
+  font-weight: bold;
+}
+
 /*LAYOUT*/
+.container {
+  max-width: 1024px;
+  margin: auto;
+  position: relative;
+}
+
+.container.popped-up {
+  background-color: #fff;
+  z-index: 4;
+  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container.dropped {
+  margin-top: 256px;
+}
 
 main {
-  margin-left: 72px;
-  padding: 24px;
+  margin-top: 48px;
+}
+
+main h1 {
+  margin-bottom: 6px;
 }
 
 
@@ -28,26 +51,98 @@ main {
   width: 50%;
 }
 
+.quarter {
+  width: 25%;
+}
+
+.left {
+  padding-left: 0;
+}
+
+
+
 /*NAV*/
 
 nav {
-  height: 100vh;
-  width: 72px;
-  position: absolute;
-  background-color: #444;
-  border-right: inset #666 2px;
+  display: block;
+  width: 100%;
+  background-color: #1e2019 ;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  position: fixed;
+  top: 0;
 }
 
 nav a {
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  border: 4px solid #fff;
-  background-color: transparent;
   color: #fff;
-  display: block;
-  margin: 12px auto;
+  padding: 4px;
+  position: relative;
+
 }
+
+nav a .svg-inline--fa {
+  padding: 4px;
+  font-size: 24px;
+  text-align: center;
+}
+
+nav div.notifications-holder {
+  display: inline-block;
+  float: right;
+}
+
+nav label {
+  cursor: pointer;
+  height: 20px;
+  display: inline-block;
+  vertical-align: super;
+}
+
+nav a .hover-tip.hide-desktop {
+  display: none;
+}
+
+@media screen and (max-width: 640px){
+  nav {
+    height: 100vh;
+    width: 72px;
+    position: absolute;
+    border-right: inset #666 2px;
+  }
+
+
+  nav a label {
+      display: none;
+  }
+
+  nav a {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    border: 4px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    display: block;
+    margin: 12px auto;
+  }
+
+  nav div.notifications-holder {
+    position: absolute;
+    bottom: 0;
+    left: 4px;
+  }
+
+  nav a .svg-inline--fa {
+    padding: 6px;
+    font-size: 34px;
+    text-align: center;
+  }
+
+  nav a .hover-tip.hide-desktop {
+    display: block;
+  }
+}
+
 
 nav hr {
   border: 0px dotted #ddd;
@@ -55,32 +150,24 @@ nav hr {
   margin: 6px;
 }
 
-nav a .svg-inline--fa {
-  padding: 6px;
-  font-size: 34px;
-  text-align: center;
-}
 
-nav div.notifications-holder {
-  position: absolute;
-  bottom: 0;
-  left: 4px;
-}
+
 
 /*HOVER TIPS*/
-a .hover-tip {
+a .hover-tip, button .hover-tip {
   position: absolute;
   right: -102px;
   background: #5E9;
   color: #fff;
   padding: 6px 8px;
   border: 1px solid #fff;
+  font-size: 14px;
   opacity: 0;
   transition: z-index 0.6s, opacity 0.5s  ease-in-out, right 0.5s ease-in-out;
   z-index: -1;
 }
 
-a:hover .hover-tip {
+a:hover .hover-tip, button:hover .hover-tip {
   display: block;
   right: -80px;
   opacity: 1;
@@ -88,6 +175,62 @@ a:hover .hover-tip {
 
 }
 
+/*ERROR MESSAGE*/
+p.error-message {
+  font-style: italic;
+  font-size: 14px;
+}
+
+/*MODAL*/
+.modal-holder {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -5;
+  top:0;
+}
+
+.modal-holder.active {
+  z-index: 6;
+}
+
+.modal-holder.active .modal-background {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-holder .modal {
+  width: 256px;
+  min-height: 128px;
+  position: absolute;
+  top: calc(50% - 256px);
+  left: calc(50% - 128px);
+  background-color: #fff;
+  border: 2px solid #689689;
+  padding: 0;
+  z-index: 2;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal .modal-header {
+  background-color: #689689;
+  padding: 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.modal .modal-body {
+  padding: 12px;
+}
+
+.modal .modal-header h3 {
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-weight: lighter;
+}
 
 /*NOTIFICATIONS*/
 .notifications-indicator{
@@ -105,6 +248,104 @@ a:hover .hover-tip {
   right: 0;
   border-radius: 50%;
 }
+
+
+/*SEARCH PAGE*/
+.background-image-header {
+  position: absolute;
+  width: 100vw;
+  z-index: -1;
+  top: 0;
+  max-height: 480px;
+  overflow:hidden;
+  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.background-image-header img {
+  width: 100vw;
+}
+
+.search-form-container {
+  background-color: #fff;
+  max-width: 1024px;
+  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.5);
+  padding: 24px;
+  margin-bottom: 24px;
+
+}
+
+.search-form-container h4 {
+  margin-top: 0;
+}
+
+/*FORMS*/
+form label {
+  display: block;
+  font-weight: lighter;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 0.75em;
+  margin-top: 12px;
+  color: #777;
+}
+
+form input[type="text"],
+form input[type="password"],
+select  {
+  width: 100%;
+}
+
+.action-buttons {
+  margin-top: 12px;
+}
+
+.action-buttons.centered{
+  text-align: center;
+}
+
+.action-buttons.right{
+  text-align: right;
+}
+
+select {
+  height: 44px;
+  padding: 6px;
+  margin-top: 12px;
+}
+
+.action-buttons button {
+  padding: 6px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.5s, border 0.25s;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  margin-left: 6px;
+}
+
+
+button.teal {
+  background-color: #83e8ba;
+  border: 2px solid #73d8aa;
+}
+
+button.teal:hover {
+  background-color: #689689;
+  border: 2px solid #689689;
+}
+
+button.purple {
+  background-color: #593f62;
+  border: 2px solid #492f52;
+}
+
+button.purple:hover {
+  background-color: #4c3b4d;
+  border: 2px solid #4c3b4d;
+}
+
 
 /*LOGIN-LOGOUT*/
 .user-management form input {
@@ -130,23 +371,37 @@ form.search-form label {
 }
 
 form.search-form input {
-  padding: 12px;
-  margin: 12px;
+  box-sizing: border-box;
+  padding: 12px 0 12px 12px;
+  margin: 12px 0 12px 0;
+
 }
 
 /*SEARCH-RESULTS*/
 .search-results ul {
     padding-left: 0;
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-column-gap: 12px;
+    grid-row-gap: 15px;
+
+}
+
+.search-results ul li {
+  grid-column-start: auto;
+  grid-column-end: auto;
+  grid-row-start: auto;
+  grid-row-end: auto;
+  display: block;
 }
 
 .result-module {
-  border: 1px solid #444;
   padding: 12px;
-  width: 33%;
   cursor: pointer;
-  color: #222;
-  background-color: #eee;
-  transition: color 0.2s, background-color 0.2s;
+  color: #1e2109;
+  background-color: #eee9f2;
+  transition: all 0.35s;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .result-module img {
@@ -154,8 +409,8 @@ form.search-form input {
 }
 
 .result-module:hover {
-  color: #444;
-  background-color: #ddd;
+  color: #000;
+  background-color: #83e8ba;
 }
 
 /*DETAIL-PAGE*/
@@ -207,6 +462,53 @@ form.search-form input {
 .add-to-garden-form input {
   padding: 4px;
   width: 32px;
+}
+
+.gardenForm .Container {
+  margin: 12px 0;
+}
+
+/*GARDEN-LIST*/
+.garden-list ul {
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-column-gap: 16px;
+    grid-row-gap: 15px;
+
+}
+
+.garden-list ul li {
+  grid-column-start: auto;
+  grid-column-end: auto;
+  grid-row-start: auto;
+  grid-row-end: auto;
+  display: block;
+}
+
+.garden-list ul li .garden-list-entry {
+  padding: 12px;
+  cursor: pointer;
+  color: #1e2109;
+  background-color: #eee9f2;
+  transition: all 0.35s;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  display:block;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.garden-list ul li .garden-list-entry button {
+  float: right;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  transition: all 0.35s;
+}
+
+.garden-list ul li .garden-list-entry button:hover {
+  color: #83e8ba;
 }
 
 /*PLANT-LIST*/

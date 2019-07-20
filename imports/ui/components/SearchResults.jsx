@@ -17,7 +17,7 @@ export default class SearchResults extends Component {
         </div>
       )
     }
-    console.log(this.props.results);
+
     return (
       <div className="search-results">
         {this.props.results.length === 1 &&

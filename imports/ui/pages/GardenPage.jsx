@@ -27,14 +27,21 @@ export default class GardenPage extends Component{
       )
     }
     return (
-      <div className="row">
-        <h1>Garden: {this.state.entry.name}</h1>
-        <div className="col half">
-        <PlantList plants={this.state.entry.plants} />
-        </div>
-        <div className="col half">
-        <MapContainer center={{lat: 49.2320521, lng: -122.9832466}} zoom={14.5} />
-        </div>
+      <div className="container">
+        <main>
+          <div className="row">
+            <h1>Garden: {this.state.entry.name}</h1>
+            <div className="col half">
+            <PlantList gardenId={this.state.entry._id} plants={this.state.entry.plants} />
+            </div>
+            <div className="col half">
+            <MapContainer center={
+              {lat: parseFloat(this.state.entry.location.lat) || 0,      //TODO: validate that this is between 0, 360
+                lng: parseFloat(this.state.entry.location.lng) || 0}     //TODO: validate tahtthis is between -90, 90
+              } zoom={14.5} />
+            </div>
+          </div>
+        </main>
       </div>
     )
   }

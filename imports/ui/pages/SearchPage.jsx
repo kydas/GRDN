@@ -6,9 +6,15 @@ export default class SearchPage extends Component {
   render() {
     return (
       <div>
-        <h1>A Searchable, Filterable Database of Plants, wow!</h1>
-        <SearchModule />
+        <div className="background-image-header">
+          <img src="/media/benjamin-combs-wuU_SSxDeS0-unsplash-1236.jpg" />
+        </div>
+        <div className="container dropped">
+          <main className="search-page">
+            <SearchModule />
 
+          </main>
+        </div>
       </div>
     )
   }

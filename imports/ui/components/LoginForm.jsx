@@ -17,16 +17,19 @@ class LoginForm extends Component {
   render() {
     return (
       <div className="log-in-form">
-        <h2>Log in to GRDN</h2>
         { this.state.errorMessage != null &&
           <p className="error-message">Uh oh! {this.state.errorMessage}</p>
         }
         <form>
-          Username:
+          <label>Username:</label>
           <input type="text" name="username" autoComplete="username" onChange={this.handleUsernameChange} />
-          Password:
+          <label>Password:</label>
           <input type="password" name="password" autoComplete="current-password" onChange={this.handlePasswordChange}/>
-          <input type="submit" onClick={this.handleLogin}/>
+          <div className="action-buttons">
+            <button className="purple" onClick={this.props.toggle}> Register </button>
+            <button className="teal" onClick={this.handleLogin}> Login </button>
+
+          </div>
         </form>
       </div>
 
@@ -63,5 +66,7 @@ class LoginForm extends Component {
     this.setState({password: event.target.value});
   }
 }
+
+
 
 export default withRouter(LoginForm);

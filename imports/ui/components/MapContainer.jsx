@@ -18,7 +18,6 @@ export default class MapContainer extends Component {
     if (this.state.apiKey === null) {
       Meteor.call('googleMap.getApiKey', (err, res) => {
         that.setState({"apiKey": res});
-        console.log(res);
       });
       return " ";
     }
