@@ -9,7 +9,7 @@ export default class NoteEntry extends Component {
     return (
       <li>
         <p>{this.props.note.message}</p>
-        <p>{this.props.note.time.toLocaleDateString("en-US")}</p>
+        <p className="date">on {this.props.note.time.toLocaleDateString("en-US")}</p>
       </li>
     )
   }

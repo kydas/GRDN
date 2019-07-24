@@ -5,7 +5,8 @@ import {
   deleteGardenSuccess, deleteGardenError,
   addNoteToPlantSuccess, addNoteToPlantError,
   selectGardenBegin, selectGardenSuccess,
-  selectPlantBegin, selectPlantSuccess, selectPlantError
+  selectPlantBegin, selectPlantSuccess, selectPlantError,
+  selectTrefleIdSuccess, selectTrefleIdError
 } from './index';
 
 export function fetchUserGardens() {
@@ -61,7 +62,6 @@ export function fetchUserGardens() {
 
 export function addPlantToGarden(gardenId, plantId, qty, plantDate) {
   return dispatch => {
-    //dispatch addPlant begin
     Meteor.apply('garden.addPlant', [{gardenId: gardenId}, {plantId: plantId}, {qty: qty}, {plantDate: plantDate}], (err, res) => {
       if (err) {
         return dispatch(addPlantToGardenError(err));
@@ -132,6 +132,17 @@ export function selectPlant(gardenId, plantId) {
       }
       return dispatch(selectPlantSuccess(plant));
     });
+  }
+}
+
+export function selectTrefleId(trefleId) {
+  return dispatch => {
+    if (trefleId) {
+      dispatch(selectTrefleIdSuccess(trefleId));
+    } else {
+      dispatch(selectTrefleIdError());
+    }
+
   }
 }
 
