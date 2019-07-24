@@ -258,7 +258,19 @@ p.error-message {
 }
 
 .notifications-scroll {
-  
+  overflow-y: scroll;
+  height: 600px;
+}
+
+.notifications-scroll ul {
+  padding-left: 0;
+}
+
+.notifications-scroll ul li {
+  list-style-type: none;
+  padding: 12px;
+  border: 1px solid #83e8ba;
+  margin-left: 0;
 }
 
 /*SEARCH PAGE*/

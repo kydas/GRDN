@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getCurrentUserNotifications} from '../actions/NotificationsActions';
+import NotificationEntry from './NotificationEntry';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -25,10 +26,16 @@ class ConnectableNotificationsScroll extends Component {
   }
 
   render(){
-    console.log(this.props.notifications);
+    if (this.props.notifications == null) {
+      return null;
+    }
     return (
       <div className="notifications-scroll">
-        
+        <ul>
+          {this.props.notifications.map((el) =>
+            <NotificationEntry entry={el} key={el._id} />
+          )}
+        </ul>
       </div>
     )
   }
