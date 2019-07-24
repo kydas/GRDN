@@ -45,8 +45,6 @@ export function AddPlant(gardenId, trefleId, qty, plantDate) {
   let plants = garden.plants;
   let id = new Meteor.Collection.ObjectID();
 
-  console.log(plantDate);
-  
   let data = getPlantByID(trefleId)
   .then((res) => {
     plants.push({
@@ -93,15 +91,14 @@ export function AddNote(gardenId, plantInstanceId, time, message) {
   return garden;
 }
 
+
+
 export function UpdateWeatherInGarden(gardenId, time){
   const garden = GetGarden(gardenId);
-  console.log(JSON.stringify(garden));
   const weathers = garden.weather.filter(x => x != null);
   const location = garden.location;
   let lastDay;
-  console.log(JSON.stringify(weathers));
   if (weathers.length > 0) {
-    console.log(weathers.length);
       lastDay = weathers[weathers.length - 1];
       if (!lastDay.time == time) {
           const weather = Meteor.call('weather.getDay', {time, location}, (err, res) => {
@@ -109,13 +106,8 @@ export function UpdateWeatherInGarden(gardenId, time){
                   console.log(err)
               }
               let wth = res;
-
-
               weathers.push(wth);
-
-
               garden.weather = weathers;
-
               Gardens.update({_id: gardenId}, garden);
           });
       }
@@ -125,17 +117,11 @@ export function UpdateWeatherInGarden(gardenId, time){
                   console.log(err)
               }
               let wth = res;
-
-
               weathers.push(wth);
-
-
               garden.weather = weathers;
-
               Gardens.update({_id: gardenId}, garden);
           });
       }
-
     while (weathers.length > 7){
         weathers.shift();
     }
