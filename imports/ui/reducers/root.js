@@ -4,7 +4,9 @@ const baseState = {
   error: null,
   currentGarden: null,
   currentPlant: null,
-  currentModal: null
+  currentModal: null,
+  addToGardenError: null,
+  addToGardenSuccess: null
 };
 
 export default function rootReducer (state = baseState, action) {
@@ -64,14 +66,19 @@ export default function rootReducer (state = baseState, action) {
         currentGarden: action.payload
       })
 
-      case "SELECT_PLANT_BEGIN":
-        return Object.assign({}, state, {
-          currentPlant: null
-        })
+    case "SELECT_PLANT_BEGIN":
+      return Object.assign({}, state, {
+        currentPlant: null
+    })
 
     case "SELECT_PLANT_SUCCESS":
       return Object.assign({}, state, {
         currentPlant: action.payload
+      })
+
+    case "SELECT_TREFLE_ID_SUCCESS":
+      return Object.assign({}, state, {
+        currentTrefleId: action.payload
       })
 
 
@@ -87,6 +94,24 @@ export default function rootReducer (state = baseState, action) {
       return Object.assign({}, state, {
         currentModal: action.payload
       })
+
+    case "MESSAGE_CLEARED":
+      switch (action.payload) {
+        case "addToGardenSuccess":
+        return Object.assign({}, state, {
+          addToGardenSuccess: null
+        })
+
+        case "addToGardenError":
+        return Object.assign({}, state, {
+          addToGardenError: null
+        })
+
+        default:
+          return state;
+      }
+
+
 
     default:
       return state;

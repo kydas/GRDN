@@ -60,6 +60,14 @@ main h1 {
 }
 
 
+.third {
+  width: 33%;
+}
+
+.two-third {
+  width: 66%;
+}
+
 
 /*NAV*/
 
@@ -201,7 +209,7 @@ p.error-message {
 }
 
 .modal-holder .modal {
-  width: 256px;
+  width: 480px;
   min-height: 128px;
   position: absolute;
   top: calc(50% - 256px);
@@ -211,7 +219,7 @@ p.error-message {
   padding: 0;
   z-index: 2;
   border-radius: 2px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -291,6 +299,7 @@ form label {
 
 form input[type="text"],
 form input[type="password"],
+form input[type="number"],
 select  {
   width: 100%;
 }

@@ -78,10 +78,22 @@ export function selectPlantError(payload) {
   return {type: "SELECT_PLANT_ERROR", payload}
 }
 
+export function selectTrefleIdSuccess(payload) {
+  return {type: "SELECT_TREFLE_ID_SUCCESS", payload}
+}
+
+export function selectTrefleIdError(payload) {
+  return {type: "SELECT_TREFLE_ID_ERROR", payload}
+}
+
 export function modalSummoned(payload) {
   return {type: "SUMMON_MODAL", payload}
 }
 
 export function modalDismissed(payload) {
   return {type: "DISMISS_MODAL", payload}
+}
+
+export function messageCleared(payload) {
+  return {type: "MESSAGE_CLEARED", payload}
 }
