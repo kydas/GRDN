@@ -6,7 +6,8 @@ const baseState = {
   currentPlant: null,
   currentModal: null,
   addToGardenError: null,
-  addToGardenSuccess: null
+  addToGardenSuccess: null,
+  userNotifications: []
 };
 
 export default function rootReducer (state = baseState, action) {
@@ -111,6 +112,10 @@ export default function rootReducer (state = baseState, action) {
           return state;
       }
 
+    case "GET_NOTIFICATIONS_SUCCESS":
+      return Object.assign({}, state, {
+        userNotifications: action.payload
+      })
 
 
     default:

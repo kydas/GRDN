@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getNotificationsByUserId} from '../actions/NotificationsActions';
+import {getCurrentUserNotifications} from '../actions/NotificationsActions';
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUserNotifications: (userId) => {
-      getNotificationsByUserId(userId);
-    }
+    getCurrentUserNotifications: () => {dispatch(getCurrentUserNotifications())}
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    notifications: state.userNotifications
   }
 }
 
@@ -15,21 +19,21 @@ class ConnectableNotificationsScroll extends Component {
   constructor(props) {
     super(props);
 
-    if (Meteor.userId()) {
-      this.props.getUserNotifications(Meteor.userId());
-    }
+    this.props.getCurrentUserNotifications();
+
 
   }
 
   render(){
+    console.log(this.props.notifications);
     return (
       <div className="notifications-scroll">
-        i am scroll!
+        
       </div>
     )
   }
 }
 
 
-const NotificationsScroll = connect(null, mapDispatchToProps)(ConnectableNotificationsScroll);
+const NotificationsScroll = connect(mapStateToProps, mapDispatchToProps)(ConnectableNotificationsScroll);
 export default NotificationsScroll;

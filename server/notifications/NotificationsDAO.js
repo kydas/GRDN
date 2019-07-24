@@ -32,13 +32,7 @@ export function tempNotification(userId, gardenId, plantId){
 }
 
 export function getNotificationsByUserId(userId) {
-  return new Promise(function(resolve, reject) {
-    Notifications.find({userId: userId}, function(err, res) {
-      if(err) {
-        reject(err);
-      }
-      console.log("Got notifications!" + res.length);
-      resolve(res);
-    })
-  })
+  return Notifications.find({userId: userId}).map(function (doc) {
+    return doc;
+  });
 }

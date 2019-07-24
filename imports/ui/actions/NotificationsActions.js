@@ -1,13 +1,15 @@
 import {getNotificationsSuccess, getNotificationsError} from './index.js';
 
-export function getNotificationsByUserId(userId) {
+export function getCurrentUserNotifications() {
+  console.log("actions");
   return dispatch => {
-    Meteor.call("notification.getNotificationsByUserId", {userId}, (err, res) => {
+    Meteor.call('notification.getNotificationsByUserId', {userId: Meteor.userId()}, (err, res) => {
       if (err) {
-        dispatch(getNotificationsError());
+        dispatch(getNotificationsError(err.statusText));
+        return "Error";
       }
-      console.log(res);
-      dispatch(getNotificationsSuccess(res));
+      return dispatch(getNotificationsSuccess(res));
+
     });
   }
 }
