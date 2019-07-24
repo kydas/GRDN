@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import NotificationStrings from '../strings/NotificationStrings';
 
 export default class NotificationEntry extends Component {
 
@@ -9,9 +10,7 @@ export default class NotificationEntry extends Component {
 
     return(
       <li className="notification-entry">
-        {this.props.entry.type}
-        -
-        {this.props.entry.gardenId}
+        {NotificationStrings()[this.props.entry.type](this.props.entry.plantId, this.props.entry.gardenId)}
       </li>
     )
   }
