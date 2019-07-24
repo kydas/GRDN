@@ -97,3 +97,11 @@ export function modalDismissed(payload) {
 export function messageCleared(payload) {
   return {type: "MESSAGE_CLEARED", payload}
 }
+
+export function getNotificationsSuccess(payload) {
+  return {type: "GET_NOTIFICATIONS_SUCCESS", payload}
+}
+
+export function getNotificationsError(payload) {
+  return {type: "GET_NOTIFICATIONS_ERROR", payload}
+}

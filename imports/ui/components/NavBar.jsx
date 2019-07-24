@@ -65,11 +65,11 @@ class ConnectableNavBar extends Component {
                   <FontAwesomeIcon icon={faSignOutAlt} />
                 </a>
             }
-            <Link to='/notifications'>
+            <a onClick={()=>{this.props.summonModalById("NOTIFICATIONS")}}>
               <HoverTip text="Notifications" />
               <NotificationsIndicator count="2" />
               <FontAwesomeIcon icon={faBell} />
-            </Link>
+            </a>
           </div>
         </div>
       </nav>

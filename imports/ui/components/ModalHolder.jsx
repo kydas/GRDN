@@ -6,6 +6,7 @@ import LogoutModal from './LogoutModal';
 import AddPlantModal from './AddPlantModal';
 import {dismissModal} from '../actions/UIActions';
 import CreateModal from './CreateModal';
+import NotificationsModal from './NotificationsModal';
 
 const mapStateToProps = state => {
     return {
@@ -26,7 +27,8 @@ class ConnectableModalHolder extends Component {
     LOGOUT: () => {return (<LogoutModal />)},
     REGISTER: () => {return (<RegisterModal />)},
     CREATE: () => {return (<CreateModal />)},
-    ADDPLANT: () => {return (<AddPlantModal />)}
+    ADDPLANT: () => {return (<AddPlantModal />)},
+    NOTIFICATIONS: () => {return (<NotificationsModal />)}
   }
 
 
