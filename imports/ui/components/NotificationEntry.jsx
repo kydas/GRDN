@@ -9,9 +9,12 @@ export default class NotificationEntry extends Component {
     }
 
     return(
-      <li className="notification-entry">
-        {NotificationStrings()[this.props.entry.type](this.props.entry.plant.cachedData.common_name, this.props.entry.garden.name)}
-      </li>
+        <li className="notification-entry">
+          {NotificationStrings()[this.props.entry.type](this.props.entry.plant.cachedData.common_name, this.props.entry.garden.name)}
+          <a href={`${window.location.protocol}//${window.location.host}/garden/${this.props.entry.gardenId}/${this.props.entry.plantId}`}>GO</a>
+          <a>DELETE</a>
+
+        </li>
     )
   }
 }
