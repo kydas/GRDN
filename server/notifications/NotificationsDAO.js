@@ -43,3 +43,7 @@ export function getNotificationsByUserId(userId) {
     return doc;
   });
 }
+
+export function getNotificationCountByUserId(userId){
+  return Notifications.find({userId: userId}).count;
+}

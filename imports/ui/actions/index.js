@@ -105,3 +105,7 @@ export function getNotificationsSuccess(payload) {
 export function getNotificationsError(payload) {
   return {type: "GET_NOTIFICATIONS_ERROR", payload}
 }
+
+export function getNotificationsCount(payload) {
+  return {type: "GET_NOTIFICATIONS_COUNT", payload}
+}
