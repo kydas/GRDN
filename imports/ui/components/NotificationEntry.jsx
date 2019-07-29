@@ -10,7 +10,7 @@ export default class NotificationEntry extends Component {
 
     return(
       <li className="notification-entry">
-        {NotificationStrings()[this.props.entry.type](this.props.entry.plantId, this.props.entry.gardenId)}
+        {NotificationStrings()[this.props.entry.type](this.props.entry.plant.cachedData.common_name, this.props.entry.garden.name)}
       </li>
     )
   }

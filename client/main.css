@@ -259,7 +259,7 @@ p.error-message {
 
 .notifications-scroll {
   overflow-y: scroll;
-  height: 600px;
+  height: 480px;
 }
 
 .notifications-scroll ul {

@@ -1,4 +1,4 @@
-const Gardens = new Mongo.Collection('gardens');
+export const Gardens = new Mongo.Collection('gardens');
 import {getPlantByID} from '../trefleAPI';
 
 export function GetGardens(userId) {
