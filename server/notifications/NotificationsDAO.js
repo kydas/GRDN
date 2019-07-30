@@ -4,7 +4,8 @@ import {GetGarden} from '../Gardens/GardenDAO';
 export function waterNotification(userId, gardenId, plantId){
     return new Promise (function(resolve, reject) {
         const notification = {
-            type: "water", userId: userId, gardenId: gardenId, plantId: plantId, date: new Date().getTime()
+            type: "water", userId: userId, gardenId: gardenId, plantId: plantId, date: new Date().getTime(),
+            read: false
         };
         Notifications.insert(notification, function(err, res) {
             if (err) {
@@ -19,7 +20,8 @@ export function waterNotification(userId, gardenId, plantId){
 export function tempNotification(userId, gardenId, plantId){
     return new Promise (function(resolve, reject) {
         const notification = {
-            type: "minTemp", userId: userId, gardenId: gardenId, plantId: plantId, date: new Date().getTime()
+            type: "minTemp", userId: userId, gardenId: gardenId, plantId: plantId, date: new Date().getTime(),
+            read: false
         };
         Notifications.insert(notification, function(err, res) {
             if (err) {
@@ -56,3 +58,4 @@ export function deleteNotification(_id) {
     return _id;
   });
 }
+

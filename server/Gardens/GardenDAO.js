@@ -54,6 +54,7 @@ export function AddPlant(gardenId, trefleId, qty, plantDate) {
       plantDate: plantDate,
       cachedData: res,
       cachedDataLastUpdate: new Date().getTime(),
+        watered:[],
       notes: []
     });
 
