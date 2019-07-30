@@ -109,3 +109,11 @@ export function getNotificationsError(payload) {
 export function getNotificationsCount(payload) {
   return {type: "GET_NOTIFICATIONS_COUNT", payload}
 }
+
+export function deleteNotificationError(payload) {
+  return {type: "DELETE_NOTIFICATION_ERROR", payload}
+}
+
+export function deleteNotificationSuccess(payload) {
+  return {type: "DELETE_NOTIFICATION_SUCCESS", payload};
+}

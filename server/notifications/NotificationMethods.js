@@ -1,5 +1,5 @@
 import {Meteor} from 'meteor/meteor';
-import {getNotificationsByUserId, getNotificationsCountByUserId} from "./NotificationsDAO";
+import {getNotificationsByUserId, getNotificationsCountByUserId, deleteNotification} from "./NotificationsDAO";
 
 Meteor.methods(
   {
@@ -8,6 +8,9 @@ Meteor.methods(
     },
     "notification.getNotificationsCountByUserId"({userId}){
       return getNotificationsCountByUserId(userId);
+    },
+    'notification.deleteNotification'({_id}) {
+      return deleteNotification(_id);
     }
   }
 )

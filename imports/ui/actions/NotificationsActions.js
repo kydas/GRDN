@@ -1,4 +1,4 @@
-import {getNotificationsSuccess, getNotificationsError} from './index.js';
+import {getNotificationsSuccess, getNotificationsError, deleteNotificationSuccess, deleteNotificationError} from './index.js';
 
 export function getCurrentUserNotifications() {
   return dispatch => {
@@ -22,6 +22,18 @@ export function getCurrentUserNotificationsCount() {
       }
       return dispatch(getNotificationsSuccess(res));
 
+    });
+  }
+}
+
+export function deleteNotification(id) {
+  return dispatch => {
+    Meteor.call('notification.deleteNotification', {_id: id}, (err, res) => {
+      if(err) {
+        dispatch(deleteNotificationError(err.statusText));
+        return "error";
+      }
+      return dispatch(deleteNotificationSuccess(id));
     });
   }
 }

@@ -47,3 +47,12 @@ export function getNotificationsByUserId(userId) {
 export function getNotificationCountByUserId(userId){
   return Notifications.find({userId: userId}).count;
 }
+
+export function deleteNotification(_id) {
+  return Notifications.remove({_id: _id}, (err) => {
+    if (err) {
+      console.log(err)
+    }
+    return _id;
+  });
+}

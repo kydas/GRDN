@@ -43,7 +43,6 @@ export default function rootReducer (state = baseState, action) {
       })
 
     case "DELETE_GARDEN_SUCCESS":
-      console.log(action);
       return Object.assign({}, state, {
         gardens: state.gardens.filter(x => x._id != action.payload)
       })
@@ -119,6 +118,11 @@ export default function rootReducer (state = baseState, action) {
         userNotificationsCount: action.payload.length
       })
 
+
+    case "DELETE_NOTIFICATION_SUCCESS":
+      return Object.assign({}, state, {
+        userNotifications: state.userNotifications.filter(x => x._id != action.payload)
+      })
 
     default:
       return state;

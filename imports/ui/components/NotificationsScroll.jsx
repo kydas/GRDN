@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getCurrentUserNotifications} from '../actions/NotificationsActions';
+import {getCurrentUserNotifications, deleteNotification} from '../actions/NotificationsActions';
 import NotificationEntry from './NotificationEntry';
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCurrentUserNotifications: () => {dispatch(getCurrentUserNotifications())}
+    getCurrentUserNotifications: () => {dispatch(getCurrentUserNotifications())},
+    deleteNotification: (notificationId)=> {dispatch(deleteNotification(notificationId))}
   }
 }
 
@@ -33,7 +34,7 @@ class ConnectableNotificationsScroll extends Component {
       <div className="notifications-scroll">
         <ul>
           {this.props.notifications.map((el) =>
-            <NotificationEntry entry={el} key={el._id} />
+            <NotificationEntry entry={el} key={el._id} deleteAction={this.props.deleteNotification}/>
           )}
         </ul>
       </div>
