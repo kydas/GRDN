@@ -6,21 +6,38 @@ import { faSeedling, faSearch, faHiking, faBell, faSignInAlt, faSignOutAlt } fro
 import {connect} from 'react-redux';
 import HoverTip from './HoverTip.jsx';
 import {summonModalById} from '../actions/UIActions';
+import {getCurrentUserNotifications} from '../actions/NotificationsActions';
 
 /*
   Contains the app's main side navigation.
 */
 
+const mapStateToProps = state => {
+  return {
+    userNotificationsCount: state.userNotificationsCount
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     summonModalById: (id) => {
       dispatch(summonModalById(id));
+    },
+    getUserNotifications: (userId) => {
+      dispatch(getCurrentUserNotifications(userId));
     }
   }
 }
 
 class ConnectableNavBar extends Component {
 
+  constructor(props) {
+    super(props);
+
+    if (this.props.user) {
+      this.props.getUserNotifications(this.props.user._id);
+    }
+  }
 
   render() {
     let user = this.props.user;
@@ -46,7 +63,7 @@ class ConnectableNavBar extends Component {
 
 
           <div className="notifications-holder">
-            {user &&
+            {user && false && //Currently hidden
                   <Link to='/profile'>
                     <HoverTip text="Your Profile" />
                     <FontAwesomeIcon icon={faHiking} />
@@ -65,11 +82,11 @@ class ConnectableNavBar extends Component {
                   <FontAwesomeIcon icon={faSignOutAlt} />
                 </a>
             }
-            <Link to='/notifications'>
+            <a onClick={()=>{this.props.summonModalById("NOTIFICATIONS")}}>
               <HoverTip text="Notifications" />
-              <NotificationsIndicator count="2" />
+              <NotificationsIndicator hide={this.props.userNotificationsCount == 0} count={this.props.userNotificationsCount} />
               <FontAwesomeIcon icon={faBell} />
-            </Link>
+            </a>
           </div>
         </div>
       </nav>
@@ -77,5 +94,5 @@ class ConnectableNavBar extends Component {
   }
 }
 
-const NavBar = connect(null, mapDispatchToProps)(ConnectableNavBar);
+const NavBar = connect(mapStateToProps, mapDispatchToProps)(ConnectableNavBar);
 export default NavBar;
