@@ -1,6 +1,10 @@
 # CPSC 436 Project 
 
-Group members: Joshua Grant, Kyle de Silva, ~~Brett Pasula~~ 
+Summary:
+GRDN is an app for managing your plants and gardens.
+It includes a plant search with detailed data, plant storage and live weather data integration to serve notifications regarding plant wellbeing, so you can stop worrying and start growing.
+
+Group members: Joshua Grant, Kyle de Silva, ~~Brett Pasula~~
 
 Potential names: GRDN, GRDNR, Phyto 
 

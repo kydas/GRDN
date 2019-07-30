@@ -14,15 +14,15 @@ export default class GardenListEntry extends Component{
 
       return (
         <li key={this.props.garden._id} >
-          <a className="garden-list-entry" href={"/garden/" + this.props.garden._id}>
+          <div className="garden-list-entry">
             {this.props.garden.name}
             <button onClick={this.handleRemove}>
               <FontAwesomeIcon icon={faTrash} />
             </button>
-            <button onClick={this.handleRemove}>
+            <a href={"/garden/" + this.props.garden._id}>
               <FontAwesomeIcon icon={faSearchPlus} />
-            </button>
-          </a>
+            </a>
+          </div>
         </li>
       )
   }

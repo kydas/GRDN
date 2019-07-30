@@ -56,7 +56,7 @@ class ConnectableCreateGardenForm extends Component {
           <GoogleMapGeoPicker
             apiKey={this.state.mapApiKey}
             height={300}
-            width={236}
+            width={460}
             defaultValue={{
               latitude: 49.2581322,
               longitude: -123.2403414,

@@ -1,4 +1,4 @@
-const Gardens = new Mongo.Collection('gardens');
+export const Gardens = new Mongo.Collection('gardens');
 import {getPlantByID} from '../trefleAPI';
 
 export function GetGardens(userId) {
@@ -44,7 +44,6 @@ export function AddPlant(gardenId, trefleId, qty, plantDate) {
   let garden = GetGarden(gardenId);
   let plants = garden.plants;
   let id = new Meteor.Collection.ObjectID();
-
 
   let data = getPlantByID(trefleId)
   .then((res) => {

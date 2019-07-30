@@ -4,7 +4,11 @@ const baseState = {
   error: null,
   currentGarden: null,
   currentPlant: null,
-  currentModal: null
+  currentModal: null,
+  addToGardenError: null,
+  addToGardenSuccess: null,
+  userNotifications: [],
+  userNotificationsCount: 0
 };
 
 export default function rootReducer (state = baseState, action) {
@@ -39,7 +43,6 @@ export default function rootReducer (state = baseState, action) {
       })
 
     case "DELETE_GARDEN_SUCCESS":
-      console.log(action);
       return Object.assign({}, state, {
         gardens: state.gardens.filter(x => x._id != action.payload)
       })
@@ -64,14 +67,19 @@ export default function rootReducer (state = baseState, action) {
         currentGarden: action.payload
       })
 
-      case "SELECT_PLANT_BEGIN":
-        return Object.assign({}, state, {
-          currentPlant: null
-        })
+    case "SELECT_PLANT_BEGIN":
+      return Object.assign({}, state, {
+        currentPlant: null
+    })
 
     case "SELECT_PLANT_SUCCESS":
       return Object.assign({}, state, {
         currentPlant: action.payload
+      })
+
+    case "SELECT_TREFLE_ID_SUCCESS":
+      return Object.assign({}, state, {
+        currentTrefleId: action.payload
       })
 
 
@@ -86,6 +94,34 @@ export default function rootReducer (state = baseState, action) {
     case "SUMMON_MODAL":
       return Object.assign({}, state, {
         currentModal: action.payload
+      })
+
+    case "MESSAGE_CLEARED":
+      switch (action.payload) {
+        case "addToGardenSuccess":
+        return Object.assign({}, state, {
+          addToGardenSuccess: null
+        })
+
+        case "addToGardenError":
+        return Object.assign({}, state, {
+          addToGardenError: null
+        })
+
+        default:
+          return state;
+      }
+
+    case "GET_NOTIFICATIONS_SUCCESS":
+      return Object.assign({}, state, {
+        userNotifications: action.payload,
+        userNotificationsCount: action.payload.length
+      })
+
+
+    case "DELETE_NOTIFICATION_SUCCESS":
+      return Object.assign({}, state, {
+        userNotifications: state.userNotifications.filter(x => x._id != action.payload)
       })
 
     default:
