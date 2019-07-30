@@ -1,14 +1,14 @@
 import {GetGarden} from "../Gardens/GardenDAO";
-import {waterNotification, tempNotification} from "../notifications/NotificationsDAO";
+import {waterNotification, tempNotification, getNotifications} from "../notifications/NotificationsDAO";
 
 export function checkPlantNotification(gardenId, userId){
     const garden = GetGarden(gardenId);
+    const notifications = getNotifications(userId, gardenId);
     const weathers = garden.weather.filter(x => x != null);
     const plants = garden.plants.filter(x => x != null);
-    //console.log("Line 8 plantDao: " + JSON.stringify(plants, null, 2));
     const yesterdayWeather = weathers[weathers.length - 1];
-    //console.log(JSON.stringify(yesterdayWeather));
     const yesterdayPrecip = dailyPrecip(yesterdayWeather);
+    const today = new Date();
     let forecast = 0;
     Meteor.call('weather.forecast', {location: garden.location}, (res, err) => {
         if(!err){
@@ -19,13 +19,10 @@ export function checkPlantNotification(gardenId, userId){
     });
     for (i = 0; i < plants.length; i++){
         const plant = plants[i];
-        //console.log("Line 22 PlantDAO: " + JSON.stringify(plant.cachedData.main_species.growth));
         const precipMin = getPrecipReq(plant);
         const tempMin = getTempMin(plant);
-        console.log("precipMin 25 " + precipMin + "\n yesterdayPrecip 25 " + yesterdayPrecip);
         if (precipMin > yesterdayPrecip){
             if (precipMin > forecast){
-                //console.log("Send plant water notification");
                 waterNotification(userId, gardenId, plant._id)
                     .then(function(response){
                         console.log(response)
@@ -33,12 +30,12 @@ export function checkPlantNotification(gardenId, userId){
                     .catch(function(error){
                         console.log(error)
                     })
+                plant.watered.push(today);
             }
         } else {
             console.log("plants have had enough water")
         }
         if (yesterdayWeather.minTemp > tempMin){
-           // console.log("Send plant temperature notification");
             tempNotification(userId, gardenId, plant._id)
                 .then(function(response) {
                     console.log(response)
@@ -67,4 +64,16 @@ function dailyPrecip(weather){
 function getTempMin(plant){
     const data = plant.cachedData.main_species.growth;
     return data.temperature_minimum.deg_c;
+}
+
+function withinDay(date1, date2) {
+    if (date1.getFullYear() == date2.getFullYear()){
+        if(date1.getMonth() == date2.getMonth()) {
+            if (date1.getDate() == date2.getDate()){
+                return true;
+            }
+        }
+    } else {
+        return false;
+    }
 }
