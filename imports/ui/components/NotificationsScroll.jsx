@@ -27,8 +27,8 @@ class ConnectableNotificationsScroll extends Component {
   }
 
   render(){
-    if (this.props.notifications == null) {
-      return null;
+    if (this.props.notifications == null || this.props.notifications.length == 0) {
+      return "No notifications found!";
     }
     return (
       <div className="notifications-scroll">

@@ -443,6 +443,12 @@ form.search-form input {
 }
 
 /*DETAIL-PAGE*/
+.detail-page .photo-frame {
+  max-height: 640px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
 .detail-page img {
   max-width: 640px;
   float:left;
