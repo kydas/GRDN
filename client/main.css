@@ -578,24 +578,42 @@ ul.notes-feed li .date {
 /*PLANT-LIST*/
 ul.plant-list {
   padding-left: 0;
-
+  display: grid;
+  grid-template-columns: 49% 49%;
+  grid-column-gap: 12px;
+  grid-row-gap: 15px;
 }
 
 ul.plant-list li {
   list-style-type: none;
   margin-left: 0;
+  grid-column-start: auto;
+  grid-column-end: auto;
+  grid-row-start: auto;
+  grid-row-end: auto;
 }
 
 ul.plant-list li div.plant-entry {
-  padding: 0 24px;
+  padding: 24px 24px;
   background-color: #fff;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
   margin-bottom: 12px;
 }
 
-div.plant-entry h3 {
-  width: 50%;
-  display: inline-block;
+div.plant-entry .photo-frame {
+  height: 240px;
+  overflow: hidden;
+}
+
+div.plant-entry .photo-frame img {
+  height: 240px;
+  width: 100%;
+
+}
+
+div.plant-entry a, div.plant-entry a h3 {
+  color: #444;
+  text-decoration: none;
 }
 
 div.plant-entry-controls {

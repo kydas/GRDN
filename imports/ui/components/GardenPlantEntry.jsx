@@ -34,8 +34,10 @@ class ConnectableGardenPlantEntry extends Component {
 
     return (
       <div className="plant-entry">
-
-        <h3>{this.props.plantEntry.qty} x {this.props.plantEntry.cachedData.common_name} </h3>
+        <div className="photo-frame">
+          <img src={this.getPictureUrl()} />
+        </div>
+        <a href={this.getPageUrl()}><h3>{this.props.plantEntry.qty} x {this.props.plantEntry.cachedData.common_name} </h3></a>
         {this.props.plantEntry.plantDate &&
           <p>Planted on {this.props.plantEntry.plantDate.toLocaleDateString("en-US")}</p>
         }
@@ -50,7 +52,6 @@ class ConnectableGardenPlantEntry extends Component {
             <NotificationsIndicator count="2" />
           </button>
           <button><FontAwesomeIcon icon={faShower} /></button>
-          <button><FontAwesomeIcon icon={faPenNib} onClick={this.handleAddNoteClick} /></button>
           <button><FontAwesomeIcon icon={faTrash} onClick={this.handleRemoveClick} /></button>
         </div>
 
@@ -70,10 +71,17 @@ class ConnectableGardenPlantEntry extends Component {
     this.forceUpdate();
   }
 
-  handleAddNoteClick = () => {
-    let message = "henlo";
-    this.props.addNoteToPlant(this.props.gardenId, this.props.plantEntry._id, message)
+  getPictureUrl = () => {
+      if (this.props.plantEntry.cachedData.images && this.props.plantEntry.cachedData.images.length > 0) {
+        return this.props.plantEntry.cachedData.images[0].url;
+      }
+      return "/media/plant-placeholder-1.jpg";
   }
+
+  getPageUrl = () => {
+    return '/garden/' + this.props.gardenId + '/' + this.props.plantEntry._id;
+  }
+
 }
 
 const GardenPlantEntry = connect(null, mapDispatchToProps)(withRouter(ConnectableGardenPlantEntry));
