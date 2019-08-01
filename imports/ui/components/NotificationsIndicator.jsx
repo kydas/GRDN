@@ -8,13 +8,13 @@ import React, {Component} from 'react';
 export default class NotificationsIndicator extends Component {
 
   render () {
-    if (this.props.hide) return null;
+    if (this.props.hide || this.props.count == 0) return null;
 
     let overflow = this.props.count > 99;
     let value = overflow ? "99+": this.props.count;
     let overflowClass = overflow? "overflow" : "";
 
-
+    console.log(this.props.count);
     return (
       <div className={overflowClass + " notifications-indicator"}>
         {value}

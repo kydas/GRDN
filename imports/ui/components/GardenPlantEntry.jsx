@@ -15,12 +15,19 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
+const mapStateToProps = state => {
+  return {
+    notifications: state.userNotifications
+  }
+}
 
 class ConnectableGardenPlantEntry extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      notifications: this.getPlantNotifications()
+    };
   }
 
   render(){
@@ -49,7 +56,7 @@ class ConnectableGardenPlantEntry extends Component {
           <button>
             <HoverTip text="Notifications" />
             <FontAwesomeIcon icon={faBell} />
-            <NotificationsIndicator count="2" />
+            <NotificationsIndicator count={this.state.notifications.count} />
           </button>
           <button><FontAwesomeIcon icon={faShower} /></button>
           <button><FontAwesomeIcon icon={faTrash} onClick={this.handleRemoveClick} /></button>
@@ -82,7 +89,12 @@ class ConnectableGardenPlantEntry extends Component {
     return '/garden/' + this.props.gardenId + '/' + this.props.plantEntry._id;
   }
 
+  getPlantNotifications = () => {
+    console.log(this.props.notifications);
+    return this.props.notifications.filter(x => x.gardenId == this.props.gardenId && x.plantId == this.props.plantId)
+  }
+
 }
 
-const GardenPlantEntry = connect(null, mapDispatchToProps)(withRouter(ConnectableGardenPlantEntry));
+const GardenPlantEntry = connect(mapStateToProps, mapDispatchToProps)(withRouter(ConnectableGardenPlantEntry));
 export default GardenPlantEntry;

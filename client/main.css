@@ -632,6 +632,7 @@ div.plant-entry-controls button {
   border-width: 0;
   font-size: 18px;
   position: relative;
+  cursor: pointer;
 }
 
 /*LOADING-SPINNER*/
