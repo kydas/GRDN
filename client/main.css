@@ -257,6 +257,11 @@ p.error-message {
   border-radius: 50%;
 }
 
+.plant-entry .notifications-indicator {
+  top: -6px;
+  right: -4px;
+}
+
 .notifications-indicator.overflow {
   font-size: 12px;
 }

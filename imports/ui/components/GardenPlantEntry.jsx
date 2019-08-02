@@ -56,7 +56,7 @@ class ConnectableGardenPlantEntry extends Component {
           <button>
             <HoverTip text="Notifications" />
             <FontAwesomeIcon icon={faBell} />
-            <NotificationsIndicator count={this.state.notifications.count} />
+            <NotificationsIndicator count={this.getPlantNotificationsCount()} />
           </button>
           <button><FontAwesomeIcon icon={faShower} /></button>
           <button><FontAwesomeIcon icon={faTrash} onClick={this.handleRemoveClick} /></button>
@@ -90,8 +90,12 @@ class ConnectableGardenPlantEntry extends Component {
   }
 
   getPlantNotifications = () => {
-    console.log(this.props.notifications);
     return this.props.notifications.filter(x => x.gardenId == this.props.gardenId && x.plantId == this.props.plantId)
+  }
+
+  getPlantNotificationsCount = () =>{
+    return 3;
+    return this.getPlantNotifications().length;
   }
 
 }
