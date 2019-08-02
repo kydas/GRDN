@@ -31,10 +31,10 @@ export default class GardenPage extends Component{
         <main>
           <div className="row">
             <h1>Garden: {this.state.entry.name}</h1>
-            <div className="col half">
+            <div className="col two-third">
             <PlantList gardenId={this.state.entry._id} plants={this.state.entry.plants} />
             </div>
-            <div className="col half">
+            <div className="col third">
             <MapContainer center={
               {lat: parseFloat(this.state.entry.location.lat) || 0,      //TODO: validate that this is between 0, 360
                 lng: parseFloat(this.state.entry.location.lng) || 0}     //TODO: validate tahtthis is between -90, 90

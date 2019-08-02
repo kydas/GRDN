@@ -52,7 +52,9 @@ class ConnectableDetailPage extends Component {
                 <DataTable entry={this.state.entry} />
               </div>
               <div className="col half">
-                <img src="/media/plant-placeholder-1.jpg" />
+                <div className="photo-frame">
+                  <img src={this.getPictureUrl()} />
+                </div>
               </div>
             </div>
             {Meteor.userId() &&
@@ -65,6 +67,13 @@ class ConnectableDetailPage extends Component {
 
 
     )
+  }
+
+  getPictureUrl = () => {
+      if (this.state.entry.images && this.state.entry.images.length > 0) {
+        return this.state.entry.images[0].url;
+      }
+      return "/media/plant-placeholder-1.jpg";
   }
 
   summonAddPlantModal = () => {

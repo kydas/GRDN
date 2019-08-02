@@ -15,12 +15,19 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
+const mapStateToProps = state => {
+  return {
+    notifications: state.userNotifications
+  }
+}
 
 class ConnectableGardenPlantEntry extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      notifications: this.getPlantNotifications()
+    };
   }
 
   render(){
@@ -34,8 +41,10 @@ class ConnectableGardenPlantEntry extends Component {
 
     return (
       <div className="plant-entry">
-
-        <h3>{this.props.plantEntry.qty} x {this.props.plantEntry.cachedData.common_name} </h3>
+        <div className="photo-frame">
+          <img src={this.getPictureUrl()} />
+        </div>
+        <a href={this.getPageUrl()}><h3>{this.props.plantEntry.qty} x {this.props.plantEntry.cachedData.common_name} </h3></a>
         {this.props.plantEntry.plantDate &&
           <p>Planted on {this.props.plantEntry.plantDate.toLocaleDateString("en-US")}</p>
         }
@@ -47,10 +56,9 @@ class ConnectableGardenPlantEntry extends Component {
           <button>
             <HoverTip text="Notifications" />
             <FontAwesomeIcon icon={faBell} />
-            <NotificationsIndicator count="2" />
+            <NotificationsIndicator count={this.getPlantNotificationsCount()} />
           </button>
           <button><FontAwesomeIcon icon={faShower} /></button>
-          <button><FontAwesomeIcon icon={faPenNib} onClick={this.handleAddNoteClick} /></button>
           <button><FontAwesomeIcon icon={faTrash} onClick={this.handleRemoveClick} /></button>
         </div>
 
@@ -70,11 +78,27 @@ class ConnectableGardenPlantEntry extends Component {
     this.forceUpdate();
   }
 
-  handleAddNoteClick = () => {
-    let message = "henlo";
-    this.props.addNoteToPlant(this.props.gardenId, this.props.plantEntry._id, message)
+  getPictureUrl = () => {
+      if (this.props.plantEntry.cachedData.images && this.props.plantEntry.cachedData.images.length > 0) {
+        return this.props.plantEntry.cachedData.images[0].url;
+      }
+      return "/media/plant-placeholder-1.jpg";
   }
+
+  getPageUrl = () => {
+    return '/garden/' + this.props.gardenId + '/' + this.props.plantEntry._id;
+  }
+
+  getPlantNotifications = () => {
+    return this.props.notifications.filter(x => x.gardenId == this.props.gardenId && x.plantId == this.props.plantId)
+  }
+
+  getPlantNotificationsCount = () =>{
+    return 3;
+    return this.getPlantNotifications().length;
+  }
+
 }
 
-const GardenPlantEntry = connect(null, mapDispatchToProps)(withRouter(ConnectableGardenPlantEntry));
+const GardenPlantEntry = connect(mapStateToProps, mapDispatchToProps)(withRouter(ConnectableGardenPlantEntry));
 export default GardenPlantEntry;
