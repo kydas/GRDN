@@ -90,11 +90,10 @@ class ConnectableGardenPlantEntry extends Component {
   }
 
   getPlantNotifications = () => {
-    return this.props.notifications.filter(x => x.gardenId == this.props.gardenId && x.plantId == this.props.plantId)
+    return this.props.notifications.filter(x => x.gardenId == this.props.gardenId && x.plantId == this.props.plantEntry._id);
   }
 
   getPlantNotificationsCount = () =>{
-    return 3;
     return this.getPlantNotifications().length;
   }
 

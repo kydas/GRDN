@@ -7,6 +7,7 @@ export function checkPlantNotification(gardenId, userId){
     const weathers = garden.weather.filter(x => x != null);
     const plants = garden.plants.filter(x => x != null);
     const yesterdayWeather = weathers[weathers.length - 1];
+    console.log(yesterdayWeather);
     const yesterdayPrecip = dailyPrecip(yesterdayWeather);
     const today = new Date();
     let forecast = 0;
@@ -15,7 +16,12 @@ export function checkPlantNotification(gardenId, userId){
     if(!waterBool || !tempBool){
         Meteor.call('weather.forecast', {location: garden.location}, (res, err) => {
             if(!err){
-                forecast = dailyPrecip(res);
+                //We are frequently getting undefined here.
+                if (res === undefined) {
+                  console.log("Res of weather query is undefined");
+                } else {
+                  forecast = dailyPrecip(res);
+                }
             } else {
                 console.log(err);
             }
@@ -82,6 +88,7 @@ function getPrecipReq(plant) {
 }
 
 function dailyPrecip(weather){
+    console.log(JSON.stringify(weather));
     const precipIntensity = weather.precipitation;
     return precipIntensity * 24;
 }
