@@ -1,5 +1,6 @@
 import {GetGarden, Gardens} from "../Gardens/GardenDAO";
-import {waterNotification, tempNotification, getNotificationsByUserId, getNotificationsByUserAndGarden} from "../notifications/NotificationsDAO";
+import {waterNotification, tempNotification, getNotificationsByUserId,
+    getNotificationsByUserAndGarden, indoorNotification} from "../notifications/NotificationsDAO";
 
 export function checkPlantNotification(gardenId, userId){
     const garden = GetGarden(gardenId);
@@ -42,8 +43,6 @@ export function checkPlantNotification(gardenId, userId){
                         watered.push(today);
                     }
                 }
-            } else {
-                console.log("plants have had enough water")
             }
             if (!tempBool && yesterdayWeather.minTemp < tempMin){
                 tempNotification(userId, gardenId, plant._id)
@@ -58,6 +57,31 @@ export function checkPlantNotification(gardenId, userId){
         Gardens.update({_id: gardenId}, garden);
     }
 
+}
+
+export function checkIndoorPlantNotification(gardenId, userId){
+    const garden = GetGarden(gardenId);
+    const notifications = getNotificationsByUserAndGarden(userId, gardenId);
+    const plants = garden.plants.filter(x => x != null);
+    const indoorBool = indoorNoteToday(notifications);
+    const today = new Date();
+
+    if (!indoorBool){
+        for(i = 0; i < plants.length; i++){
+            const plant = plants[i];
+            const watered = plant.watered;
+            const lastWatered = watered[watered.length];
+            if(!withinDay(today, lastWatered)){
+                indoorNotification(userId, gardenId, plant._id)
+                    .then(function(response){
+                        //All good
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+            }
+        }
+    }
 }
 
 export function watered(gardenId, plantInstanceId){
@@ -122,6 +146,19 @@ function waterNoteToday(notifications){
 function tempNoteToday(notifications){
     const today = new Date();
     notifications = notifications.filter( x => x.type == "minTemp");
+    const notLength = notifications.length;
+    for (i = 0; i < notLength; i++){
+        let date = notifications[i].date;
+        if (withinDay(today, date)){
+            return true;
+        }
+    }
+    return false;
+}
+
+function indoorNoteToday(notifications){
+    const today = new Date();
+    notifications = notifications.filter( x => x.type == "indoorWater");
     const notLength = notifications.length;
     for (i = 0; i < notLength; i++){
         let date = notifications[i].date;

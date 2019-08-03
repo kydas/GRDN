@@ -33,6 +33,22 @@ export function tempNotification(userId, gardenId, plantId){
     })
 }
 
+export function indoorNotification(userId, gardenId, plantId){
+    return new Promise(function(resolve, reject){
+        const notification = {
+            type: "indoorWater", userId: userId, gardenId: gardenId, plantId: plantId, date: new Date().getTime(),
+            read: false
+        };
+        Notifications.insert(notification, function(err, res) {
+            if (err) {
+                reject(err);
+            }
+            notification._id = res;
+            resolve(notification);
+        })
+    })
+}
+
 export function getNotificationsByUserAndGarden(userId, gardenId){
     return Notifications.find({userId:userId, gardenId: gardenId}).map(function(doc) {
         return doc;
