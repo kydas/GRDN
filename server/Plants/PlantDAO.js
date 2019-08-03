@@ -53,18 +53,18 @@ export function checkPlantNotification(gardenId, userId){
                         console.log(error)
                     })
                 plant.watered.push(today);
-            }
-        } else {
+            } else {
             console.log("plants have had enough water")
-        }
-        if (yesterdayWeather.minTemp > tempMin){
-            tempNotification(userId, gardenId, plant._id)
-                .then(function(response) {
-                    console.log(response)
-                })
-                .catch(function(error){
-                    console.log(error)
-                })
+            }
+            if (yesterdayWeather.minTemp > tempMin){
+                tempNotification(userId, gardenId, plant._id)
+                    .then(function(response) {
+                        console.log(response)
+                    })
+                    .catch(function(error){
+                        console.log(error)
+                    })
+            }
         }
     }
 }

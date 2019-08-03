@@ -6,7 +6,7 @@ import { faArrowAltCircleRight, faTrash } from '@fortawesome/free-solid-svg-icon
 export default class NotificationEntry extends Component {
 
   render() {
-    if (this.props.entry == null) {
+    if (this.props.entry == null || this.props.entry.plant == null) {
       return null;
     }
 
