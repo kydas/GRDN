@@ -5,10 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imports/startup/onLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/imports/startup/onLogin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imports/ui/actions/GardenActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/imports/ui/actions/GardenActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Gardens/GardenDAO.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/Gardens/GardenDAO.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Gardens/GardenMethods.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/Gardens/GardenMethods.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/Plants/PlantDAO.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/Plants/PlantDAO.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/notifications/NotificationsDAO.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/notifications/NotificationsDAO.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/weather/weatherMethods.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/weather/weatherMethods.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imports/ui/actions/GardenActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-323">
-              <caret line="119" column="34" lean-forward="true" selection-start-line="119" selection-start-column="34" selection-end-line="119" selection-end-column="34" />
+            <state relative-caret-position="391">
+              <caret line="152" column="5" selection-start-line="152" selection-start-column="5" selection-end-line="152" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -33,17 +33,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/Gardens/GardenDAO.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="55" lean-forward="true" selection-start-column="55" selection-end-column="55" />
+            <state relative-caret-position="-486">
+              <caret line="62" column="18" lean-forward="true" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/Plants/PlantDAO.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="357">
+              <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -54,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/Gardens/GardenMethods.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+            <state relative-caret-position="646">
+              <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -63,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/notifications/NotificationsDAO.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="59" column="14" lean-forward="true" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
+            <state relative-caret-position="517">
+              <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -96,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imports/startup/onLogin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+            <state relative-caret-position="238">
+              <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -144,14 +144,14 @@
         <option value="$PROJECT_DIR$/server/main.js" />
         <option value="$PROJECT_DIR$/server/trefleAPI.js" />
         <option value="$PROJECT_DIR$/server/NotificationsDAO.js" />
-        <option value="$PROJECT_DIR$/server/Gardens/GardenMethods.js" />
         <option value="$PROJECT_DIR$/server/weather/weatherAPI.js" />
-        <option value="$PROJECT_DIR$/server/Gardens/GardenDAO.js" />
-        <option value="$PROJECT_DIR$/server/notifications/NotificationsDAO.js" />
-        <option value="$PROJECT_DIR$/imports/ui/actions/GardenActions.js" />
-        <option value="$PROJECT_DIR$/imports/startup/onLogin.js" />
-        <option value="$PROJECT_DIR$/server/Plants/PlantDAO.js" />
         <option value="$PROJECT_DIR$/server/weather/weatherMethods.js" />
+        <option value="$PROJECT_DIR$/server/Gardens/GardenDAO.js" />
+        <option value="$PROJECT_DIR$/imports/startup/onLogin.js" />
+        <option value="$PROJECT_DIR$/imports/ui/actions/GardenActions.js" />
+        <option value="$PROJECT_DIR$/server/Gardens/GardenMethods.js" />
+        <option value="$PROJECT_DIR$/server/notifications/NotificationsDAO.js" />
+        <option value="$PROJECT_DIR$/server/Plants/PlantDAO.js" />
       </list>
     </option>
   </component>
@@ -337,7 +337,7 @@
       <workItem from="1562950504625" duration="9552000" />
       <workItem from="1563204396501" duration="24263000" />
       <workItem from="1563398822730" duration="5565000" />
-      <workItem from="1564499055155" duration="14883000" />
+      <workItem from="1564499055155" duration="18833000" />
     </task>
     <task id="LOCAL-00001" summary="Changed how I write the API call function, now getting HTTP errors, so I think the connections are working?">
       <created>1560639112083</created>
@@ -423,11 +423,18 @@
       <option name="project" value="LOCAL" />
       <updated>1564447952355</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Limited notifications to 1 per day. Fixed minTemp notification bug.&#10;-rm console.logs.">
+      <created>1564785651129</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1564785651129</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105866000" />
+    <option name="totallyTimeSpent" value="109816000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -498,7 +505,8 @@
     <MESSAGE value="Fixed axios trefle call to deal with ssl cert problem" />
     <MESSAGE value="NOTIFICATIONS!!!! Still need to make it so that more than one notification isn't sent in one day" />
     <MESSAGE value="added watered array, and read to notification, and started work on limiting notifications to 1 per day" />
-    <option name="LAST_COMMIT_MESSAGE" value="added watered array, and read to notification, and started work on limiting notifications to 1 per day" />
+    <MESSAGE value="Limited notifications to 1 per day. Fixed minTemp notification bug.&#10;-rm console.logs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Limited notifications to 1 per day. Fixed minTemp notification bug.&#10;-rm console.logs." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/server/constants.txt" />
@@ -704,43 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/Gardens/GardenMethods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/actions/GardenActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="119" column="34" lean-forward="true" selection-start-line="119" selection-start-column="34" selection-end-line="119" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/startup/onLogin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/Plants/PlantDAO.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/weather/weatherAPI.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
@@ -758,17 +729,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/imports/startup/onLogin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/actions/GardenActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="152" column="5" selection-start-line="152" selection-start-column="5" selection-end-line="152" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/Gardens/GardenDAO.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="55" lean-forward="true" selection-start-column="55" selection-end-column="55" />
+        <state relative-caret-position="-486">
+          <caret line="62" column="18" lean-forward="true" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Gardens/GardenMethods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/notifications/NotificationsDAO.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="59" column="14" lean-forward="true" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
+        <state relative-caret-position="517">
+          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Plants/PlantDAO.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

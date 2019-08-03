@@ -149,9 +149,7 @@ export function selectTrefleId(trefleId) {
 export function plantNotifications(gardenId, userId){
   Meteor.call('plant.checkNotifications', {gardenId: gardenId, userId: userId}, (err, res) => {
     if (err) {
-      // do something
-    } else {
-      // do something
+      console.log(err)
     }
   })
 }
@@ -161,9 +159,8 @@ export function updateWeatherInGarden(gardenId){
   let time = getYesterdayDate();
   Meteor.call('garden.updateWeather', {gardenId, time}, (err, res) => {
     if (err){
-      return // need to add failure success function TODO
-    } else
-      return // ditto above TODO
+      console.log(err)
+    }
   });
 }
 

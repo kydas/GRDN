@@ -31,6 +31,11 @@ Meteor.methods(
         return UpdateWeatherInGarden(gardenId, time)
     },
     'plant.checkNotifications'({gardenId, userId}){
-        return checkPlantNotification(gardenId, userId)
+        const garden = GetGarden(gardenId);
+        if(garden.indoor == false){
+            return checkIndoorPlantNotification(gardenId, userId);
+        } else {
+            return checkPlantNotification(gardenId, userId)
+        }
     }
 });
