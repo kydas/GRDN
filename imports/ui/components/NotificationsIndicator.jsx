@@ -14,7 +14,6 @@ export default class NotificationsIndicator extends Component {
     let value = overflow ? "99+": this.props.count;
     let overflowClass = overflow? "overflow" : "";
 
-    console.log(this.props.count);
     return (
       <div className={overflowClass + " notifications-indicator"}>
         {value}

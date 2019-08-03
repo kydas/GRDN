@@ -53,7 +53,7 @@ class ConnectableGardenPlantEntry extends Component {
             <HoverTip text="Details" />
             <FontAwesomeIcon icon={faSearchPlus} onClick={this.handleDetailsClick} />
           </button>
-          <button>
+          <button onClick={this.handleDetailsClick}>
             <HoverTip text="Notifications" />
             <FontAwesomeIcon icon={faBell} />
             <NotificationsIndicator count={this.getPlantNotificationsCount()} />
