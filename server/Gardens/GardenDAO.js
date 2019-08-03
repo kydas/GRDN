@@ -8,9 +8,9 @@ export function GetGardens(userId) {
 
 }
 
-export function CreateGarden(userId, gardenName, location) {
+export function CreateGarden(userId, gardenName, location, indoor = false) {
   return new Promise(function(resolve, reject) {
-    let garden = {name: gardenName, userId: userId, location: location, plants: [], weather: []};
+    let garden = {name: gardenName, userId: userId, location: location, plants: [], weather: [], indoor: indoor};
     Gardens.insert(garden, function (err, res) {
       if (err) {
         reject(err);
