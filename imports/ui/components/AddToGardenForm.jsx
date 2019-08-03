@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addPlantToGarden, fetchUserGardens} from '../actions/GardenActions';
+import {dismissModal, clearMessage} from '../actions/UIActions';
 import LoadingSpinner from './LoadingSpinner';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,7 +10,9 @@ import "react-datepicker/dist/react-datepicker.css";
 const mapDispatchToProps = dispatch => {
   return {
     addPlantToGarden: (gardenId, plantId, qty, plantDate) => {dispatch(addPlantToGarden(gardenId, plantId, qty, plantDate))},
-    fetchUserGardens: (userId) => {dispatch(fetchUserGardens(userId))}
+    fetchUserGardens: (userId) => {dispatch(fetchUserGardens(userId))},
+    dismissModal: () => {dispatch(dismissModal())},
+    clearMessage: (messageId) => {dispatch(clearMessage(messageId))}
   }
 }
 
@@ -17,7 +20,8 @@ const mapStateToProps = (state) => {
   return {
     gardens: state.gardens,
     addToGardenSuccess: state.addToGardenSuccess,
-    addToGardenError: state.addToGardenError
+    addToGardenError: state.addToGardenError,
+    currentTrefleId: state.currentTrefleId
   }
 }
 
@@ -29,8 +33,9 @@ class ConnectableAddToGardenForm extends Component {
     this.props.fetchUserGardens(Meteor.userId());
     this.state = {
       qty: 1,
-      targetGarden: null,
-      plantDate: new Date()
+      targetGarden: "",
+      plantDate: new Date(),
+      validationError: null
 
     }
   }
@@ -44,8 +49,6 @@ class ConnectableAddToGardenForm extends Component {
   }
 
   render() {
-
-
     if (this.props.gardens == null){
       return <LoadingSpinner />
     }
@@ -59,31 +62,52 @@ class ConnectableAddToGardenForm extends Component {
     }
 
     return(
-      <div className="add-to-garden-form">
-
-        <button onClick={this.handleSubmit}>Add to Garden</button>
-
-        <select onChange={this.handleGardenChange}>
+      <form className="add-to-garden-form">
+        {this.props.addToGardenError &&
+          <p className="error-message">{this.props.addToGardenError.reason}</p>
+        }
+        {this.state.validationError &&
+          <p className="error-message">{this.state.validationError.reason}</p>
+        }
+        <label>Garden</label>
+        <select value={this.state.targetGarden} onChange={this.handleGardenChange}>
+          <option key="" value="">Select a Garden</option>
           {this.props.gardens.map((el) =>
             <option key={el._id} value={el._id}>
                 {el.name}
             </option>
           )}
         </select>
-        <label> Qty:</label> <input type="number" default={this.state.qty} onChange={this.handleQtyChange} />
-        <label> Plant Date:</label> <DatePicker selected={this.state.plantDate} onChange={this.handleDateChange} />
-        {this.props.addToGardenSuccess &&
-          <span className="success-message">Success!</span>
-        }
-        {this.props.addToGardenError &&
-          <span className="error-message">{this.props.addToGardenError.reason}</span>
-        }
-      </div>
+        <div className="col third left">
+          <label> Qty:</label>
+          <input type="number" min="1" value={this.state.qty} onChange={this.handleQtyChange} />
+        </div>
+        <div className="col two-third">
+          <label> Plant Date:</label>
+          <DatePicker selected={this.state.plantDate} onChange={this.handleDateChange} />
+        </div>
+        <div className="action-buttons right">
+          <button className="teal" onClick={this.handleSubmit}>Add to Garden</button>
+        </div>
+      </form>
     )
   }
 
-  handleSubmit = () => {
-    this.props.addPlantToGarden(this.state.targetGarden, this.props.plantId, parseInt(this.state.qty), this.state.plantDate);
+  componentWillUnmount() {
+    this.props.clearMessage("addToGardenError");
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if (this.state.targetGarden === "") {
+      this.setState ({
+          addToGardenError: {
+          reason: "Please choose a garden!"
+        }})
+    } else {
+      this.props.addPlantToGarden(this.state.targetGarden, this.props.currentTrefleId, parseInt(this.state.qty), this.state.plantDate);
+      this.props.dismissModal();
+    }
   }
 
   handleQtyChange = (event) => {

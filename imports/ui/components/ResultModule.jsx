@@ -10,7 +10,7 @@ class ResultModule extends Component {
   render() {
     return (
       <li className="result-module" onClick={this.toDetailPage}>
-        <img src="/media/plant-placeholder-1.jpg" />
+        <img src={this.getPictureUrl()} />
         <h2>{this.props.entry.common_name}</h2>
         <p className="scientific-name">{this.props.entry.scientific_name}</p>
 
@@ -23,6 +23,13 @@ class ResultModule extends Component {
       pathname: '/plant/' + this.props.entry.id
     });
 
+  }
+
+  getPictureUrl = () => {
+      if (this.props.entry.images && this.props.entry.images.length > 0) {
+        return this.props.entry.images[0].url;
+      }
+      return "/media/plant-placeholder-1.jpg";
   }
 }
 

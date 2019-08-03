@@ -1,4 +1,4 @@
-import {modalSummoned, modalDismissed} from "./index.js";
+import {modalSummoned, modalDismissed, messageCleared} from "./index.js";
 
 export function dismissModal() {
   return dispatch => {
@@ -9,5 +9,11 @@ export function dismissModal() {
 export function summonModalById(modalId) {
   return dispatch => {
     dispatch(modalSummoned(modalId));
+  }
+}
+
+export function clearMessage(msgId) {
+  return dispatch => {
+    dispatch(messageCleared(msgId));
   }
 }

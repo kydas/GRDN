@@ -5,7 +5,8 @@ import {
   deleteGardenSuccess, deleteGardenError,
   addNoteToPlantSuccess, addNoteToPlantError,
   selectGardenBegin, selectGardenSuccess,
-  selectPlantBegin, selectPlantSuccess, selectPlantError
+  selectPlantBegin, selectPlantSuccess, selectPlantError,
+  selectTrefleIdSuccess, selectTrefleIdError, waterPlantSuccess
 } from './index';
 
 export function fetchUserGardens() {
@@ -22,9 +23,12 @@ export function fetchUserGardens() {
   }
 }
 
-  export function createGarden(userId, gardenName, location) {
+  export function createGarden(userId, gardenName, location, indoor = false) {
     return dispatch => {
-      Meteor.apply('garden.createGarden', [{userId: Meteor.userId()}, {gardenName: gardenName}, {location: location}], {wait: true}, function(err, res) {
+      Meteor.apply('garden.createGarden',
+          [{userId: Meteor.userId()}, {gardenName: gardenName}, {location: location}, {indoor: indoor}],
+          {wait: true},
+          function(err, res) {
         if (err) {
           console.log(err);
         }
@@ -61,7 +65,6 @@ export function fetchUserGardens() {
 
 export function addPlantToGarden(gardenId, plantId, qty, plantDate) {
   return dispatch => {
-    //dispatch addPlant begin
     Meteor.apply('garden.addPlant', [{gardenId: gardenId}, {plantId: plantId}, {qty: qty}, {plantDate: plantDate}], (err, res) => {
       if (err) {
         return dispatch(addPlantToGardenError(err));
@@ -135,13 +138,21 @@ export function selectPlant(gardenId, plantId) {
   }
 }
 
-export function plantNotifications(gardenId, userId){
-  // TODO redux stuff?
-  Meteor.call('plant.checkNotifications', {gardenId, userId}, (err, res) => {
-    if (err) {
-      // do something
+export function selectTrefleId(trefleId) {
+  return dispatch => {
+    if (trefleId) {
+      dispatch(selectTrefleIdSuccess(trefleId));
     } else {
-      // do something
+      dispatch(selectTrefleIdError());
+    }
+
+  }
+}
+
+export function plantNotifications(gardenId, userId){
+  Meteor.call('plant.checkNotifications', {gardenId: gardenId, userId: userId}, (err, res) => {
+    if (err) {
+      console.log(err)
     }
   })
 }
@@ -151,18 +162,29 @@ export function updateWeatherInGarden(gardenId){
   let time = getYesterdayDate();
   Meteor.call('garden.updateWeather', {gardenId, time}, (err, res) => {
     if (err){
-      return // need to add failure success function TODO
-    } else
-      return // ditto above TODO
+      console.log(err)
+    }
   });
 }
 
+export function waterPlant(gardenId, plantId) {
+  return dispatch => {
+    Meteor.call('plant.waterPlant', {gardenId: gardenId, plantId: plantId}, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        dispatch(waterPlantSuccess({gardenId, plantId}));
+      }
+    });
+  }
+
+}
+
 function getYesterdayDate(){
-    let time = new Date;
+    let time = new Date();
     let yesterday = time.getDate() - 1;
     time.setDate(yesterday);
     time.setHours(12, 0, 0,0);
     time = Math.floor((time.getTime() / 1000));
     return time;
 }
-

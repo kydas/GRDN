@@ -24,9 +24,10 @@ class ConnectableAddNewNoteForm extends Component {
 
     return (
       <div className="add-new-note-form">
-        <h3>Add a new note:</h3>
-        <textarea onChange={this.handleTextChange}></textarea>
-        <button onClick={this.handleSubmit}>Add</button>
+        <textarea className="new-note-form" onChange={this.handleTextChange}></textarea>
+        <div className="action-buttons right">
+          <button className="teal" onClick={this.handleSubmit}>Add</button>
+        </div>
       </div>
     )
   }

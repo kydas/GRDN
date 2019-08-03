@@ -27,12 +27,12 @@ Meteor.methods(
         'weather.forecast'({location}){
             const forecast = getForecast(location)
                 .then(function(response){
-                    console.log("Weather forecast method response: \n" + JSON.stringify(response));
                     return response;
                 })
                 .catch(function(error){
                     console.log(error);
-                })
+                });
+            return forecast;
         }
     }
 );

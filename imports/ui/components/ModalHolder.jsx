@@ -3,8 +3,10 @@ import {connect} from 'react-redux';
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 import LogoutModal from './LogoutModal';
+import AddPlantModal from './AddPlantModal';
 import {dismissModal} from '../actions/UIActions';
 import CreateModal from './CreateModal';
+import NotificationsModal from './NotificationsModal';
 
 const mapStateToProps = state => {
     return {
@@ -24,7 +26,9 @@ class ConnectableModalHolder extends Component {
     LOGIN: () => {return (<LoginModal />)},
     LOGOUT: () => {return (<LogoutModal />)},
     REGISTER: () => {return (<RegisterModal />)},
-    CREATE: () => {return (<CreateModal />)}
+    CREATE: () => {return (<CreateModal />)},
+    ADDPLANT: () => {return (<AddPlantModal />)},
+    NOTIFICATIONS: () => {return (<NotificationsModal />)}
   }
 
 

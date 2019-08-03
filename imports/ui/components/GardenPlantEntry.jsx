@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearchPlus, faBell, faShower, faTrash, faPenNib } from '@fortawesome/free-solid-svg-icons';
 import NotificationsIndicator from './NotificationsIndicator';
 import { withRouter } from 'react-router-dom';
-import { removePlantFromGarden, addNoteToPlant } from '../actions/GardenActions';
+import { removePlantFromGarden, addNoteToPlant, waterPlant } from '../actions/GardenActions';
 import {connect} from 'react-redux';
 import HoverTip from './HoverTip';
 
@@ -11,16 +11,25 @@ import HoverTip from './HoverTip';
 const mapDispatchToProps = dispatch => {
     return {
       removePlant: (gardenId, plantInstanceId) => dispatch(removePlantFromGarden(gardenId, plantInstanceId)),
-      addNoteToPlant: (gardenId, plantInstanceId, message) => dispatch(addNoteToPlant(gardenId, plantInstanceId, message))
+      addNoteToPlant: (gardenId, plantInstanceId, message) => dispatch(addNoteToPlant(gardenId, plantInstanceId, message)),
+      waterThisPlant: (gardenId, plantId) => dispatch(waterPlant(gardenId, plantId))
     }
 }
 
+const mapStateToProps = state => {
+  return {
+    notifications: state.userNotifications,
+    recentlyWatered: state.recentlyWatered
+  }
+}
 
 class ConnectableGardenPlantEntry extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      notifications: this.getPlantNotifications(),
+    };
   }
 
   render(){
@@ -34,7 +43,10 @@ class ConnectableGardenPlantEntry extends Component {
 
     return (
       <div className="plant-entry">
-        <h3>{this.props.plantEntry.qty} x {this.props.plantEntry.cachedData.common_name} </h3>
+        <div className="photo-frame">
+          <img src={this.getPictureUrl()} />
+        </div>
+        <a href={this.getPageUrl()}><h3>{this.props.plantEntry.qty} x {this.props.plantEntry.cachedData.common_name} </h3></a>
         {this.props.plantEntry.plantDate &&
           <p>Planted on {this.props.plantEntry.plantDate.toLocaleDateString("en-US")}</p>
         }
@@ -43,15 +55,15 @@ class ConnectableGardenPlantEntry extends Component {
             <HoverTip text="Details" />
             <FontAwesomeIcon icon={faSearchPlus} onClick={this.handleDetailsClick} />
           </button>
-          <button>
+          <button onClick={this.handleDetailsClick}>
             <HoverTip text="Notifications" />
             <FontAwesomeIcon icon={faBell} />
-            <NotificationsIndicator count="2" />
+            <NotificationsIndicator count={this.getPlantNotificationsCount()} />
           </button>
-          <button><FontAwesomeIcon icon={faShower} /></button>
-          <button><FontAwesomeIcon icon={faPenNib} onClick={this.handleAddNoteClick} /></button>
+          <button className={"just-watered-" + this.checkWatered()}><FontAwesomeIcon icon={faShower} onClick={this.handleWaterClick} /></button>
           <button><FontAwesomeIcon icon={faTrash} onClick={this.handleRemoveClick} /></button>
         </div>
+
       </div>
     )
   }
@@ -64,15 +76,42 @@ class ConnectableGardenPlantEntry extends Component {
 
   handleRemoveClick = () => {
     this.props.removePlant(this.props.gardenId, this.props.plantEntry._id);
-    this.setState({removed: true})
+    this.setState({removed: true});
     this.forceUpdate();
   }
 
-  handleAddNoteClick = () => {
-    let message = "henlo";
-    this.props.addNoteToPlant(this.props.gardenId, this.props.plantEntry._id, message)
+  handleWaterClick = () => {
+    if (!this.checkWatered()) {
+      this.props.waterThisPlant(this.props.gardenId, this.props.plantEntry._id);
+    }
   }
+
+  getPictureUrl = () => {
+      if (this.props.plantEntry.cachedData.images && this.props.plantEntry.cachedData.images.length > 0) {
+        return this.props.plantEntry.cachedData.images[0].url;
+      }
+      return "/media/plant-placeholder-1.jpg";
+  }
+
+  getPageUrl = () => {
+    return '/garden/' + this.props.gardenId + '/' + this.props.plantEntry._id;
+  }
+
+  getPlantNotifications = () => {
+    return this.props.notifications.filter(x => x.gardenId == this.props.gardenId && x.plantId == this.props.plantEntry._id);
+  }
+
+  getPlantNotificationsCount = () =>{
+    return this.getPlantNotifications().length;
+  }
+
+  checkWatered = () => {
+    let res = this.props.recentlyWatered.find(x => x.plantId == this.props.plantEntry._id && x.gardenId == this.props.gardenId);
+    let ret = (res != undefined);
+    return ret;
+  }
+
 }
 
-const GardenPlantEntry = connect(null, mapDispatchToProps)(withRouter(ConnectableGardenPlantEntry));
+const GardenPlantEntry = connect(mapStateToProps, mapDispatchToProps)(withRouter(ConnectableGardenPlantEntry));
 export default GardenPlantEntry;

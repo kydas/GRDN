@@ -1,14 +1,14 @@
 import { Meteor } from "meteor/meteor";
 import {GetGardens, CreateGarden, GetGarden, DeleteGarden, AddPlant, RemovePlant, AddNote, UpdateWeatherInGarden} from './GardenDAO';
-import {checkPlantNotification} from "../Plants/PlantDAO";
+import {checkPlantNotification, WaterPlant} from "../Plants/PlantDAO";
 
 Meteor.methods(
   {
     'garden.getUserGardens'({userId}){
       return GetGardens(userId);
     },
-    'garden.createGarden'({userId}, {gardenName}, {location}){
-      let garden = CreateGarden(userId, gardenName, location);
+    'garden.createGarden'({userId}, {gardenName}, {location}, {indoor}){
+      let garden = CreateGarden(userId, gardenName, location, indoor);
       return garden;
     },
     'garden.getGardenById'({gardenId}){
@@ -31,6 +31,14 @@ Meteor.methods(
         return UpdateWeatherInGarden(gardenId, time)
     },
     'plant.checkNotifications'({gardenId, userId}){
-        return checkPlantNotification(gardenId, userId)
+        const garden = GetGarden(gardenId);
+        if(garden.indoor == false){
+            return checkIndoorPlantNotification(gardenId, userId);
+        } else {
+            return checkPlantNotification(gardenId, userId)
+        }
+    },
+   'plant.waterPlant'({gardenId, plantId}) {
+      return WaterPlant(gardenId, plantId);
     }
 });

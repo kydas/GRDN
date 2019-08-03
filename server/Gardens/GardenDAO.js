@@ -1,4 +1,4 @@
-const Gardens = new Mongo.Collection('gardens');
+export const Gardens = new Mongo.Collection('gardens');
 import {getPlantByID} from '../trefleAPI';
 
 export function GetGardens(userId) {
@@ -8,9 +8,9 @@ export function GetGardens(userId) {
 
 }
 
-export function CreateGarden(userId, gardenName, location) {
+export function CreateGarden(userId, gardenName, location, indoor = false) {
   return new Promise(function(resolve, reject) {
-    let garden = {name: gardenName, userId: userId, location: location, plants: [], weather: []};
+    let garden = {name: gardenName, userId: userId, location: location, plants: [], weather: [], indoor: indoor};
     Gardens.insert(garden, function (err, res) {
       if (err) {
         reject(err);
@@ -19,6 +19,10 @@ export function CreateGarden(userId, gardenName, location) {
       resolve(garden);
     });
   })
+}
+
+export function SaveGarden(garden) {
+  Gardens.update({_id: garden._id}, garden)
 }
 
 export function GetGarden(gardenId) {
@@ -45,7 +49,6 @@ export function AddPlant(gardenId, trefleId, qty, plantDate) {
   let plants = garden.plants;
   let id = new Meteor.Collection.ObjectID();
 
-
   let data = getPlantByID(trefleId)
   .then((res) => {
     plants.push({
@@ -55,6 +58,7 @@ export function AddPlant(gardenId, trefleId, qty, plantDate) {
       plantDate: plantDate,
       cachedData: res,
       cachedDataLastUpdate: new Date().getTime(),
+        watered:[],
       notes: []
     });
 
