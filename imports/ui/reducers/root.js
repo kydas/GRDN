@@ -8,7 +8,8 @@ const baseState = {
   addToGardenError: null,
   addToGardenSuccess: null,
   userNotifications: [],
-  userNotificationsCount: 0
+  userNotificationsCount: 0,
+  recentlyWatered: []
 };
 
 export default function rootReducer (state = baseState, action) {
@@ -123,6 +124,14 @@ export default function rootReducer (state = baseState, action) {
       return Object.assign({}, state, {
         userNotifications: state.userNotifications.filter(x => x._id != action.payload)
       })
+
+    case "WATER_PLANT_SUCCESS":
+      let newWatered = [...state.recentlyWatered];
+      newWatered.push(action.payload);
+      return Object.assign({}, state, {
+        recentlyWatered: newWatered
+      })
+
 
     default:
       return state;

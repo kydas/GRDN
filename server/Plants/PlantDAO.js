@@ -1,4 +1,4 @@
-import {GetGarden, Gardens} from "../Gardens/GardenDAO";
+import {GetGarden, SaveGarden, Gardens} from "../Gardens/GardenDAO";
 import {waterNotification, tempNotification, getNotificationsByUserId,
     getNotificationsByUserAndGarden, indoorNotification} from "../notifications/NotificationsDAO";
 
@@ -52,11 +52,21 @@ export function checkPlantNotification(gardenId, userId){
                     .catch(function(error){
                         console.log(error)
                     })
+                plant.watered.push(today);
             }
+        } else {
+            console.log("plants have had enough water")
         }
-        Gardens.update({_id: gardenId}, garden);
+        if (yesterdayWeather.minTemp > tempMin){
+            tempNotification(userId, gardenId, plant._id)
+                .then(function(response) {
+                    console.log(response)
+                })
+                .catch(function(error){
+                    console.log(error)
+                })
+        }
     }
-
 }
 
 export function checkIndoorPlantNotification(gardenId, userId){
@@ -97,6 +107,14 @@ export function watered(gardenId, plantInstanceId){
     Gardens.update({_id: gardenId}, garden);
 }
 
+export function WaterPlant(gardenId, plantId) {
+  const garden = GetGarden(gardenId);
+  const plant = garden.plants.find(x => x._id === plantId);
+  const today = new Date();
+  plant.watered.push(today);
+  SaveGarden(garden);
+  return true;
+}
 
 function getPrecipReq(plant) {
     const data = plant.cachedData.main_species.growth;
@@ -117,11 +135,11 @@ function getTempMin(plant){
     return data.temperature_minimum.deg_c;
 }
 
+
 function withinDay(date1, date2) {
-    let date = new Date(date2);
-    if (date1.getFullYear() == date.getFullYear()){
-        if(date1.getMonth() == date.getMonth()) {
-            if (date1.getDate() == date.getDate()){
+    if (date1.getFullYear() == date2.getFullYear()){
+        if(date1.getMonth() == date2.getMonth()) {
+            if (date1.getDate() == date2.getDate()){
                 return true;
             }
         }

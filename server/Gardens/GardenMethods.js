@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import {GetGardens, CreateGarden, GetGarden, DeleteGarden, AddPlant, RemovePlant, AddNote, UpdateWeatherInGarden} from './GardenDAO';
-import {checkPlantNotification} from "../Plants/PlantDAO";
+import {checkPlantNotification, WaterPlant} from "../Plants/PlantDAO";
 
 Meteor.methods(
   {
@@ -37,5 +37,8 @@ Meteor.methods(
         } else {
             return checkPlantNotification(gardenId, userId)
         }
+    },
+   'plant.waterPlant'({gardenId, plantId}) {
+      return WaterPlant(gardenId, plantId);
     }
 });

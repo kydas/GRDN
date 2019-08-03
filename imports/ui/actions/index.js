@@ -117,3 +117,7 @@ export function deleteNotificationError(payload) {
 export function deleteNotificationSuccess(payload) {
   return {type: "DELETE_NOTIFICATION_SUCCESS", payload};
 }
+
+export function waterPlantSuccess(payload) {
+  return {type: "WATER_PLANT_SUCCESS", payload};
+}

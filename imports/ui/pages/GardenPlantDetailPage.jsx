@@ -4,6 +4,7 @@ import AddToGardenForm from '../components/AddToGardenForm';
 import LoadingSpinner from '../components/LoadingSpinner';
 import NotesFeed from '../components/NotesFeed';
 import AddNewNoteForm from '../components/AddNewNoteForm';
+import NotificationsScroll from '../components/NotificationsScroll';
 import {connect} from 'react-redux';
 import {selectGarden, selectPlant} from '../actions/GardenActions';
 
@@ -52,6 +53,8 @@ class ConnectableGardenPlantDetailPage extends Component {
 
             </div>
             <div className="col half">
+              <h3> Notifications </h3>
+              <NotificationsScroll gardenId={this.props.currentGarden._id} plantId={this.props.currentPlant._id} />
               <h3> Notes </h3>
               <AddNewNoteForm plantId={this.props.currentPlant._id} gardenId={this.props.currentGarden._id}/>
               <NotesFeed notes={this.props.currentPlant.notes} />

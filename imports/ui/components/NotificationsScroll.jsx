@@ -24,16 +24,30 @@ class ConnectableNotificationsScroll extends Component {
     this.props.getCurrentUserNotifications();
 
 
+
+  }
+
+  componentWillMount(){
+    if (this.props.gardenId && this.props.plantId) {
+      this.setState({
+        notifications: this.props.notifications.filter(x => x.gardenId == this.props.gardenId && x.plantId == this.props.plantId)
+      })
+    } else {
+      this.setState({
+        notifications: this.props.notifications
+      })
+    }
   }
 
   render(){
-    if (this.props.notifications == null || this.props.notifications.length == 0) {
+    if (this.state.notifications == null || this.state.notifications.length == 0) {
       return "No notifications found!";
     }
+
     return (
       <div className="notifications-scroll">
         <ul>
-          {this.props.notifications.map((el) =>
+          {this.state.notifications.map((el) =>
             <NotificationEntry entry={el} key={el._id} deleteAction={this.props.deleteNotification}/>
           )}
         </ul>

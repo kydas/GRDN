@@ -49,8 +49,6 @@ class ConnectableAddToGardenForm extends Component {
   }
 
   render() {
-
-    console.log(this.props.addToGardenSuccess);
     if (this.props.gardens == null){
       return <LoadingSpinner />
     }
