@@ -33,6 +33,11 @@ export function tempNotification(userId, gardenId, plantId){
     })
 }
 
+export function getNotificationsByUserAndGarden(userId, gardenId){
+    return Notifications.find({userId:userId, gardenId: gardenId}).map(function(doc) {
+        return doc;
+    });
+}
 export function getNotificationsByUserId(userId) {
   return Notifications.find({userId: userId}).map(function (doc) {
     if (doc.gardenId != null) {

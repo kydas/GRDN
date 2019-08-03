@@ -7,7 +7,6 @@ Accounts.onLogin(function(user) {
     Meteor.call("garden.getUserGardens",{userId: Meteor.userId()}, (err,res) =>{
         if (!err) {
             const gardens = res;
-            console.log(res);
             for (i = 0; i < gardens.length; i++){
                 const garden = gardens[i];
                 updateWeatherInGarden(garden._id);

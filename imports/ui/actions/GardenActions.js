@@ -147,8 +147,7 @@ export function selectTrefleId(trefleId) {
 }
 
 export function plantNotifications(gardenId, userId){
-  // TODO redux stuff?
-  Meteor.call('plant.checkNotifications', {gardenId, userId}, (err, res) => {
+  Meteor.call('plant.checkNotifications', {gardenId: gardenId, userId: userId}, (err, res) => {
     if (err) {
       // do something
     } else {
@@ -169,7 +168,7 @@ export function updateWeatherInGarden(gardenId){
 }
 
 function getYesterdayDate(){
-    let time = new Date;
+    let time = new Date();
     let yesterday = time.getDate() - 1;
     time.setDate(yesterday);
     time.setHours(12, 0, 0,0);
