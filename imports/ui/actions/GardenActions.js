@@ -23,9 +23,12 @@ export function fetchUserGardens() {
   }
 }
 
-  export function createGarden(userId, gardenName, location) {
+  export function createGarden(userId, gardenName, location, indoor = false) {
     return dispatch => {
-      Meteor.apply('garden.createGarden', [{userId: Meteor.userId()}, {gardenName: gardenName}, {location: location}], {wait: true}, function(err, res) {
+      Meteor.apply('garden.createGarden',
+          [{userId: Meteor.userId()}, {gardenName: gardenName}, {location: location}, {indoor: indoor}],
+          {wait: true},
+          function(err, res) {
         if (err) {
           console.log(err);
         }

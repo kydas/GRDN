@@ -7,8 +7,8 @@ Meteor.methods(
     'garden.getUserGardens'({userId}){
       return GetGardens(userId);
     },
-    'garden.createGarden'({userId}, {gardenName}, {location}){
-      let garden = CreateGarden(userId, gardenName, location);
+    'garden.createGarden'({userId}, {gardenName}, {location}, {indoor}){
+      let garden = CreateGarden(userId, gardenName, location, indoor);
       return garden;
     },
     'garden.getGardenById'({gardenId}){
