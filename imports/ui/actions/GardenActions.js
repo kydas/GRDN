@@ -6,7 +6,7 @@ import {
   addNoteToPlantSuccess, addNoteToPlantError,
   selectGardenBegin, selectGardenSuccess,
   selectPlantBegin, selectPlantSuccess, selectPlantError,
-  selectTrefleIdSuccess, selectTrefleIdError
+  selectTrefleIdSuccess, selectTrefleIdError, waterPlantSuccess
 } from './index';
 
 export function fetchUserGardens() {
@@ -167,6 +167,19 @@ export function updateWeatherInGarden(gardenId){
   });
 }
 
+export function waterPlant(gardenId, plantId) {
+  return dispatch => {
+    Meteor.call('plant.waterPlant', {gardenId: gardenId, plantId: plantId}, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        dispatch(waterPlantSuccess({gardenId, plantId}));
+      }
+    });
+  }
+
+}
+
 function getYesterdayDate(){
     let time = new Date();
     let yesterday = time.getDate() - 1;
@@ -175,4 +188,3 @@ function getYesterdayDate(){
     time = Math.floor((time.getTime() / 1000));
     return time;
 }
-

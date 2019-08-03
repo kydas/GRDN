@@ -21,6 +21,10 @@ export function CreateGarden(userId, gardenName, location) {
   })
 }
 
+export function SaveGarden(garden) {
+  Gardens.update({_id: garden._id}, garden)
+}
+
 export function GetGarden(gardenId) {
   let garden =  Gardens.findOne({_id: gardenId}, { limit: 1 }, (err, res) =>{
     if (err) {

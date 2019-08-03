@@ -1,4 +1,4 @@
-import {GetGarden} from "../Gardens/GardenDAO";
+import {GetGarden, SaveGarden} from "../Gardens/GardenDAO";
 import {waterNotification, tempNotification, getNotificationsByUserAndGarden} from "../notifications/NotificationsDAO";
 
 export function checkPlantNotification(gardenId, userId){
@@ -47,6 +47,16 @@ export function checkPlantNotification(gardenId, userId){
     }
 }
 
+
+export function WaterPlant(gardenId, plantId) {
+  const garden = GetGarden(gardenId);
+  const plant = garden.plants.find(x => x._id === plantId);
+  const today = new Date();
+  plant.watered.push(today);
+  SaveGarden(garden);
+  return true;
+}
+
 function getPrecipReq(plant) {
     const data = plant.cachedData.main_species.growth;
     const precipMin =  data.precipitation_minimum.cm * 10;
@@ -65,6 +75,7 @@ function getTempMin(plant){
     const data = plant.cachedData.main_species.growth;
     return data.temperature_minimum.deg_c;
 }
+
 
 function withinDay(date1, date2) {
     if (date1.getFullYear() == date2.getFullYear()){

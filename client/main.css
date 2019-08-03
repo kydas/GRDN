@@ -283,6 +283,7 @@ p.error-message {
   margin-bottom: 4px;
 }
 
+
 /*SEARCH PAGE*/
 .background-image-header {
   position: absolute;
@@ -638,6 +639,11 @@ div.plant-entry-controls button {
   font-size: 18px;
   position: relative;
   cursor: pointer;
+}
+
+div.plant-entry-controls button.just-watered-true {
+  color: #5E9;
+  cursor: default;
 }
 
 /*LOADING-SPINNER*/

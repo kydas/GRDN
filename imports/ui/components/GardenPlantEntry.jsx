@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearchPlus, faBell, faShower, faTrash, faPenNib } from '@fortawesome/free-solid-svg-icons';
 import NotificationsIndicator from './NotificationsIndicator';
 import { withRouter } from 'react-router-dom';
-import { removePlantFromGarden, addNoteToPlant } from '../actions/GardenActions';
+import { removePlantFromGarden, addNoteToPlant, waterPlant } from '../actions/GardenActions';
 import {connect} from 'react-redux';
 import HoverTip from './HoverTip';
 
@@ -11,13 +11,15 @@ import HoverTip from './HoverTip';
 const mapDispatchToProps = dispatch => {
     return {
       removePlant: (gardenId, plantInstanceId) => dispatch(removePlantFromGarden(gardenId, plantInstanceId)),
-      addNoteToPlant: (gardenId, plantInstanceId, message) => dispatch(addNoteToPlant(gardenId, plantInstanceId, message))
+      addNoteToPlant: (gardenId, plantInstanceId, message) => dispatch(addNoteToPlant(gardenId, plantInstanceId, message)),
+      waterThisPlant: (gardenId, plantId) => dispatch(waterPlant(gardenId, plantId))
     }
 }
 
 const mapStateToProps = state => {
   return {
-    notifications: state.userNotifications
+    notifications: state.userNotifications,
+    recentlyWatered: state.recentlyWatered
   }
 }
 
@@ -26,7 +28,7 @@ class ConnectableGardenPlantEntry extends Component {
     super(props);
 
     this.state = {
-      notifications: this.getPlantNotifications()
+      notifications: this.getPlantNotifications(),
     };
   }
 
@@ -58,7 +60,7 @@ class ConnectableGardenPlantEntry extends Component {
             <FontAwesomeIcon icon={faBell} />
             <NotificationsIndicator count={this.getPlantNotificationsCount()} />
           </button>
-          <button><FontAwesomeIcon icon={faShower} /></button>
+          <button className={"just-watered-" + this.checkWatered()}><FontAwesomeIcon icon={faShower} onClick={this.handleWaterClick} /></button>
           <button><FontAwesomeIcon icon={faTrash} onClick={this.handleRemoveClick} /></button>
         </div>
 
@@ -74,8 +76,14 @@ class ConnectableGardenPlantEntry extends Component {
 
   handleRemoveClick = () => {
     this.props.removePlant(this.props.gardenId, this.props.plantEntry._id);
-    this.setState({removed: true})
+    this.setState({removed: true});
     this.forceUpdate();
+  }
+
+  handleWaterClick = () => {
+    if (!this.checkWatered()) {
+      this.props.waterThisPlant(this.props.gardenId, this.props.plantEntry._id);
+    }
   }
 
   getPictureUrl = () => {
@@ -95,6 +103,12 @@ class ConnectableGardenPlantEntry extends Component {
 
   getPlantNotificationsCount = () =>{
     return this.getPlantNotifications().length;
+  }
+
+  checkWatered = () => {
+    let res = this.props.recentlyWatered.find(x => x.plantId == this.props.plantEntry._id && x.gardenId == this.props.gardenId);
+    let ret = (res != undefined);
+    return ret;
   }
 
 }
