@@ -1,8 +1,11 @@
 import axios from "axios";
-import {AUTH_TOKEN} from './constants.js';
+
+let AUTH_TOKEN;
 
 if (process.env._ && process.env._.indexOf("heroku")) {
   AUTH_TOKEN = process.env.AUTH_TOKEN;
+} else {
+  import {AUTH_TOKEN} from './constants.js';
 }
 
 const https = require('https');
