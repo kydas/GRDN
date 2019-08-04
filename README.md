@@ -41,4 +41,15 @@ Stretch requirements (2-3) - hope to complete one:
 
 ![Sketch of home window.](https://github.com/dasilvar93/GRDN/blob/master/home-sketch.JPG)
 
-![Sketch of garden and plant windows.](https://github.com/dasilvar93/GRDN/blob/master/garden-plant-sketch.JPG) 
+![Sketch of garden and plant windows.](https://github.com/dasilvar93/GRDN/blob/master/garden-plant-sketch.JPG)  
+
+## Notes on first design/code review: 
+
+- is the garden covered or uncovered 
+- richer filters for suggestions 
+- richer push notifications 
+- when to plant 
+- pest control 
+- invasive species 
+- plant maintenance difficulty 
+- talk to experts

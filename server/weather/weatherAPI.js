@@ -1,6 +1,11 @@
-import {WEATHER_KEY} from "../constants";
 import axios from "axios";
+let WEATHER_KEY;
 
+if (process.env._ && process.env._.indexOf("heroku")) {
+  WEATHER_KEY = process.env.WEATHER_KEY;
+} else {
+  import {WEATHER_KEY} from "../constants";
+}
 
 export function getWeatherTest() {
     return axios.get("https://api.darksky.net/forecast/" + WEATHER_KEY + "/43.653908,-79.384293,726624000?units=si")
