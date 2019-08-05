@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import {GetGardens, CreateGarden, GetGarden, DeleteGarden, AddPlant, RemovePlant, AddNote, UpdateWeatherInGarden} from './GardenDAO';
-import {checkPlantNotification, WaterPlant} from "../Plants/PlantDAO";
+import {checkPlantNotification, WaterPlant, checkIndoorPlantNotification} from "../Plants/PlantDAO";
 
 Meteor.methods(
   {
@@ -32,7 +32,7 @@ Meteor.methods(
     },
     'plant.checkNotifications'({gardenId, userId}){
         const garden = GetGarden(gardenId);
-        if(garden.indoor == false){
+        if(garden.indoor == true){
             return checkIndoorPlantNotification(gardenId, userId);
         } else {
             return checkPlantNotification(gardenId, userId)
