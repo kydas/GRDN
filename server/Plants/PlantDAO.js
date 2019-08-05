@@ -7,8 +7,12 @@ export function checkPlantNotification(gardenId, userId){
     const notifications = getNotificationsByUserAndGarden(userId, gardenId);
     const weathers = garden.weather.filter(x => x != null);
     const plants = garden.plants.filter(x => x != null);
-    const yesterdayWeather = weathers[weathers.length - 1];
-    const yesterdayPrecip = dailyPrecip(yesterdayWeather);
+    let yesterdayPrecip = 0;
+    let yesterdayWeather = null;
+    if (weathers.length > 1){
+        yesterdayWeather = weathers[weathers.length - 1];
+        yesterdayPrecip = dailyPrecip(yesterdayWeather);
+    }
     const today = new Date();
     let forecast = 0;
     let waterBool = waterNoteToday(notifications);
@@ -44,7 +48,7 @@ export function checkPlantNotification(gardenId, userId){
                     }
                 }
             }
-            if (!tempBool && yesterdayWeather.minTemp < tempMin){
+            if (yesterdayPrecip && !tempBool && yesterdayWeather.minTemp < tempMin){
                 tempNotification(userId, gardenId, plant._id)
                     .then(function(response) {
                         //All good
@@ -52,20 +56,9 @@ export function checkPlantNotification(gardenId, userId){
                     .catch(function(error){
                         console.log(error)
                     })
-                plant.watered.push(today);
-            } else {
-            console.log("plants have had enough water")
-            }
-            if (yesterdayWeather.minTemp > tempMin){
-                tempNotification(userId, gardenId, plant._id)
-                    .then(function(response) {
-                        console.log(response)
-                    })
-                    .catch(function(error){
-                        console.log(error)
-                    })
             }
         }
+        Gardens.update({_id: gardenId}, garden);
     }
 }
 
@@ -137,9 +130,10 @@ function getTempMin(plant){
 
 
 function withinDay(date1, date2) {
-    if (date1.getFullYear() == date2.getFullYear()){
-        if(date1.getMonth() == date2.getMonth()) {
-            if (date1.getDate() == date2.getDate()){
+    const date = new Date(date2);
+    if (date1.getFullYear() == date.getFullYear()){
+        if(date1.getMonth() == date.getMonth()) {
+            if (date1.getDate() == date.getDate()){
                 return true;
             }
         }
