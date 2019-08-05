@@ -18,6 +18,10 @@ const mapStateToProps = state => {
 
 class ConnectableNotificationsScroll extends Component {
 
+  state = {
+    notifications: []
+  }
+
   constructor(props) {
     super(props);
 
@@ -27,14 +31,14 @@ class ConnectableNotificationsScroll extends Component {
 
   }
 
-  componentWillMount(){
-    if (this.props.gardenId && this.props.plantId) {
-      this.setState({
-        notifications: this.props.notifications.filter(x => x.gardenId == this.props.gardenId && x.plantId == this.props.plantId)
+  static getDerivedStateFromProps(props, state){
+    if (props.gardenId && props.plantId) {
+      return ({
+        notifications: props.notifications.filter(x => x.gardenId == props.gardenId && x.plantId == props.plantId)
       })
     } else {
-      this.setState({
-        notifications: this.props.notifications
+      return ({
+        notifications: props.notifications
       })
     }
   }

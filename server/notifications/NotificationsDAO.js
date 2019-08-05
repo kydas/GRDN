@@ -58,6 +58,8 @@ export function getNotificationsByUserId(userId) {
   return Notifications.find({userId: userId}).map(function (doc) {
     if (doc.gardenId != null) {
       doc.garden = GetGarden(doc.gardenId);
+      if(!doc.garden) return doc;
+      if(doc.garden.plants.length == 0) return doc;
       if (doc.plantId != null) {
         doc.plant = doc.garden.plants.find(x => x._id == doc.plantId);
       }
@@ -79,4 +81,3 @@ export function deleteNotification(_id) {
     return _id;
   });
 }
-
