@@ -54,6 +54,7 @@ class LoginForm extends Component {
         this.props.history.push({
           pathname: '/'
         });
+        this.props.dismiss();
       }
     })
   }

@@ -61,9 +61,7 @@ class ConnectableNewUserForm extends Component {
             this.setState({errorMessage: null});
             Meteor.loginWithPassword(this.state.username, this.state.password);
             this.props.dismissModal();
-            this.props.history.push({
-              pathname: '/'
-            });
+
         }
       }
     )

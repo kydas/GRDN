@@ -94,6 +94,7 @@ class ConnectableCreateGardenForm extends Component {
       lng: this.state.location.longitude
     }
     this.props.createGarden(Meteor.userId(), this.state.gardenName, location, this.state.indoor);
+    this.props.dismiss();
   }
 
 
