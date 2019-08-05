@@ -64,7 +64,7 @@ export function getForecast(location){
             };
         })
         .catch(function (error) {
-            console.log(error);
+            console.log(JSON.stringify(error));
             throw new Error("cannot return forecast right now");
         })
 }
