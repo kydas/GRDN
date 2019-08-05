@@ -44,7 +44,6 @@ class ConnectableNotificationsScroll extends Component {
   }
 
   render(){
-    console.log("rerender");
     if (this.state.notifications == null || this.state.notifications.length == 0) {
       return "No notifications found!";
     }
