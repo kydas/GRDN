@@ -1,13 +1,16 @@
+import {MAP_API_KEY as local_key} from "../constants";
+
 let MAP_API_KEY;
+if (process.env._ && process.env._.indexOf("heroku")) {
+  MAP_API_KEY = process.env.MAP_API_KEY;
+} else {
+  MAP_API_KEY = local_key;
+}
+
 Meteor.methods(
   {
       'googleMap.getApiKey'() {
-        if (process.env._ && process.env._.indexOf("heroku")) {
-          return process.env.MAP_API_KEY;
-        } else {
-          import {MAP_API_KEY} from '../constants.js';
-          return MAP_API_KEY;
-        }
+        return MAP_API_KEY;
       }
   }
 )

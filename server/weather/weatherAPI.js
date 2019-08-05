@@ -1,10 +1,11 @@
 import axios from "axios";
+import {WEATHER_KEY as local_key} from "../constants";
 let WEATHER_KEY;
 
 if (process.env._ && process.env._.indexOf("heroku")) {
   WEATHER_KEY = process.env.WEATHER_KEY;
 } else {
-  import {WEATHER_KEY} from "../constants";
+  WEATHER_KEY = local_key;
 }
 
 export function getWeatherTest() {
