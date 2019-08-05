@@ -40,7 +40,6 @@ class ConnectableGardensPage extends Component {
 
   summonCreateGardenModal = () => {
     this.props.summonModalById("CREATE");
-    console.log("t");  //TODO required?
   }
 
 }

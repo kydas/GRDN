@@ -5,7 +5,7 @@ import GoogleMapGeoPicker from 'react-geo-picker/lib/google-map';
 
 const mapDispatchToProps = dispatch => {
     return {
-      createGarden: (userId, gardenName, location) => dispatch(createGarden(userId, gardenName, location))
+      createGarden: (userId, gardenName, location, indoor) => dispatch(createGarden(userId, gardenName, location, indoor))
     }
 }
 
@@ -23,7 +23,8 @@ class ConnectableCreateGardenForm extends Component {
         latitude: 49.2581322,
         longitude: -123.2403414,
       },
-      mapApiKey: null
+      mapApiKey: null,
+      indoor: false
     }
 
 
@@ -50,7 +51,8 @@ class ConnectableCreateGardenForm extends Component {
       <form className="gardenForm">
         <label>Garden Name:</label>
         <input type="text" onChange={this.handleGardenNameChange} />
-
+        <label>Indoor:</label>
+        <input type="checkbox" value={this.state.indoor} onChange={this.handleGardenIndoorChange} />
         <label>Location:</label>
         {this.state.mapApiKey &&
           <GoogleMapGeoPicker
@@ -72,6 +74,12 @@ class ConnectableCreateGardenForm extends Component {
     )
   }
 
+  handleGardenIndoorChange = (event) => {
+    this.setState({
+      indoor: event.target.checked
+    })
+  }
+
   handleGardenNameChange = (event) => {
     this.setState({
       gardenName: event.target.value
@@ -85,7 +93,7 @@ class ConnectableCreateGardenForm extends Component {
       lat: this.state.location.latitude,
       lng: this.state.location.longitude
     }
-    this.props.createGarden(Meteor.userId(), this.state.gardenName, location);
+    this.props.createGarden(Meteor.userId(), this.state.gardenName, location, this.state.indoor);
   }
 
 

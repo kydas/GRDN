@@ -39,10 +39,15 @@ export default class GardenPage extends Component{
             <div className="col third">
               <WeatherWidget garden={this.state.entry} />
               <h2>Location</h2>
+              {this.state.entry.indoor &&
+                <p><strong>This garden is indoor.</strong> You will not receive local weather notifications about it.</p>
+              }
               <MapContainer center={
               {lat: parseFloat(this.state.entry.location.lat) || 0,      //TODO: validate that this is between 0, 360
                 lng: parseFloat(this.state.entry.location.lng) || 0}     //TODO: validate tahtthis is between -90, 90
               } zoom={14.5} />
+
+
             </div>
           </div>
         </main>
