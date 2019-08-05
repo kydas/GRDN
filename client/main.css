@@ -646,6 +646,28 @@ div.plant-entry-controls button.just-watered-true {
   cursor: default;
 }
 
+/*WEATHER WIDGET*/
+.weather-widget .weather-icon {
+}
+
+.weather-widget .temp svg, .weather-widget .precip svg {
+  font-size: 24px;
+}
+.weather-widget .weather-icon svg {
+  font-size: 48px;
+}
+
+.weather-widget .weather-icon .weather-label {
+  text-transform: uppercase;
+}
+
+.weather-widget a {
+  font-size: 12px;
+  margin-bottom: 6px;
+  color: #999;
+  text-decoration: none;
+}
+
 /*LOADING-SPINNER*/
 .spinner-holder {
     position: absolute;
