@@ -91,7 +91,7 @@ class ConnectableCreateGardenForm extends Component {
     event.preventDefault();
     let location = {
       lat: this.state.location.latitude,
-      lng: this.state.location.longitude
+      lng: ((this.state.location.longitude - 180.0) % 360.0) + 180.0
     }
     this.props.createGarden(Meteor.userId(), this.state.gardenName, location, this.state.indoor);
   }

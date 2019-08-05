@@ -12,10 +12,13 @@ export default class NotificationEntry extends Component {
 
     return(
         <li className="notification-entry">
-          {NotificationStrings()[this.props.entry.type](this.props.entry.plant.cachedData.common_name, this.props.entry.garden.name)}
-          <a href={`${window.location.protocol}//${window.location.host}/garden/${this.props.entry.gardenId}/${this.props.entry.plantId}`}><FontAwesomeIcon icon={faArrowAltCircleRight} /></a>
-          <a onClick={this.handleDelete}><FontAwesomeIcon icon={faTrash} /></a>
-
+          <div className="text">
+            {NotificationStrings()[this.props.entry.type](this.props.entry.plant.cachedData.common_name, this.props.entry.garden.name)}
+          </div>
+          <div className="controls">
+            <a href={`${window.location.protocol}//${window.location.host}/garden/${this.props.entry.gardenId}/${this.props.entry.plantId}`}><FontAwesomeIcon icon={faArrowAltCircleRight} /></a>
+            <a onClick={this.handleDelete}><FontAwesomeIcon icon={faTrash} /></a>
+          </div>
         </li>
     )
   }
