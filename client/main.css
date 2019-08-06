@@ -278,10 +278,33 @@ p.error-message {
 .notifications-scroll ul li {
   list-style-type: none;
   padding: 12px;
-  border: 1px solid #83e8ba;
+  border: 1px solid #888;
   margin-left: 0;
   margin-bottom: 4px;
+  margin-right: 4px;
 }
+
+
+.notifications-scroll .notification-entry .text{
+  display: inline-block;
+  width: 83%;
+}
+
+.notifications-scroll .notification-entry .controls{
+  font-size: 24px;
+  display: inline-block;
+  width: 14%;
+}
+
+.notifications-scroll .notification-entry .controls svg{
+  margin-left: 6px;
+  color: #444;
+}
+
+.notifications-scroll .notification-entry .controls svg:hover{
+  color: #689689;
+}
+
 
 
 /*SEARCH PAGE*/
