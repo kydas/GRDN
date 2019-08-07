@@ -3,10 +3,13 @@ import {Meteor} from 'meteor/meteor';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { dismissModal } from '../actions/UIActions'
+import {clearCurrentUserNotifications} from "../actions/NotificationsActions";
+
 
 const mapDispatchToProps = dispatch => {
   return {
-    dismissModal: () => {dispatch(dismissModal())}
+    dismissModal: () => {dispatch(dismissModal())},
+    clearNotifs: () => {dispatch(clearCurrentUserNotifications())}
   }
 }
 
@@ -26,6 +29,7 @@ class ConnectableLogoutButton extends Component {
         console.log(err.reason);
       } else {
         //On logout success, we redirect them to the login page.
+        that.props.clearNotifs();
         that.props.dismissModal();
         history.push({
           pathname: '/search'

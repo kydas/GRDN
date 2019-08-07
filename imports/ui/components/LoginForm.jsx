@@ -52,6 +52,7 @@ class LoginForm extends Component {
 
       if (Meteor.user() != null) {
         //On user success, we redirect them to the index page.
+        this.props.getNotifs();
         this.props.history.push({
           pathname: '/'
         });
