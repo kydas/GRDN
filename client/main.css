@@ -599,6 +599,11 @@ ul.notes-feed li .date {
   color: #1e2019;
 }
 
+.garden-list ul li .garden-list-entry span a {
+  float: none;
+  text-decoration: none;
+}
+
 .garden-list ul li .garden-list-entry button:hover,
 .garden-list ul li .garden-list-entry a:hover {
   color: #83e8ba;
