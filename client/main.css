@@ -696,6 +696,13 @@ div.plant-entry-controls button.just-watered-true {
   text-decoration: none;
 }
 
+/*MAP MARKER */
+
+.map-marker {
+  font-size: 32px;
+  color: #e99;
+}
+
 /*LOADING-SPINNER*/
 .spinner-holder {
     position: absolute;
