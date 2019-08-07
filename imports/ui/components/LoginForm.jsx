@@ -25,10 +25,11 @@ class LoginForm extends Component {
           <input type="text" name="username" autoComplete="username" onChange={this.handleUsernameChange} />
           <label>Password:</label>
           <input type="password" name="password" autoComplete="current-password" onChange={this.handlePasswordChange}/>
-          <div className="action-buttons">
-            <button className="purple" onClick={this.props.toggle}> Register </button>
+          <div className="action-buttons centered">
             <button className="teal" onClick={this.handleLogin}> Login </button>
-
+            <br/><br/>
+            Need an account?
+            <button className="purple" onClick={this.props.toggle}> Register </button>
           </div>
         </form>
       </div>
