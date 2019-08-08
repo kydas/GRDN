@@ -15,6 +15,7 @@ import SearchPage from '../ui/pages/SearchPage';
 import DetailPage from '../ui/pages/DetailPage';
 import GardenPage from '../ui/pages/GardenPage';
 import GardenPlantDetailPage from '../ui/pages/GardenPlantDetailPage';
+import About from '../ui/pages/AboutPage';
 
 const history = createBrowserHistory();
 
@@ -28,6 +29,7 @@ export const renderRoutes = () => (
         <Route exact path="/plant/:id" component={DetailPage} />
         <Route exact path="/garden/:id" component={GardenPage} />
         <Route exact path="/garden/:id/:plantId" component={GardenPlantDetailPage} />
+        <Route exact path="/about" component={About} />
         // Add more routes below
       </Switch>
     </AppShell>

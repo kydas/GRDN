@@ -18,7 +18,7 @@ Meteor.methods({'plants.getPlant'({plantId}){
 Meteor.methods({'plants.getPlants'({plantId}){
         const plant = getPlants(plantId)
             .then(function(response){
-                console.log(response);
+                return response;
             return response;
         })
             .catch(function(error){

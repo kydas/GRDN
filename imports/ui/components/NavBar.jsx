@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import NotificationsIndicator from './NotificationsIndicator';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSeedling, faSearch, faHiking, faBell, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSeedling, faSearch, faHiking, faBell, faSignInAlt, faSignOutAlt, faQuestion } from '@fortawesome/free-solid-svg-icons';
 import {connect} from 'react-redux';
 import HoverTip from './HoverTip.jsx';
 import {summonModalById} from '../actions/UIActions';
@@ -57,6 +57,13 @@ class ConnectableNavBar extends Component {
             <FontAwesomeIcon icon={faSearch} />
             <label>Search</label>
           </Link>
+
+          <Link to='/about'>
+            <HoverTip text="About GRDN" hideDesktop />
+            <FontAwesomeIcon icon={faQuestion}/>
+            <label>About</label>
+          </Link>
+
 
 
 
