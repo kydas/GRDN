@@ -110,6 +110,10 @@ export function getNotificationsCount(payload) {
   return {type: "GET_NOTIFICATIONS_COUNT", payload}
 }
 
+export function clearCurrentNotifications(payload) {
+  return {type: "CLEAR_NOTIFICATIONS", payload}
+}
+
 export function deleteNotificationError(payload) {
   return {type: "DELETE_NOTIFICATION_ERROR", payload}
 }

@@ -125,6 +125,12 @@ export default function rootReducer (state = baseState, action) {
         userNotifications: state.userNotifications.filter(x => x._id != action.payload)
       })
 
+    case "CLEAR_NOTIFICATIONS":
+    return Object.assign({}, state, {
+      userNotifications: [],
+      userNotificationsCount: 0
+    })
+
     case "WATER_PLANT_SUCCESS":
       let newWatered = [...state.recentlyWatered];
       newWatered.push(action.payload);

@@ -39,6 +39,12 @@ class ConnectableNavBar extends Component {
     }
   }
 
+  componentDidMount() {
+    if (this.props.user) {
+      this.props.getUserNotifications(this.props.user._id);
+    }
+  }
+
   render() {
     let user = this.props.user;
     return (

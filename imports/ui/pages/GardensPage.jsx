@@ -19,7 +19,7 @@ class ConnectableGardensPage extends Component {
 
     if (!Meteor.userId()) {
       this.props.history.push({
-        pathname: '/login'
+        pathname: '/search'
       });
     }
   }

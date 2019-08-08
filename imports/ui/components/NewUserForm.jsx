@@ -35,9 +35,11 @@ class ConnectableNewUserForm extends Component {
           <input type="text" name="email" onChange={this.handleEmailChange} />
           <label>Password:</label>
           <input type="password" name="password" onChange={this.handlePasswordChange} />
-          <div className="action-buttons">
-            <button className="purple" onClick={this.props.toggle}> Login </button>
+          <div className="action-buttons centered">
             <button className="teal" onClick={this.handleSubmit}> Register </button>
+            <br/><br/>
+            Already have an account?
+            <button className="purple" onClick={this.props.toggle}> Login </button>
 
           </div>
         </form>
