@@ -20,7 +20,7 @@ export default class About extends Component {
                     </p>
 
                     <p>
-                        Built by Joshua Cassidy and Kyle da Silva.
+                        Built by Joshua Cassidy Grant and Kyle da Silva.
                     </p>
 
                     <p>
