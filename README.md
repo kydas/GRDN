@@ -20,6 +20,10 @@ Another example of a difficulty caused by limitations of an external API was the
 
 The primary places for improvement for this app would be in the notification logic, as described above, as well as getting more data to improve notifications and add suggestions. Tracking and customizability could also be improved. Custom picture uploads, as well as more detailed tracking beyond the notes currently in the app would make the app more useful for tracking the health of plants. 
 
+## Additional contributions
+
+Beyond the technologies taught in class, our biggest additional contributes were integrating external APIs. Making calls to external APIs were very briefly touched on in the node.js / backend workshop, but we went well beyond anything taught in that workshop. We integrated 3 APIs into our app (Google Maps, Dark Sky, Trefle). Beyond just using the APIs individually, we use the information together to create the notifications our app, which is a central portion of our project. Also some of the styling in our app went well beyond anything taught in the first workshop (look at our loading spinner!). 
+
 
 ## Initial plans, requirements, and description. 
 
