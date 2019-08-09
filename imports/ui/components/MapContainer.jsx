@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import GoogleMapReact from 'google-map-react';
+import MapMarker from './MapMarker';
 
 export default class MapContainer extends Component {
 
@@ -27,7 +28,13 @@ export default class MapContainer extends Component {
           bootstrapURLKeys={{ key: this.state.apiKey}}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
-        />
+        >
+          <MapMarker
+            lat={this.props.center.lat}
+            lng={this.props.center.lng}
+            text="My Marker"
+            />
+        </GoogleMapReact>
       </div>
     )
   }

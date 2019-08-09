@@ -15,7 +15,7 @@ export default class GardenListEntry extends Component{
       return (
         <li key={this.props.garden._id} >
           <div className="garden-list-entry">
-            {this.props.garden.name}
+            <span><a href={"/garden/" + this.props.garden._id}>{this.props.garden.name}</a></span>
             <button onClick={this.handleRemove}>
               <FontAwesomeIcon icon={faTrash} />
             </button>
